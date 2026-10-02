@@ -137,15 +137,27 @@
             <p class="reveal">Чтобы она работала, на компьютер один раз ставится Python. Это бесплатный официальный "движок" для таких программ, им пользуются миллионы людей, в том числе банки. Установка — как у любой другой программы. Больше ты его не открываешь.</p>
             <p class="reveal">Дальше программа тихо "дежурит" в фоне: раз в сутки обновляет таблицу и слушает, не попросил ли ты обновить прямо сейчас — командой в Telegram или галочкой в таблице.</p>
           </div>
-          <div class="how__media">
-            <figure class="shot shot--card reveal" data-alt="Скриншот: папка проекта">
-              <img src="images/11files.png" alt="Папка программы на компьютере: скрипты Python, файл настроек .env и README" width="491" height="769" loading="lazy">
-              <figcaption>Вся программа — одна папка на твоём компьютере</figcaption>
-            </figure>
-            <figure class="shot shot--card reveal" data-alt="Скриншот: автозагрузка Windows">
-              <img src="images/12autoloading.png" alt="Папка автозагрузки Windows с ярлыком start_bot_hidden — бот запускается сам при включении компьютера" width="744" height="284" loading="lazy">
-              <figcaption>Ярлык в автозагрузке — бот стартует сам при включении компьютера</figcaption>
-            </figure>
+          <!-- Карусель: программа → таблица → автозагрузка -->
+          <div class="carousel carousel--single carousel--fit how__media reveal" data-carousel aria-roledescription="карусель" aria-label="Как устроена программа">
+            <div class="carousel__track" data-carousel-track tabindex="0">
+              <figure class="carousel__slide shot" data-alt="Скриншот: папка проекта">
+                <img src="images/11files.png" alt="Папка программы на компьютере: скрипты Python, файл настроек .env и README" width="491" height="769" loading="lazy">
+                <figcaption>Вся программа — одна папка на твоём компьютере</figcaption>
+              </figure>
+              <figure class="carousel__slide shot" data-alt="Скриншот: шаблон Google Таблицы">
+                <img src="images/4template.png" alt="Шаблон таблицы: блоки RUB-активы, Валюта и Денежный рынок, куда программа записывает портфель" width="1048" height="858" loading="lazy">
+                <figcaption>Сюда программа записывает портфель — шаблон Google Таблицы</figcaption>
+              </figure>
+              <figure class="carousel__slide shot" data-alt="Скриншот: автозагрузка Windows">
+                <img src="images/12autoloading.png" alt="Папка автозагрузки Windows с ярлыком start_bot_hidden — бот запускается сам при включении компьютера" width="744" height="284" loading="lazy">
+                <figcaption>Ярлык в автозагрузке — бот стартует сам при включении компьютера</figcaption>
+              </figure>
+            </div>
+            <div class="carousel__controls">
+              <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущий слайд">←</button>
+              <div class="carousel__dots" data-carousel-dots></div>
+              <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующий слайд">→</button>
+            </div>
           </div>
         </div>
       </div>
@@ -165,6 +177,7 @@
             <li class="reveal"><strong>Бот отвечает только тебе.</strong> Он привязан к твоему Telegram-аккаунту и игнорирует всех остальных.</li>
             <li class="reveal"><strong>Никаких подписок.</strong> Python, Google Таблицы, Telegram и API Т-Инвестиций бесплатны.</li>
           </ul>
+          <article class="feature feature--accent reveal"><span class="feature__icon" aria-hidden="true">🔒</span><p>Программа физически не может купить или продать ни одной бумаги</p></article>
         </div>
         <!-- TODO: заменить на отдельный скриншот images/screen-6-token.png, когда он будет готов -->
         <figure class="shot shot--card split__media reveal" data-alt="Скриншот: настройки токена «Только просмотр»">
@@ -189,7 +202,8 @@
             </thead>
             <tbody>
               <tr><td>Ставишь Python</td><td>~10 мин</td></tr>
-              <tr><td>Копируешь готовый шаблон Google Таблицы и даёшь доступ</td><td>~20 мин</td></tr>
+              <tr><td>Делаешь настройки в Google-аккаунте</td><td>~15 мин</td></tr>
+              <tr><td>Копируешь готовый шаблон Google Таблицы и даёшь доступ</td><td>~5 мин</td></tr>
               <tr><td>Получаешь токен Т-Инвестиций «только для чтения»</td><td>~5 мин</td></tr>
               <tr><td>Создаёшь своего Telegram-бота</td><td>~10 мин</td></tr>
               <tr><td>Вписываешь ключи и запускаешь</td><td>~10 мин</td></tr>
@@ -220,13 +234,27 @@
             <article class="feature reveal"><span class="feature__icon" aria-hidden="true">📊</span><p>Готовая Google Таблица (шаблон для импорта), где все счета собраны вместе: акции, облигации, фонды и валюта — отдельно в рублях, долларах и евро</p></article>
             <article class="feature reveal"><span class="feature__icon" aria-hidden="true">☀️</span><p>Утренний отчёт в Telegram: стоимость портфеля и изменение за день, неделю и месяц</p></article>
           </div>
-          <figure class="shot shot--card shot--narrow reveal" data-alt="Скриншот: утренний отчёт">
-            <img src="images/2total.png" alt="Утренний отчёт в Telegram: итоги по RUB-активам, денежному рынку, валюте, USD и EUR активам" width="422" height="297" loading="lazy">
-            <figcaption>Утренний отчёт в Telegram</figcaption>
-          </figure>
+          <!-- Карусель: шаблон таблицы + утренний отчёт -->
+          <div class="carousel carousel--single carousel--fit reveal" data-carousel aria-roledescription="карусель" aria-label="Таблица и утренний отчёт">
+            <div class="carousel__track" data-carousel-track tabindex="0">
+              <figure class="carousel__slide shot" data-alt="Скриншот: шаблон Google Таблицы">
+                <img src="images/4template.png" alt="Готовый шаблон Google Таблицы: RUB-активы, валюта и денежный рынок с вложениями, стоимостью и прибылью" width="1048" height="858" loading="lazy">
+                <figcaption>Готовый шаблон Google Таблицы</figcaption>
+              </figure>
+              <figure class="carousel__slide shot" data-alt="Скриншот: утренний отчёт">
+                <img src="images/2total.png" alt="Утренний отчёт в Telegram: итоги по RUB-активам, денежному рынку, валюте, USD и EUR активам" width="422" height="297" loading="lazy">
+                <figcaption>Утренний отчёт в Telegram</figcaption>
+              </figure>
+            </div>
+            <div class="carousel__controls">
+              <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущий слайд">←</button>
+              <div class="carousel__dots" data-carousel-dots></div>
+              <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующий слайд">→</button>
+            </div>
+          </div>
         </div>
 
-        <div class="inside-group">
+        <div class="inside-group inside-group--wide">
           <div class="feature-grid feature-grid--single">
             <article class="feature reveal"><span class="feature__icon" aria-hidden="true">🔄</span><p>Кнопка «Обновить сейчас» — в Telegram или галочкой прямо в таблице</p></article>
           </div>
@@ -246,7 +274,6 @@
           <div class="feature-grid">
             <article class="feature reveal"><span class="feature__icon" aria-hidden="true">📅</span><p>Даты ближайших купонов и дивидендов по каждой бумаге</p></article>
             <article class="feature reveal"><span class="feature__icon" aria-hidden="true">🧮</span><p>Прибыль и процент по каждой позиции считаются сами (формулы уже внутри)</p></article>
-            <article class="feature reveal"><span class="feature__icon" aria-hidden="true">🔒</span><p>Программа физически не может купить или продать ни одной бумаги</p></article>
           </div>
           <figure class="shot shot--card shot--narrow reveal" data-alt="Скриншот: команда /rub">
             <img src="images/5rub.png" alt="Команда /rub в Telegram: список рублёвых акций с вложениями, прибылью и изменением за день" width="645" height="627" loading="lazy">

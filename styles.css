@@ -416,8 +416,7 @@ button { font: inherit; }
 .how__grid { display: grid; gap: 28px; }
 .how__text { display: grid; gap: 16px; align-content: start; font-size: 17px; color: var(--on-dark-muted); }
 .how__text p:first-child { color: var(--on-dark); }
-.how__media { display: grid; gap: 16px; align-content: start; }
-.how__media .shot:first-child img { max-height: 520px; width: auto; margin: 0 auto; }
+.how__media { align-self: start; }
 
 /* =========================================================
    Блоки 6–7. Двухколоночный layout (текст + скрин)
@@ -544,7 +543,19 @@ button { font: inherit; }
 
 .shot--narrow { max-width: 560px; justify-self: center; width: 100%; }
 
-.shot-pair { display: grid; gap: 16px; align-items: start; }
+/* «Обновить сейчас»: скрины крупно, в натуральную ширину */
+.shot-pair { display: grid; gap: 16px; align-items: start; justify-items: center; }
+.shot-pair .shot { width: 100%; }
+.shot-pair .shot:first-child { max-width: 780px; }
+.shot-pair .shot:last-child { max-width: 690px; }
+
+/* Акцентная карточка (блок «Безопасность») */
+.feature--accent {
+  margin-top: 14px;
+  background: var(--yellow-soft);
+  border: 1px solid var(--yellow-border);
+  font-weight: 700;
+}
 
 /* Карусель */
 .carousel { position: relative; }
@@ -568,6 +579,23 @@ button { font: inherit; }
   padding: 10px;
 }
 .carousel__slide img { width: 100%; background: var(--white); }
+.carousel__slide figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); text-align: center; }
+
+/* Карусель «по одному слайду», картинки разных пропорций вписываются по высоте */
+.carousel--single .carousel__slide { flex-basis: 100%; }
+.carousel--fit .carousel__slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+.carousel--fit .carousel__slide img {
+  width: auto;
+  max-width: 100%;
+  max-height: 440px;
+  margin: 0 auto;
+}
 
 .carousel__controls {
   display: flex;
@@ -588,6 +616,9 @@ button { font: inherit; }
   cursor: pointer;
 }
 .carousel__btn:hover { background: var(--navy-3); }
+.section--dark .carousel__btn { background: var(--yellow); color: var(--navy); }
+.section--dark .carousel__btn:hover { background: var(--yellow-hover); }
+.section--dark .carousel__slide { border-color: var(--navy-3); }
 
 .carousel__dots { display: flex; gap: 8px; }
 
@@ -887,7 +918,6 @@ button { font: inherit; }
   .btn--xl { width: auto; padding: 24px 44px; font-size: 22px; }
   .hero__title { font-size: 30px; }
   .bonus-grid { grid-template-columns: 1fr 1fr; }
-  .shot-pair { grid-template-columns: 1fr 1fr; }
 }
 
 /* =========================================================
@@ -931,6 +961,7 @@ button { font: inherit; }
   .feature-grid:has(> :nth-child(3)) { grid-template-columns: repeat(3, 1fr); }
 
   .carousel__slide { flex-basis: calc(50% - 8px); }
+  .carousel--single .carousel__slide { flex-basis: 100%; }
 
   .tiers { grid-template-columns: repeat(3, 1fr); align-items: center; }
   .tier--active { padding: 36px 20px; }
@@ -981,7 +1012,13 @@ button { font: inherit; }
   .inside-group:last-child { grid-template-columns: 1.4fr 1fr; align-items: start; }
   .inside-group:last-child > .feature-grid { grid-column: 1 / -1; }
 
+  .inside-group--wide { grid-template-columns: 1fr; }
+  .inside-group--wide .shot-pair { grid-template-columns: 1.15fr 1fr; align-items: center; }
+
   .carousel__slide { flex-basis: 100%; }
 
   .bonus-grid { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* Подписи на белых слайдах внутри тёмной секции */
+.section--dark .carousel--fit figcaption { color: var(--muted); }
