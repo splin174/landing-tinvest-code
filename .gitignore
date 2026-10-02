@@ -1,0 +1,15 @@
+.DS_Store
+node_modules
+.env
+*.log
+
+# Исходные материалы — не публикуются
+*.pdf
+landing-micro.md.txt
+deploy/
+
+# Неиспользуемые на странице оригиналы картинок
+# (вместо них подключены logo.webp, og-image.jpg, 7guide_scroll.mp4)
+images/logo.png
+images/logo2.png
+images/7guide_scroll.gif

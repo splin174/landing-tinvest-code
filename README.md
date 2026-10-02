@@ -41,7 +41,10 @@ images/        — скриншоты, логотип, оптимизирова�
 
 Если картинка не загрузится, вместо неё показывается серый блок с подписью из атрибута `data-alt`.
 
-Обновили GIF-предпросмотр — пересоберите видео:
+Видео-предпросмотр `images/7guide_scroll.mp4` собрано из исходного GIF `images/7guide_scroll.gif`.
+Исходный GIF (~8 МБ) хранится только локально и в репозиторий не входит (см. `.gitignore`),
+как и оригиналы логотипов `images/logo.png` и `images/logo2.png`.
+Если GIF есть у вас на диске и вы его обновили — пересоберите mp4:
 
 ```
 ffmpeg -i images/7guide_scroll.gif -movflags +faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -c:v libx264 -crf 26 images/7guide_scroll.mp4
