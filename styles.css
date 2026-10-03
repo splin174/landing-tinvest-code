@@ -306,24 +306,26 @@ button { font: inherit; }
 .hero__accent { color: var(--yellow); font-weight: 800; }
 
 /* Плашки-теги под обещанием */
+/* Две строки на всех ширинах: «Без навыков программирования», ниже «Навсегда» · «Без подписок» */
 .hero-tags {
   list-style: none;
   margin: 14px 0 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 10px;
 }
+.hero-tag:first-child { grid-column: 1 / -1; justify-self: start; }
 .hero-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  gap: 8px;
+  padding: 8px 15px;
   border-radius: 999px;
   background: rgba(255, 255, 255, .08);
   border: 1px solid rgba(255, 255, 255, .14);
   color: var(--on-dark);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
   line-height: 1.3;
   white-space: nowrap;
@@ -1142,11 +1144,19 @@ button { font: inherit; }
   /* Бонус — отдельной строкой под обеими колонками hero, по той же сетке */
   .hero__bonus { grid-column: 1 / -1; grid-template-columns: 1.05fr 1fr; gap: 56px; }
   .hero__bonus-shot { justify-self: center; }
-  /* Левая группа (заголовок → подзаголовок → плашки → шаги) по высоте совпадает с главным скриншотом:
-     ширина скриншота подобрана под высоту группы с отступами 24 / 16 / 32,
-     а группа растягивается до высоты скриншота — лишнее место делится между отступами поровну */
-  .hero__media { max-width: 471px; justify-self: center; }
-  .hero__content { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; }
+  /* Три «этажа»: заголовок, подзаголовок и плашки ↔ главный скриншот; шаги ↔ промежуток между скриншотами;
+     бонус ↔ скриншот отчёта. Содержимое левой колонки становится строками общей сетки:
+     скриншот занимает строки 1–4, лишняя высота уходит в гибкую строку 4 */
+  .hero__inner { grid-template-rows: auto auto auto 1fr auto auto; row-gap: 0; }
+  .hero__content { display: contents; }
+  .hero__audience { grid-column: 1; grid-row: 1; }
+  .hero__promise { grid-column: 1; grid-row: 2; }
+  .hero-tags { grid-column: 1; grid-row: 3; }
+  .hero__media { grid-column: 2; grid-row: 1 / 5; max-width: 471px; justify-self: center; }
+  .hero-steps { grid-column: 1; grid-row: 5; margin: 48px 0; }
+  .hero__bonus { grid-row: 6; margin-top: 0; }
+  .hero__bonus-text { margin-top: 96px; }
+  .hero-tag { font-size: 18px; padding: 9px 17px; }
   .header__title { font-size: 28px; }
   #pain { padding-top: 70px; }
 
