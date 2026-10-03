@@ -547,7 +547,6 @@ button { font: inherit; }
   font-size: 22px;
 }
 
-.shot--narrow { max-width: 560px; justify-self: center; width: 100%; }
 
 /* «Обновить сейчас»: скрины крупно, в натуральную ширину */
 .shot-pair { display: grid; gap: 16px; align-items: start; justify-items: center; }

@@ -275,12 +275,35 @@
         <div class="inside-group">
           <div class="feature-grid">
             <article class="feature reveal"><span class="feature__icon" aria-hidden="true">📅</span><p>Даты ближайших купонов и дивидендов по каждой бумаге</p></article>
+          </div>
+          <figure class="shot shot--card reveal" data-alt="Скриншот: лист «Облигации»">
+            <img src="images/coupons_table.png" alt="Лист «Облигации» в Google Таблице: по каждой облигации стоимость, прибыль, полученные купоны, дата очередной выплаты купона и дата окончания" width="797" height="300" loading="lazy">
+            <figcaption>Лист «Облигации» — дата очередного купона по каждой бумаге</figcaption>
+          </figure>
+        </div>
+
+        <div class="inside-group">
+          <div class="feature-grid">
             <article class="feature reveal"><span class="feature__icon" aria-hidden="true">🧮</span><p>Прибыль и процент по каждой позиции считаются сами (формулы уже внутри)</p></article>
           </div>
-          <figure class="shot shot--card shot--narrow reveal" data-alt="Скриншот: команда /rub">
-            <img src="images/5rub.png" alt="Команда /rub в Telegram: список рублёвых акций с вложениями, прибылью и изменением за день" width="645" height="627" loading="lazy">
-            <figcaption>Команда /rub — каждая бумага с прибылью и изменением за день</figcaption>
-          </figure>
+          <!-- Карусель: сообщения бота по команде /rub -->
+          <div class="carousel carousel--single carousel--fit reveal" data-carousel aria-roledescription="карусель" aria-label="Прибыль по позициям в Telegram">
+            <div class="carousel__track" data-carousel-track tabindex="0">
+              <figure class="carousel__slide shot" data-alt="Скриншот: команда /rub в Telegram">
+                <img src="images/5rub.png" alt="Сообщение бота в Telegram по команде /rub: рублёвые акции со стоимостью, вложениями, прибылью в рублях и процентах и изменением за день" width="577" height="503" loading="lazy">
+                <figcaption>Telegram, команда /rub — прибыль и % по каждой бумаге</figcaption>
+              </figure>
+              <figure class="carousel__slide shot" data-alt="Скриншот: итог по RUB-акциям в Telegram">
+                <img src="images/5rub_total.png" alt="Конец сообщения бота в Telegram: последние позиции и итог по рублёвым акциям — стоимость, вложено, прибыль и изменение за день" width="531" height="432" loading="lazy">
+                <figcaption>Telegram, конец сообщения — итог по всем RUB-акциям</figcaption>
+              </figure>
+            </div>
+            <div class="carousel__controls">
+              <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущий слайд">←</button>
+              <div class="carousel__dots" data-carousel-dots></div>
+              <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующий слайд">→</button>
+            </div>
+          </div>
         </div>
 
         <div class="inside-group">
