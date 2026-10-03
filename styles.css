@@ -980,11 +980,11 @@ button { font: inherit; }
   .hero-tags { margin-top: 16px; }
   .hero-steps { margin-top: 32px; }
 
-  .hero-steps { grid-template-columns: repeat(3, auto); justify-content: start; gap: 28px; }
+  .hero-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .hero-step { grid-template-columns: 1fr; gap: 10px; }
   .hero-step:not(:last-child)::after {
     left: 46px;
-    right: -18px;
+    right: -10px;
     top: 17px;
     bottom: auto;
     width: auto;
@@ -1049,6 +1049,8 @@ button { font: inherit; }
     align-items: center;
     gap: 32px 56px;
   }
+  /* В узкой левой колонке время в шагах — 20px, чтобы три шага стояли в ряд */
+  .hero-step__time { font-size: 20px; }
   /* Бонус — отдельной строкой под обеими колонками hero, по той же сетке */
   .hero__bonus { grid-column: 1 / -1; grid-template-columns: 1.05fr 1fr; gap: 56px; }
   .hero__bonus-shot { justify-self: center; }
