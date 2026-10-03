@@ -321,7 +321,7 @@ button { font: inherit; }
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, max-content);
-  gap: 10px;
+  gap: 16px;
 }
 .hero-tag:first-child { grid-column: 1 / -1; justify-self: start; }
 .hero-tag {
@@ -1255,9 +1255,10 @@ button { font: inherit; }
   .hero__audience { grid-column: 1; grid-row: 1; }
   .hero__promise { grid-column: 1; grid-row: 2; }
   .hero-tags { grid-column: 1; grid-row: 3; }
-  .hero__media { grid-column: 2; grid-row: 1 / 5; max-width: 471px; justify-self: center; }
-  .hero-steps { grid-column: 1; grid-row: 5; margin: 48px 0; }
-  .hero__bonus { grid-column: 1 / -1; grid-row: 6; margin-top: 0; grid-template-columns: 1.05fr 1fr; gap: 56px; }
+  /* Скриншот занимает строки 1–5: шаги стоят напротив его нижней части, промежуток до отчёта — 72px */
+  .hero__media { grid-column: 2; grid-row: 1 / 6; max-width: 471px; justify-self: center; }
+  .hero-steps { grid-column: 1; grid-row: 5; margin: 24px 0 0; }
+  .hero__bonus { grid-column: 1 / -1; grid-row: 6; margin-top: 32px; grid-template-columns: 1.05fr 1fr; gap: 56px; }
   .hero__bonus-shot { justify-self: center; }
   .hero__bonus-text { margin-top: 40px; }
   .hero-step__time { font-size: 20px; }
@@ -1287,6 +1288,10 @@ button { font: inherit; }
   .section__title { font-size: 42px; }
 
   .header__title { font-size: 28px; }
+  /* С 1200px скриншот крупнее, шаги — по центру между плашками и скриншотом отчёта */
+  .hero__media { max-width: 520px; }
+  .hero-steps { margin-top: 32px; }
+  .hero__bonus { margin-top: 40px; }
   #pain { padding-top: 70px; }
 
 
