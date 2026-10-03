@@ -1000,7 +1000,7 @@ button { font: inherit; }
   box-shadow: 0 16px 40px rgba(11, 31, 58, .22);
 }
 .author--accent .author__avatar { border-color: var(--yellow); }
-.author--accent .author__text p { font-size: 18px; line-height: 1.5; color: var(--on-dark); }
+.author--accent .author__text p { margin-top: 16px; font-size: 18px; line-height: 1.5; color: var(--on-dark); }
 .author--accent .author__text strong { color: var(--on-dark); font-weight: 800; }
 .author--accent .author__text .author__punch {
   margin-top: 18px;
