@@ -251,69 +251,58 @@
       </div>
     </section>
 
-    <!-- 4.2 Как работает автоматизация? -->
+    <!-- 4.2 Как запустить автоматизацию? -->
     <section class="section" id="automation">
       <div class="container">
         <div class="section__head reveal">
           <span class="bar" aria-hidden="true"></span>
-          <h2 class="section__title">Как работает автоматизация?</h2>
+          <h2 class="section__title">Как запустить автоматизацию?</h2>
         </div>
-        <ol class="auto-steps">
-          <li class="auto-step reveal"><span class="auto-step__num" aria-hidden="true">1</span>
-            <div class="auto-step__body">
-              <p><strong>Скачиваешь и&nbsp;копируешь файлы автоматизации</strong></p>
-            </div>
-          </li>
-          <li class="auto-step auto-step--media reveal"><span class="auto-step__num" aria-hidden="true">2</span>
-            <div class="auto-step__body">
-              <p><strong>Скачиваешь готовый к&nbsp;работе красивый шаблон Google Таблицы</strong></p>
-              <div class="auto-step__media">
-                <figure class="shot shot--card" data-alt="Скриншот: шаблон таблицы">
-                  <img src="images/4template.png" alt="Готовый шаблон таблицы для импорта: блоки RUB-активы, Валюта и Денежный рынок с формулами" width="1048" height="858" loading="lazy">
-                  <figcaption>Шаблон таблицы — импортируешь и&nbsp;сразу пользуешься</figcaption>
+
+        <!-- Шаги 1–6 + общая карусель скриншотов: клик по шагу листает карусель, листание подсвечивает шаг -->
+        <div class="gallery reveal" data-gallery>
+          <ol class="auto-steps">
+            <li><button class="auto-step" type="button" data-pick="0" aria-controls="automation-gallery"><span class="auto-step__num" aria-hidden="true">1</span><span class="auto-step__text"><strong>Скачиваешь и&nbsp;копируешь файлы автоматизации</strong></span></button></li>
+            <li><button class="auto-step" type="button" data-pick="1" aria-controls="automation-gallery"><span class="auto-step__num" aria-hidden="true">2</span><span class="auto-step__text"><strong>Скачиваешь готовый к&nbsp;работе красивый шаблон Google Таблицы</strong></span></button></li>
+            <li><button class="auto-step" type="button" data-pick="2" aria-controls="automation-gallery"><span class="auto-step__num" aria-hidden="true">3</span><span class="auto-step__text"><strong>Один раз проходишь инструкцию по&nbsp;шагам со&nbsp;скриншотами.</strong> За&nbsp;один вечер.</span></button></li>
+            <li><button class="auto-step" type="button" data-pick="3" aria-controls="automation-gallery"><span class="auto-step__num" aria-hidden="true">4</span><span class="auto-step__text"><strong>Скрипт каждый день в&nbsp;10:00 автоматически обновляет таблицу (время настраивается индивидуально).</strong> Или вручную хоть сколько раз в&nbsp;день.</span></button></li>
+            <li><button class="auto-step" type="button" data-pick="4" aria-controls="automation-gallery"><span class="auto-step__num" aria-hidden="true">5</span><span class="auto-step__text"><strong>Открываешь Telegram и&nbsp;за&nbsp;10&nbsp;секунд видишь, что изменилось.</strong></span></button></li>
+            <li><button class="auto-step" type="button" data-pick="5" aria-controls="automation-gallery"><span class="auto-step__num" aria-hidden="true">6</span><span class="auto-step__text"><strong>Кнопка «Обновить данные»</strong>&nbsp;— в&nbsp;Telegram или галочкой прямо в&nbsp;таблице</span></button></li>
+          </ol>
+          <div class="gallery__media">
+            <div class="carousel carousel--single carousel--frame" id="automation-gallery" data-carousel aria-roledescription="карусель" aria-label="Скриншоты: как запустить автоматизацию">
+              <div class="carousel__track" data-carousel-track tabindex="0">
+                <figure class="carousel__slide" data-plate="0">
+                  <img src="images/11files.png" alt="Папка с файлами автоматизации на компьютере: скрипты Python, файл настроек .env и README" width="491" height="769" loading="lazy" data-zoom>
+                </figure>
+                <figure class="carousel__slide" data-plate="1">
+                  <img src="images/4template.png" alt="Готовый шаблон таблицы для импорта: блоки RUB-активы, Валюта и Денежный рынок с формулами" width="1048" height="858" loading="lazy" data-zoom>
+                </figure>
+                <figure class="carousel__slide" data-plate="2">
+                  <img src="images/7guide1.png" alt="Страница инструкции: получение токенов доступа в Т&#8209;Инвестициях, выбор типа «Только просмотр»" width="535" height="378" loading="lazy" data-zoom>
+                </figure>
+                <figure class="carousel__slide" data-plate="3">
+                  <img src="images/12autoloading.png" alt="Папка автозагрузки Windows с ярлыком start_bot_hidden — скрипт запускается сам при включении компьютера" width="744" height="284" loading="lazy" data-zoom>
+                </figure>
+                <figure class="carousel__slide" data-plate="4">
+                  <img src="images/8total_tg.png" alt="Ответ Telegram-бота на команду /total: итоги по RUB-активам, валюте, USD и EUR, общая стоимость всех счетов" width="656" height="379" loading="lazy" data-zoom>
+                </figure>
+                <figure class="carousel__slide" data-plate="5">
+                  <img src="images/3checkbox.png" alt="Лист «Управление» в Google Таблице: галочки «Обновить данные» и «Очистить данные» со статусом обновления" width="747" height="546" loading="lazy" data-zoom>
+                </figure>
+                <figure class="carousel__slide" data-plate="5">
+                  <img src="images/10update.png" alt="Команда /update в Telegram: бот собирает данные и сообщает «Данные обновлены»" width="652" height="142" loading="lazy" data-zoom>
                 </figure>
               </div>
-            </div>
-          </li>
-          <li class="auto-step reveal"><span class="auto-step__num" aria-hidden="true">3</span>
-            <div class="auto-step__body">
-              <p><strong>Один раз проходишь инструкцию по&nbsp;шагам со&nbsp;скриншотами.</strong> За&nbsp;один вечер.</p>
-            </div>
-          </li>
-          <li class="auto-step reveal"><span class="auto-step__num" aria-hidden="true">4</span>
-            <div class="auto-step__body">
-              <p><strong>Скрипт каждый день в&nbsp;10:00 автоматически обновляет таблицу (время настраивается индивидуально).</strong> Или вручную хоть сколько раз в&nbsp;день.</p>
-            </div>
-          </li>
-          <li class="auto-step auto-step--media reveal"><span class="auto-step__num" aria-hidden="true">5</span>
-            <div class="auto-step__body">
-              <p><strong>Открываешь Telegram и&nbsp;за&nbsp;10&nbsp;секунд видишь, что изменилось.</strong></p>
-              <div class="auto-step__media">
-                <figure class="shot shot--card" data-alt="Скриншот: команда /total в Telegram">
-                  <img src="images/8total_tg.png" alt="Ответ Telegram-бота на команду /total: итоги по RUB-активам, валюте, USD и EUR, общая стоимость всех счетов" width="656" height="379" loading="lazy">
-                  <figcaption>Команда /total — весь портфель одним сообщением</figcaption>
-                </figure>
+              <div class="carousel__controls">
+                <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущий слайд">←</button>
+                <div class="carousel__dots" data-carousel-dots></div>
+                <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующий слайд">→</button>
               </div>
             </div>
-          </li>
-          <li class="auto-step auto-step--media reveal"><span class="auto-step__num" aria-hidden="true">6</span>
-            <div class="auto-step__body">
-              <p><strong>Кнопка «Обновить данные»</strong>&nbsp;— в&nbsp;Telegram или галочкой прямо в&nbsp;таблице</p>
-              <div class="auto-step__media">
-                <div class="auto-step__stack">
-                  <figure class="shot shot--card" data-alt="Скриншот: лист «Управление»">
-                    <img src="images/3checkbox.png" alt="Лист «Управление» в Google Таблице: галочки «Обновить данные» и «Очистить данные» со статусом обновления" width="747" height="546" loading="lazy">
-                    <figcaption>Галочка «Обновить данные» на листе «Управление»</figcaption>
-                  </figure>
-                  <figure class="shot shot--card" data-alt="Скриншот: команда /update">
-                    <img src="images/10update.png" alt="Команда /update в Telegram: бот собирает данные и сообщает «Данные обновлены»" width="652" height="142" loading="lazy">
-                    <figcaption>Или команда /update в Telegram</figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ol>
+            <p class="gallery__hint">Нажми на скриншот, чтобы открыть его крупно</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -387,8 +376,22 @@
       </div>
     </section>
 
-    <!-- 4.3 Безопасность -->
+    <!-- Блок 5 — Прувы -->
+    <section class="section section--soft" id="author">
+      <div class="container author author--accent reveal">
+        <!-- TODO: заменить плейсхолдер на фото автора (например, images/author.jpg) -->
+        <div class="author__avatar" role="img" aria-label="Аватар автора">👤</div>
+        <div class="author__text">
+          <h2 class="section__title">Почему создал эту&nbsp;автоматизацию</h2>
+          <p>Изначально я&nbsp;сделал эту автоматизацию для себя и&nbsp;сам пользуюсь ею&nbsp;каждый день. Примерно год назад я&nbsp;пользовался сервисами по&nbsp;подписке и&nbsp;в&nbsp;какой-то момент посчитал: платить каждый месяц за&nbsp;то,&nbsp;чтобы видеть свои&nbsp;же&nbsp;активы,&nbsp;— вообще нецелесообразно. Поэтому сделал своё решение, где платишь только <strong>один&nbsp;раз</strong>&nbsp;— настраиваешь и&nbsp;пользуешься.</p>
+          <p class="author__punch">Без абонентской&nbsp;платы</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Блок 6 — Безопасность и гарантия -->
     <section class="section" id="security">
+      <!-- 6 · Безопасность -->
       <div class="container split">
         <div class="split__text">
           <div class="section__head reveal">
@@ -397,8 +400,8 @@
           </div>
           <ul class="checklist">
             <li class="reveal"><strong>Токен «только для чтения».</strong> Программа видит портфель, но&nbsp;не&nbsp;может совершить ни&nbsp;одной сделки и&nbsp;вывести деньги.</li>
-            <li class="reveal"><strong>Всё остаётся у тебя.</strong> Программа работает на твоём компьютере, таблица лежит в твоём Google-аккаунте. Никаких чужих серверов.</li>
-            <li class="reveal"><strong>Бот отвечает только тебе.</strong> Он привязан к твоему Telegram-аккаунту и игнорирует всех остальных.</li>
+            <li class="reveal"><strong>Всё остаётся у&nbsp;тебя.</strong> Программа работает на&nbsp;твоём компьютере, таблица лежит в&nbsp;твоём Google&#8209;аккаунте. Никаких чужих серверов.</li>
+            <li class="reveal"><strong>Бот отвечает только тебе.</strong> Он&nbsp;привязан к&nbsp;твоему Telegram&#8209;аккаунту и&nbsp;игнорирует всех остальных.</li>
             <li class="reveal"><strong>Никаких подписок.</strong> Python, Google Таблицы, Telegram и API Т&#8209;Инвестиций бесплатны.</li>
           </ul>
           <article class="feature feature--accent reveal"><span class="feature__icon" aria-hidden="true">🔒</span><p>Программа физически не&nbsp;может купить или продать ни&nbsp;одной бумаги</p></article>
@@ -409,30 +412,15 @@
           <figcaption>В&nbsp;инструкции показано, где выбрать тип токена «Только просмотр»</figcaption>
         </figure>
       </div>
-    </section>
-
-    <!-- Блок 5 — Прувы -->
-    <section class="section section--soft" id="author">
-      <div class="container author author--accent reveal">
-        <!-- TODO: заменить плейсхолдер на фото автора (например, images/author.jpg) -->
-        <div class="author__avatar" role="img" aria-label="Аватар автора">👤</div>
-        <div class="author__text">
-          <h2 class="section__title">Почему я&nbsp;создал эту&nbsp;автоматизацию</h2>
-          <p>Я сам пользуюсь этим решением каждый день. Раньше пользовался сервисами по&nbsp;подписке и&nbsp;в&nbsp;какой-то момент посчитал: платить каждый месяц за&nbsp;то, чтобы видеть свой же портфель, нецелесообразно. Поэтому сделал своё решение: платишь <strong>один&nbsp;раз</strong>&nbsp;— и&nbsp;пользуешься.</p>
-          <p class="author__punch">Без абонентской&nbsp;платы</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Блок 6 — Гарантия -->
-    <section class="section" id="guarantee">
-      <div class="container narrow">
+      <!-- 6 · Гарантия -->
+      <div class="container"><hr class="divider"></div>
+      <div class="container narrow" id="guarantee">
         <div class="guarantee reveal">
           <span class="guarantee__icon" aria-hidden="true">🛡️</span>
           <div>
             <h2 class="section__title">Гарантия 7 дней</h2>
             <p>Если прошёл инструкцию и&nbsp;таблица так и&nbsp;не&nbsp;заработала&nbsp;— даже после того, как мы&nbsp;вместе разобрались,&nbsp;— напиши мне, и&nbsp;я&nbsp;верну деньги.</p>
-            <p class="guarantee__note">Почему я спокойно даю такую гарантию? Все шаги я проверил на своих счетах. Если идти по порядку, всё работает.</p>
+            <p class="guarantee__note">Почему я спокойно даю такую гарантию? Все шаги я&nbsp;проверил на&nbsp;своих счетах. Если идти по&nbsp;порядку, всё работает.</p>
           </div>
         </div>
       </div>

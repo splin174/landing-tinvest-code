@@ -167,6 +167,9 @@ button { font: inherit; }
 
 .note { margin-top: 20px; color: var(--muted); }
 
+/* Тонкий разделитель внутри секции (блок 6: Безопасность → Гарантия) */
+.divider { margin: 48px 0; border: 0; border-top: 1px solid var(--line); }
+
 /* Кнопка покупки + цена: на мобильном цена над кнопкой, с 768px — слева от неё */
 .buy {
   display: flex;
@@ -499,51 +502,43 @@ button { font: inherit; }
 .nofit-item strong { color: var(--on-dark); font-weight: 700; }
 
 /* =========================================================
-   4.2 Как работает автоматизация? — шаги 1–6
+   4.2 Как запустить автоматизацию? — шаги 1–6 (кнопки) + общая карусель
    ========================================================= */
-/* Номер в жёлтом кружке, текст рядом; кружки соединены вертикальной линией */
-.auto-steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 32px;
-}
+.auto-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .auto-step {
-  position: relative;
-  display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  column-gap: 16px;
-  align-items: start;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 14px;
+  text-align: left;
+  font: inherit;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--text);
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease;
 }
-.auto-step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 19px;
-  top: 48px;
-  bottom: -26px;
-  width: 2px;
-  border-radius: 1px;
-  background: var(--yellow-border);
-}
+.auto-step:hover { border-color: var(--yellow-border); }
+.auto-step:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+.auto-step[aria-current="true"] { background: var(--yellow-soft); border-color: var(--yellow); }
 .auto-step__num {
+  flex-shrink: 0;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: var(--yellow);
   color: var(--navy);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
 }
-.auto-step__body { display: grid; gap: 16px; min-width: 0; }
-.auto-step__body > p { padding-top: 6px; font-size: 18px; line-height: 1.5; color: var(--text); }
-.auto-step__body strong { font-weight: 700; }
-.auto-step__media { display: grid; gap: 16px; justify-items: start; }
-.auto-step__media .shot { width: 100%; max-width: 560px; }
-.auto-step__stack { display: grid; gap: 16px; width: 100%; max-width: 560px; }
-.auto-step__media .shot img { width: 100%; }
+.auto-step__text { padding-top: 4px; }
+.auto-step__text strong { font-weight: 700; }
 
 /* =========================================================
    Аккордеон (<details>): «Что в инструкции?», «Техническая логика работы»
@@ -661,12 +656,12 @@ button { font: inherit; }
 .how__media { align-self: start; min-width: 0; }
 
 /* =========================================================
-   Двухколоночный layout (текст + скрин): «Что в инструкции?» и 4.3 Безопасность
+   Двухколоночный layout (текст + скрин): «Что в инструкции?» и блок 6 «Безопасность»
    ========================================================= */
 .split { display: grid; gap: 32px; align-items: start; }
 
 /* =========================================================
-   4.3 Безопасность
+   Блок 6 — Безопасность и гарантия · Безопасность
    ========================================================= */
 .checklist {
   list-style: none;
@@ -981,7 +976,7 @@ button { font: inherit; }
   padding: 28px 20px;
   /* .author сам является .container, поэтому боковые поля — через ширину */
   width: calc(100% - 2 * var(--gutter));
-  max-width: 860px;
+  max-width: calc(1200px - 2 * var(--gutter));
 }
 
 .author__avatar {
@@ -1017,7 +1012,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   Блок 6 — Гарантия
+   Блок 6 — Безопасность и гарантия · Гарантия
    ========================================================= */
 .guarantee {
   display: grid;
@@ -1267,8 +1262,6 @@ button { font: inherit; }
   .hero__bonus-text { margin-top: 40px; }
   .hero-step__time { font-size: 20px; }
   .hero-tag { font-size: 18px; padding: 9px 17px; }
-  .auto-step--media .auto-step__body { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); column-gap: 40px; align-items: start; }
-  .auto-step--media .auto-step__media { justify-items: stretch; }
   .fit-list { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: 24px 48px; }
   /* Колонки без общей сетки строк: пункты идут подряд, без пустот из-за соседа в другой колонке */
   .nofit-list { display: block; columns: 2; column-gap: 48px; }
