@@ -160,6 +160,11 @@ button { font: inherit; }
   font-size: 17px;
 }
 
+/* Плашка-вступление в тёмном аккордеоне «Техническая логика работы» */
+.acc__intro { margin-bottom: 24px; }
+.section--dark .callout { background: rgba(255, 221, 45, .08); border-color: rgba(255, 221, 45, .4); color: var(--on-dark); }
+.section--dark .callout strong { color: var(--yellow); }
+
 .note { margin-top: 20px; color: var(--muted); }
 
 /* Кнопка покупки + цена: на мобильном цена над кнопкой, с 768px — слева от неё */
@@ -592,11 +597,6 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   4.2 · продолжение — Дело не в тебе
-   ========================================================= */
-
-
-/* =========================================================
    4.2 · продолжение — Техническая логика работы (аккордеон; бывший «Как это работает?»)
    ========================================================= */
 .flow {
@@ -655,10 +655,10 @@ button { font: inherit; }
   transform: translateX(-50%) rotate(45deg);
 }
 
-.how__grid { display: grid; gap: 28px; }
+.how__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
 .how__text { display: grid; gap: 16px; align-content: start; font-size: 17px; color: var(--on-dark-muted); }
 .how__text p:first-child { color: var(--on-dark); }
-.how__media { align-self: start; }
+.how__media { align-self: start; min-width: 0; }
 
 /* =========================================================
    Двухколоночный layout (текст + скрин): «Что в инструкции?» и 4.3 Безопасность
@@ -1298,7 +1298,7 @@ button { font: inherit; }
 
 
 
-  .how__grid { grid-template-columns: 1fr 1fr; gap: 56px; }
+  .how__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; }
 
   .split { grid-template-columns: 1.1fr 1fr; gap: 56px; }
   .split__media { position: sticky; top: calc(var(--header-h) + 24px); }
