@@ -145,11 +145,6 @@ button { font: inherit; }
 }
 .section--dark .section__text { color: var(--on-dark-muted); }
 
-.hl {
-  background: linear-gradient(transparent 58%, rgba(255, 221, 45, .55) 58%);
-  padding: 0 2px;
-}
-.section--dark .hl { background: none; color: var(--yellow); padding: 0; }
 
 /* Жёлтая плашка-выноска, как в гайде */
 .callout {
@@ -161,7 +156,7 @@ button { font: inherit; }
 }
 
 /* Плашка-вступление в тёмном аккордеоне «Техническая логика работы» */
-.acc__intro { margin-bottom: 24px; }
+.acc__intro { margin-bottom: 32px; }
 .section--dark .callout { background: rgba(255, 221, 45, .08); border-color: rgba(255, 221, 45, .4); color: var(--on-dark); }
 .section--dark .callout strong { color: var(--yellow); }
 
@@ -652,7 +647,6 @@ button { font: inherit; }
 
 .how__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
 .how__text { display: grid; gap: 16px; align-content: start; font-size: 17px; color: var(--on-dark-muted); }
-.how__text p:first-child { color: var(--on-dark); }
 .how__media { align-self: start; min-width: 0; }
 
 /* =========================================================
