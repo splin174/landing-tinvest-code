@@ -1,9 +1,3 @@
-// Сколько мест осталось по первой цене — обновляется вручную
-const seatsLeft = 47;
-
-// Всего мест в первом тарифе (для полосы прогресса)
-const SEATS_TOTAL = 50;
-
 // Ссылка на оплату. Пока пустая — кнопка в финальном блоке ведёт к #cta.
 const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
 
@@ -43,22 +37,6 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  /* ---------- Счётчик мест ---------- */
-  function plural(n, one, few, many) {
-    const n10 = n % 10;
-    const n100 = n % 100;
-    if (n10 === 1 && n100 !== 11) return one;
-    if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return few;
-    return many;
-  }
-  const seats = Math.max(0, Math.min(SEATS_TOTAL, seatsLeft));
-  document.querySelectorAll('[data-seats]').forEach(function (el) { el.textContent = seats; });
-  document.querySelectorAll('[data-seats-word]').forEach(function (el) {
-    el.textContent = plural(seats, 'место', 'места', 'мест');
-  });
-  const bar = document.querySelector('[data-seats-bar]');
-  if (bar) bar.style.width = Math.round(((SEATS_TOTAL - seats) / SEATS_TOTAL) * 100) + '%';
 
   /* ---------- FAQ-аккордеон: открыт только один ---------- */
   const faq = document.querySelector('[data-faq]');

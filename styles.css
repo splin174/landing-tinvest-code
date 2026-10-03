@@ -720,95 +720,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   Блок 10. Бонусы
-   ========================================================= */
-.bonus-grid { display: grid; gap: 14px; }
-
-.bonus {
-  position: relative;
-  background: var(--yellow-soft);
-  border: 1px solid var(--yellow-border);
-  border-radius: var(--radius);
-  padding: 20px;
-}
-
-.bonus__tag {
-  display: inline-block;
-  margin-bottom: 10px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  background: var(--navy);
-  color: var(--yellow);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-.bonus h3 { font-size: 18px; line-height: 1.3; }
-.bonus p { margin-top: 6px; color: var(--muted); }
-
-/* =========================================================
-   Блок 12. Цена
-   ========================================================= */
-.tiers { display: grid; gap: 14px; }
-
-.tier {
-  position: relative;
-  border-radius: var(--radius);
-  padding: 24px 20px;
-  text-align: center;
-  background: var(--navy-2);
-  border: 1px solid var(--navy-3);
-}
-
-.tier__name { font-weight: 600; color: var(--on-dark-muted); }
-.tier__price { margin-top: 8px; font-size: 36px; font-weight: 800; }
-
-.tier--active {
-  background: var(--yellow);
-  border-color: var(--yellow);
-  color: var(--navy);
-  box-shadow: var(--shadow-cta);
-}
-.tier--active .tier__name { color: var(--navy); }
-
-.tier--off { opacity: .55; }
-.tier--off s { text-decoration-thickness: 3px; text-decoration-color: rgba(255, 255, 255, .7); }
-
-.tier__badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: var(--navy);
-  color: var(--yellow);
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  border: 2px solid var(--yellow);
-}
-
-.seats { margin: 32px auto 0; max-width: 520px; text-align: center; }
-.seats__text { font-size: 18px; }
-.seats__num { color: var(--yellow); font-size: 26px; }
-
-.seats__bar {
-  margin-top: 12px;
-  height: 10px;
-  border-radius: 5px;
-  background: var(--navy-3);
-  overflow: hidden;
-}
-.seats__bar span { display: block; height: 100%; width: 0; background: var(--yellow); border-radius: 5px; transition: width 1s ease; }
-
-.price__note { margin: 20px auto 0; max-width: 620px; text-align: center; color: var(--on-dark-muted); font-size: 15px; }
-
-/* =========================================================
-   Блок 13. Гарантия
+   Блок 10. Гарантия
    ========================================================= */
 .guarantee {
   display: grid;
@@ -834,7 +746,7 @@ button { font: inherit; }
 .guarantee__note { color: var(--muted); font-size: 15px; }
 
 /* =========================================================
-   Блок 14. FAQ
+   Блок 11. FAQ
    ========================================================= */
 .faq { display: grid; gap: 10px; }
 
@@ -882,7 +794,7 @@ button { font: inherit; }
 .faq__a { padding: 0 18px 18px; color: var(--muted); }
 
 /* =========================================================
-   Блок 15. Финальный CTA
+   Блок 12. Финальный CTA
    ========================================================= */
 .cta {
   background:
@@ -919,7 +831,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   Блок 16. Подвал
+   Блок 13. Подвал
    ========================================================= */
 .footer {
   padding: 32px 0 40px;
@@ -943,7 +855,6 @@ button { font: inherit; }
   .btn--lg { width: auto; }
   .btn--xl { width: auto; padding: 24px 44px; font-size: 22px; }
   .hero__title { font-size: 30px; }
-  .bonus-grid { grid-template-columns: 1fr 1fr; }
   .author--accent .author__text p { font-size: 20px; }
   .author--accent .author__text .author__punch { font-size: 28px; }
 }
@@ -992,9 +903,6 @@ button { font: inherit; }
 
   .carousel__slide { flex-basis: calc(50% - 8px); }
   .carousel--single .carousel__slide { flex-basis: 100%; }
-
-  .tiers { grid-template-columns: repeat(3, 1fr); align-items: center; }
-  .tier--active { padding: 36px 20px; }
 
   .author {
     grid-template-columns: auto 1fr;
@@ -1049,8 +957,6 @@ button { font: inherit; }
   .inside-group--wide .shot-pair { grid-template-columns: 1.15fr 1fr; align-items: center; }
 
   .carousel__slide { flex-basis: 100%; }
-
-  .bonus-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* Подписи на белых слайдах внутри тёмной секции */
