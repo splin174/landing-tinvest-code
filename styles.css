@@ -999,6 +999,8 @@ button { font: inherit; }
 }
 .author--accent .author__avatar { border-color: var(--yellow); }
 .author--accent .author__text p { margin-top: .875em; font-size: 16px; line-height: 1.5; color: var(--on-dark); }
+/* Абзацы — по левому краю на всех ширинах (на мобильном заголовок и «Без абонентской платы» по центру) */
+.author--accent .author__text p:not(.author__punch) { text-align: left; }
 .author--accent .author__text strong { color: var(--on-dark); font-weight: 800; }
 .author--accent .author__text .author__punch {
   margin-top: 18px;
@@ -1224,8 +1226,6 @@ button { font: inherit; }
     padding: 36px;
     gap: 32px;
   }
-  /* Абзацы карточки — по ширине, с переносами; последняя строка по левому краю */
-  .author--accent .author__text p:not(.author__punch) { text-align: justify; text-align-last: left; hyphens: auto; -webkit-hyphens: auto; }
   .author--accent .author__text .author__punch { font-size: 32px; }
 
   .guarantee { grid-template-columns: auto 1fr; padding: 32px; gap: 24px; }
