@@ -303,25 +303,73 @@ button { font: inherit; }
 .hero__cta { margin-top: 28px; }
 .hero__accent { color: var(--yellow); font-weight: 800; }
 
-/* Сроки: три шага — на мобильном столбиком, с 768px в ряд */
+/* Плашки-теги под обещанием */
+.hero-tags {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .14);
+  color: var(--on-dark);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.hero-tag::before { content: "✓"; color: var(--yellow); font-weight: 800; }
+
+/* Сроки: шаги с номерами. На мобильном столбиком с вертикальной линией, с 768px в ряд со стрелкой-линией */
 .hero-steps {
   list-style: none;
   margin: 28px 0 0;
   padding: 0;
   display: grid;
-  gap: 10px;
+  gap: 18px;
 }
 .hero-step {
+  position: relative;
   display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  align-items: start;
   align-content: start;
-  gap: 4px;
-  padding: 14px 16px;
-  border-radius: var(--radius-sm);
-  background: var(--navy-2);
-  border: 1px solid var(--navy-3);
 }
-.hero-step__time { font-size: 26px; line-height: 1.15; font-weight: 800; color: var(--yellow); }
+.hero-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 42px;
+  bottom: -14px;
+  width: 2px;
+  border-radius: 1px;
+  background: rgba(255, 221, 45, .45);
+}
+.hero-step__num {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--navy);
+  font-size: 17px;
+  font-weight: 800;
+}
+.hero-step__body { display: grid; gap: 2px; }
+.hero-step__time { font-size: 24px; line-height: 1.2; font-weight: 800; color: var(--yellow); white-space: nowrap; }
 .hero-step__text { font-size: 17px; line-height: 1.35; font-weight: 600; color: var(--on-dark); }
+
+.hero__footnote { margin-top: 22px; font-size: 13px; line-height: 1.45; color: rgba(184, 195, 214, .8); }
 
 .hero__media {
   background: var(--white);
@@ -924,7 +972,18 @@ button { font: inherit; }
   .hero__audience { font-size: 18px; }
   .hero__promise { font-size: 24px; }
   .hero__lead { font-size: 19px; }
-  .hero-steps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .hero-steps { grid-template-columns: repeat(3, auto); justify-content: start; gap: 28px; }
+  .hero-step { grid-template-columns: 1fr; gap: 10px; }
+  .hero-step:not(:last-child)::after {
+    left: 46px;
+    right: -18px;
+    top: 17px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(to right, rgba(255, 221, 45, .7), rgba(255, 221, 45, .15));
+  }
+  .hero-step__time { font-size: 22px; }
 
   .pain-list { grid-template-columns: 1fr 1fr; }
   .pain-list li:last-child { grid-column: 1 / -1; }
