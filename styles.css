@@ -394,20 +394,28 @@ button { font: inherit; }
   gap: 12px;
 }
 
+/* Каждая плашка занимает две строки общей сетки (заголовок и текст) через subgrid:
+   в одном ряду тексты начинаются на одной высоте, даже если заголовки разной длины */
 .pain-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  column-gap: 14px;
+  row-gap: 6px;
+  align-items: start;
   background: var(--card);
   border-radius: var(--radius);
   padding: 18px;
 }
 
-.pain-card__body { display: grid; align-content: start; gap: 6px; min-width: 0; padding-top: 2px; }
-.pain-card__title { font-size: 18px; line-height: 1.3; font-weight: 700; color: var(--text); }
-.pain-card__body p { color: var(--text); }
+.pain-card__body { display: contents; }
+.pain-card__title { grid-column: 2; grid-row: 1; padding-top: 10px; font-size: 18px; line-height: 1.3; font-weight: 700; color: var(--text); }
+.pain-card__body p { grid-column: 2; grid-row: 2; color: var(--text); }
 
 .pain-card__icon {
+  grid-column: 1;
+  grid-row: 1;
   flex-shrink: 0;
   display: grid;
   place-items: center;
@@ -1037,6 +1045,13 @@ button { font: inherit; }
 }
 
 /* =========================================================
+   Breakpoint 1024px
+   ========================================================= */
+@media (min-width: 1024px) {
+  .pain-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* =========================================================
    Breakpoint 1200px
    ========================================================= */
 @media (min-width: 1200px) {
@@ -1056,7 +1071,6 @@ button { font: inherit; }
   .hero__bonus-shot { justify-self: center; }
   .hero__title { font-size: 42px; }
 
-  .pain-list { grid-template-columns: repeat(3, 1fr); }
 
   .solution__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
   .steps { grid-template-columns: 1fr; }
