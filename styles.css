@@ -162,6 +162,22 @@ button { font: inherit; }
 
 .note { margin-top: 20px; color: var(--muted); }
 
+/* Кнопка покупки + цена: на мобильном цена над кнопкой, с 768px — слева от неё */
+.buy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+.buy > .btn { max-width: 100%; }
+
+.price { display: grid; gap: 4px; margin: 0; }
+.price__value { font-size: 34px; line-height: 1.1; font-weight: 700; color: var(--navy); white-space: nowrap; }
+.price__note { font-size: 14px; line-height: 1.35; color: var(--muted); }
+.section--dark .price__value { color: var(--yellow); }
+.section--dark .price__note { color: var(--on-dark-muted); }
+
 .cta-note { margin-top: 14px; font-size: 14px; color: var(--muted); }
 .cta-note--light { color: var(--on-dark-muted); }
 
@@ -241,6 +257,7 @@ button { font: inherit; }
 .logo__img { width: 48px; height: 48px; flex-shrink: 0; }
 .logo__text { display: none; font-weight: 800; font-size: 17px; line-height: 1.2; }
 .logo__arrow { color: #E0B800; }
+.header__inner > .btn { flex-shrink: 0; white-space: nowrap; }
 
 /* =========================================================
    Блок 2. Hero
@@ -868,6 +885,10 @@ button { font: inherit; }
   .logo__img { width: 56px; height: 56px; }
   .logo__text { font-size: 18px; }
   .btn--sm { padding: 12px 20px; font-size: 16px; }
+
+  .buy { flex-direction: row; gap: 24px; text-align: left; }
+  .buy--center { justify-content: center; }
+  .price { flex-shrink: 0; max-width: 200px; }
 
   .section__title { font-size: 36px; }
   .hero { padding: 64px 0 80px; }
