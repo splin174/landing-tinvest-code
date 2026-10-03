@@ -259,7 +259,7 @@ button { font: inherit; }
 /* Главный заголовок страницы (H1) рядом с логотипом */
 .header__title {
   min-width: 0;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.25;
   font-weight: 800;
   letter-spacing: -0.01em;
@@ -290,7 +290,7 @@ button { font: inherit; }
 
 .hero__promise {
   margin-top: 22px;
-  font-size: 21px;
+  font-size: 19px;
   line-height: 1.35;
   font-weight: 700;
   color: var(--on-dark);
@@ -963,7 +963,7 @@ button { font: inherit; }
   .logo__img { width: 56px; height: 56px; }
   .header { position: sticky; }
   html { scroll-padding-top: var(--header-h); }
-  .header__title { font-size: 21px; }
+  .header__title { font-size: 24px; }
   .btn--sm { padding: 12px 20px; font-size: 16px; }
 
   .buy { flex-direction: row; gap: 24px; text-align: left; }
@@ -973,7 +973,7 @@ button { font: inherit; }
   .section__title { font-size: 36px; }
   .hero { padding: 64px 0 80px; }
   .hero__audience { font-size: 26px; }
-  .hero__promise { font-size: 24px; }
+  .hero__promise { font-size: 22px; }
   .hero__lead { font-size: 19px; }
   /* Отступы в левой колонке hero по шкале 16 / 24 / 32: плашки ближе к обещанию, шаги — отдельной группой */
   .hero__inner { row-gap: 32px; }
@@ -995,6 +995,7 @@ button { font: inherit; }
   .hero-step__time { font-size: 22px; }
 
   .hero__bonus { grid-template-columns: 1fr 1fr; align-items: start; gap: 24px; }
+  .hero__bonus-text { margin-top: 56px; }
 
   .pain-list { grid-template-columns: 1fr 1fr; }
 
@@ -1062,9 +1063,14 @@ button { font: inherit; }
   /* Бонус — отдельной строкой под обеими колонками hero, по той же сетке */
   .hero__bonus { grid-column: 1 / -1; grid-template-columns: 1.05fr 1fr; gap: 56px; }
   .hero__bonus-shot { justify-self: center; }
-  /* Главная картинка hero уже, чтобы по высоте была ближе к левой колонке и строка бонуса не отрывалась от шагов */
-  .hero__media { max-width: 460px; justify-self: center; }
-  .header__title { font-size: 24px; }
+  /* Левая группа (заголовок → подзаголовок → плашки → шаги) по высоте совпадает с главным скриншотом:
+     ширина скриншота подобрана под высоту группы с отступами 24 / 16 / 32,
+     а группа растягивается до высоты скриншота — лишнее место делится между отступами поровну */
+  .hero__media { max-width: 519px; justify-self: center; }
+  .hero__content { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; }
+  /* Текст бонуса — примерно на 1/4 высоты скриншота отчёта ниже его верха */
+  .hero__bonus-text { margin-top: 72px; }
+  .header__title { font-size: 28px; }
 
 
   .solution__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
