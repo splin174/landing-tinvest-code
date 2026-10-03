@@ -492,7 +492,7 @@ button { font: inherit; }
 .nofit-item strong { color: var(--on-dark); font-weight: 700; }
 
 /* =========================================================
-   Блок 4 — Продукт · без номера — Дело не в тебе
+   4.2 · продолжение — Дело не в тебе
    ========================================================= */
 .solution__grid { display: grid; gap: 28px; margin-top: 28px; }
 
@@ -528,7 +528,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   4.1 Как это работает?
+   4.2 · продолжение — Как это работает?
    ========================================================= */
 .flow {
   display: flex;
@@ -592,7 +592,7 @@ button { font: inherit; }
 .how__media { align-self: start; }
 
 /* =========================================================
-   Блоки 6–7. Двухколоночный layout (текст + скрин)
+   Двухколоночный layout (текст + скрин): 4.1 · Один час и 4.3 Безопасность
    ========================================================= */
 .split { display: grid; gap: 32px; align-items: start; }
 
@@ -626,7 +626,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   4 · без номера — Один час
+   4.1 · продолжение — Один час
    ========================================================= */
 .time-table {
   width: 100%;
@@ -680,18 +680,24 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   4.2 Что получаю?
+   Блок 4 — Продукт · 4.1 Что получаю? и 4.2 Как работает автоматизация? (пункты «текст + скриншот»)
    ========================================================= */
-.inside-group {
-  display: grid;
-  gap: 20px;
-  padding-bottom: 32px;
-  margin-bottom: 32px;
-  border-bottom: 1px dashed var(--line);
-}
-.inside-group:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
-
-.feature-grid { display: grid; gap: 12px; }
+/* Пункты «текст + скриншот» (4.1 и 4.2): на мобильном текст, под ним картинка;
+   с 1024px — две колонки в шахматном порядке */
+.showcase { display: grid; gap: 48px; }
+.showcase__item { display: grid; gap: 18px; align-items: center; }
+.showcase__text { display: grid; gap: 12px; justify-items: start; }
+.showcase__text p { font-size: 18px; line-height: 1.5; color: var(--text); }
+.showcase__text strong { font-weight: 700; }
+.showcase__media { min-width: 0; display: grid; justify-items: center; }
+.showcase__media > .shot,
+.showcase__media > .carousel,
+.showcase__stack { width: 100%; }
+.showcase__media > .shot img { width: 100%; }
+.showcase__narrow { max-width: 340px; }
+.showcase__mid { max-width: 460px; }
+.showcase__stack { display: grid; gap: 16px; }
+.showcase__preview { width: 100%; max-width: 320px; margin-top: 8px; justify-self: start; }
 
 .feature {
   display: flex;
@@ -702,8 +708,6 @@ button { font: inherit; }
   padding: 18px;
   font-weight: 500;
 }
-/* На сером фоне секции карточки белые, иначе сливаются с фоном */
-.section--soft .feature { background: var(--white); border: 1px solid var(--line); }
 
 .feature__icon {
   flex-shrink: 0;
@@ -716,12 +720,6 @@ button { font: inherit; }
   font-size: 22px;
 }
 
-
-/* «Обновить сейчас»: скрины крупно, в натуральную ширину */
-.shot-pair { display: grid; gap: 16px; align-items: start; justify-items: center; }
-.shot-pair .shot { width: 100%; }
-.shot-pair .shot:first-child { max-width: 780px; }
-.shot-pair .shot:last-child { max-width: 690px; }
 
 /* Акцентная карточка (блок «Безопасность») */
 .feature--accent {
@@ -808,7 +806,7 @@ button { font: inherit; }
 }
 .carousel__dot[aria-current="true"] { width: 26px; background: #E0B800; }
 
-/* Предпросмотр гайда */
+/* Предпросмотр инструкции */
 .preview { display: grid; justify-items: center; gap: 10px; }
 
 .preview__frame {
@@ -1091,9 +1089,6 @@ button { font: inherit; }
     transform: translateY(-50%) rotate(-45deg);
   }
 
-  .feature-grid { grid-template-columns: repeat(2, 1fr); }
-  .feature-grid--single { grid-template-columns: 1fr; }
-  .feature-grid:has(> :nth-child(3)) { grid-template-columns: repeat(3, 1fr); }
 
   .carousel__slide { flex-basis: calc(50% - 8px); }
   .carousel--single .carousel__slide { flex-basis: 100%; }
@@ -1117,6 +1112,11 @@ button { font: inherit; }
    ========================================================= */
 @media (min-width: 1024px) {
   .pain-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .showcase { gap: 64px; }
+  .showcase__item { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 56px; }
+  .showcase__item:nth-child(even) { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+  .showcase__item:nth-child(even) .showcase__text { order: 2; }
+  .showcase__item--top { align-items: start; }
   .fit-list { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: 24px 48px; }
   /* Колонки без общей сетки строк: пункты идут подряд, без пустот из-за соседа в другой колонке */
   .nofit-list { display: block; columns: 2; column-gap: 48px; }
@@ -1160,14 +1160,7 @@ button { font: inherit; }
   .split { grid-template-columns: 1.1fr 1fr; gap: 56px; }
   .split__media { position: sticky; top: calc(var(--header-h) + 24px); }
 
-  .inside-group { grid-template-columns: 1fr 1fr; align-items: center; gap: 32px; }
-  .inside-group > .feature-grid { grid-template-columns: 1fr; }
-  .inside-group:last-child { grid-template-columns: 1.4fr 1fr; align-items: start; }
-  .inside-group:last-child > .feature-grid { grid-column: 1 / -1; }
 
-  .inside-group--wide { grid-template-columns: 1fr; }
-  .inside-group--wide > .feature-grid { grid-template-columns: 1fr 1fr; }
-  .inside-group--wide .shot-pair { grid-template-columns: 1.15fr 1fr; align-items: center; }
 
   .carousel__slide { flex-basis: 100%; }
 }
