@@ -1139,7 +1139,6 @@ button { font: inherit; }
 @media (min-width: 480px) {
   .btn--lg { width: auto; }
   .btn--xl { width: auto; padding: 24px 44px; font-size: 22px; }
-  .author--accent .author__text p { font-size: 18px; }
   .author--accent .author__text .author__punch { font-size: 28px; }
 }
 
@@ -1220,7 +1219,6 @@ button { font: inherit; }
     padding: 36px;
     gap: 32px;
   }
-  .author--accent .author__text p { font-size: 20px; }
   .author--accent .author__text .author__punch { font-size: 32px; }
 
   .guarantee { grid-template-columns: auto 1fr; padding: 32px; gap: 24px; }
