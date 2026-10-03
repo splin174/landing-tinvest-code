@@ -699,6 +699,17 @@ button { font: inherit; }
 
 .author__text p { margin-top: 12px; font-size: 17px; color: var(--muted); }
 
+/* Акцентная версия: тёмная карточка с жёлтой рамкой, текст крупнее */
+.author--accent {
+  background: var(--navy);
+  color: var(--on-dark);
+  border: 2px solid var(--yellow);
+  box-shadow: 0 16px 40px rgba(11, 31, 58, .22);
+}
+.author--accent .author__avatar { border-color: var(--yellow); }
+.author--accent .author__text p { font-size: 20px; line-height: 1.5; color: var(--on-dark); }
+.author__accent { color: var(--yellow); font-weight: 800; }
+
 /* =========================================================
    Блок 10. Бонусы
    ========================================================= */
@@ -980,6 +991,7 @@ button { font: inherit; }
     padding: 36px;
     gap: 32px;
   }
+  .author--accent .author__text p { font-size: 22px; }
 
   .guarantee { grid-template-columns: auto 1fr; padding: 32px; gap: 24px; }
 
@@ -1021,6 +1033,7 @@ button { font: inherit; }
   .inside-group:last-child > .feature-grid { grid-column: 1 / -1; }
 
   .inside-group--wide { grid-template-columns: 1fr; }
+  .inside-group--wide > .feature-grid { grid-template-columns: 1fr 1fr; }
   .inside-group--wide .shot-pair { grid-template-columns: 1.15fr 1fr; align-items: center; }
 
   .carousel__slide { flex-basis: 100%; }
