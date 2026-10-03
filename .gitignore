@@ -9,7 +9,8 @@ landing-micro.md.txt
 deploy/
 
 # Неиспользуемые на странице оригиналы картинок
-# (вместо них подключены logo.webp, og-image.jpg, 7guide_scroll.mp4)
+# (вместо них подключены logo.webp, og-image.jpg, 7guide_scroll.mp4, coupons_table.png)
 images/logo.png
 images/logo2.png
 images/7guide_scroll.gif
+images/coupons.png
