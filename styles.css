@@ -183,6 +183,8 @@ button { font: inherit; }
 
 .cta-note { margin-top: 14px; font-size: 14px; color: var(--muted); }
 .cta-note--light { color: var(--on-dark-muted); }
+/* Финальный CTA: сроки под кнопкой — полужирно и на 2px крупнее */
+.cta-note--strong { font-size: 16px; font-weight: 700; line-height: 1.45; }
 
 /* Скриншоты + плейсхолдер, если картинка не загрузилась */
 .shot { margin: 0; position: relative; }
@@ -719,6 +721,8 @@ button { font: inherit; }
 
 /* На мобильном таблица превращается в список */
 @media (max-width: 479px) {
+  /* Кнопка покупки на телефоне — текст в одну строку */
+  .buy > .btn--xl { width: 100%; padding: 20px 16px; font-size: 18px; letter-spacing: 0; white-space: nowrap; }
   .time-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .time-table,
   .time-table tbody,
