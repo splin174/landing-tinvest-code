@@ -994,7 +994,7 @@ button { font: inherit; }
   }
   .hero-step__time { font-size: 22px; }
 
-  .hero__bonus { grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; }
+  .hero__bonus { grid-template-columns: 1fr 1fr; align-items: start; gap: 24px; }
 
   .pain-list { grid-template-columns: 1fr 1fr; }
 
@@ -1062,6 +1062,8 @@ button { font: inherit; }
   /* Бонус — отдельной строкой под обеими колонками hero, по той же сетке */
   .hero__bonus { grid-column: 1 / -1; grid-template-columns: 1.05fr 1fr; gap: 56px; }
   .hero__bonus-shot { justify-self: center; }
+  /* Главная картинка hero уже, чтобы по высоте была ближе к левой колонке и строка бонуса не отрывалась от шагов */
+  .hero__media { max-width: 460px; justify-self: center; }
   .header__title { font-size: 24px; }
 
 
