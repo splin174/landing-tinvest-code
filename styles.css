@@ -1215,6 +1215,7 @@ button { font: inherit; }
 
   .author {
     grid-template-columns: auto 1fr;
+    justify-items: start;
     text-align: left;
     padding: 36px;
     gap: 32px;
@@ -1230,6 +1231,8 @@ button { font: inherit; }
    Breakpoint 1024px
    ========================================================= */
 @media (min-width: 1024px) {
+  /* Блок 5: абзацы карточки не шире ~68 символов, текст чуть крупнее */
+  .author--accent .author__text p { max-width: 68ch; font-size: 17px; }
   .pain-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   /* 4.1: плашки слева, карусель справа и липнет при прокрутке */
   .gallery { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 40px; align-items: start; }
