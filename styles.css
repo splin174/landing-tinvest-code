@@ -41,7 +41,7 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--header-h); }
+html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
@@ -228,8 +228,9 @@ button { font: inherit; }
 /* =========================================================
    Шапка (вне нумерации блоков)
    ========================================================= */
+/* На мобильном шапка обычная (не липкая), с 768px — липкая */
 .header {
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 50;
   background: var(--white);
@@ -241,7 +242,6 @@ button { font: inherit; }
 .header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
   min-height: var(--header-h);
 }
@@ -255,8 +255,16 @@ button { font: inherit; }
   min-width: 0;
 }
 .logo__img { width: 48px; height: 48px; flex-shrink: 0; }
-.logo__text { display: none; font-weight: 800; font-size: 17px; line-height: 1.2; }
-.logo__arrow { color: #E0B800; }
+
+/* Главный заголовок страницы (H1) рядом с логотипом */
+.header__title {
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+}
 .header__inner > .btn { flex-shrink: 0; white-space: nowrap; }
 
 /* =========================================================
@@ -271,15 +279,9 @@ button { font: inherit; }
 
 .hero__inner { display: grid; gap: 36px; }
 
-.hero__title {
-  font-size: 26px;
-  line-height: 1.22;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
 
 .hero__audience {
-  margin-top: 12px;
+  margin-top: 0;
   font-size: 19px;
   line-height: 1.4;
   font-weight: 700;
@@ -946,10 +948,8 @@ button { font: inherit; }
    Breakpoint 480px
    ========================================================= */
 @media (min-width: 480px) {
-  .logo__text { display: inline; font-size: 15px; }
   .btn--lg { width: auto; }
   .btn--xl { width: auto; padding: 24px 44px; font-size: 22px; }
-  .hero__title { font-size: 30px; }
   .author--accent .author__text p { font-size: 20px; }
   .author--accent .author__text .author__punch { font-size: 28px; }
 }
@@ -961,7 +961,9 @@ button { font: inherit; }
   :root { --section-y: 80px; --gutter: 24px; --header-h: 76px; }
 
   .logo__img { width: 56px; height: 56px; }
-  .logo__text { font-size: 18px; }
+  .header { position: sticky; }
+  html { scroll-padding-top: var(--header-h); }
+  .header__title { font-size: 21px; }
   .btn--sm { padding: 12px 20px; font-size: 16px; }
 
   .buy { flex-direction: row; gap: 24px; text-align: left; }
@@ -970,13 +972,11 @@ button { font: inherit; }
 
   .section__title { font-size: 36px; }
   .hero { padding: 64px 0 80px; }
-  .hero__title { font-size: 36px; }
   .hero__audience { font-size: 20px; }
   .hero__promise { font-size: 24px; }
   .hero__lead { font-size: 19px; }
-  /* Отступы в левой колонке hero по шкале 16 / 24 / 32: подзаголовок и плашки ближе, шаги — отдельной группой */
+  /* Отступы в левой колонке hero по шкале 16 / 24 / 32: плашки ближе к обещанию, шаги — отдельной группой */
   .hero__inner { row-gap: 32px; }
-  .hero__audience { margin-top: 16px; }
   .hero__promise { margin-top: 24px; }
   .hero-tags { margin-top: 16px; }
   .hero-steps { margin-top: 32px; }
@@ -1054,7 +1054,7 @@ button { font: inherit; }
 
   .hero__inner {
     grid-template-columns: 1.05fr 1fr;
-    align-items: center;
+    align-items: start;
     gap: 32px 56px;
   }
   /* В узкой левой колонке время в шагах — 20px, чтобы три шага стояли в ряд */
@@ -1062,7 +1062,7 @@ button { font: inherit; }
   /* Бонус — отдельной строкой под обеими колонками hero, по той же сетке */
   .hero__bonus { grid-column: 1 / -1; grid-template-columns: 1.05fr 1fr; gap: 56px; }
   .hero__bonus-shot { justify-self: center; }
-  .hero__title { font-size: 42px; }
+  .header__title { font-size: 24px; }
 
 
   .solution__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }

@@ -15,7 +15,8 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      const offset = header ? header.offsetHeight : 0;
+      // Шапка липкая только с 768px — на мобильном отступ под неё не нужен
+      const offset = header && getComputedStyle(header).position === 'sticky' ? header.offsetHeight : 0;
       const top = target.getBoundingClientRect().top + window.pageYOffset - offset + 1;
       window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
       history.replaceState(null, '', id);
