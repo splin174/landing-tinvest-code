@@ -150,42 +150,16 @@
               </figure>
             </div>
           </div>
-          <div class="showcase__item showcase__item--top reveal">
+          <div class="showcase__item reveal">
             <div class="showcase__text">
               <span class="feature__icon" aria-hidden="true">📘</span>
               <p><strong>Пошаговая инструкция со&nbsp;скриншотами</strong> (каждое действие показано)</p>
-              <!-- Предпросмотр инструкции: видео грузится только по клику -->
-              <div class="preview showcase__preview">
-                <div class="preview__frame" data-preview>
-                  <img class="preview__poster" src="images/7guide_scroll-poster.jpg" alt="Первая страница инструкции «Т-Инвест: все портфели в Google Таблице и в Telegram-боте»" width="400" height="554" loading="lazy">
-                  <button class="btn btn--dark preview__btn" type="button" data-preview-btn>▶ Загрузить предпросмотр инструкции</button>
-                </div>
-                <p class="preview__note">Пролистай инструкцию целиком: ~1,4&nbsp;МБ, загружается по&nbsp;кнопке.</p>
-              </div>
             </div>
             <div class="showcase__media">
-              <!-- Карусель страниц инструкции -->
-              <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Страницы инструкции">
-                <div class="carousel__track" data-carousel-track tabindex="0">
-                  <figure class="carousel__slide shot" data-alt="Страница инструкции: получение токенов">
-                    <img src="images/7guide1.png" alt="Страница инструкции: получение токенов доступа в Т&#8209;Инвестициях, выбор типа «Только просмотр»" width="535" height="378" loading="lazy">
-                  </figure>
-                  <figure class="carousel__slide shot" data-alt="Страница инструкции: установка Python">
-                    <img src="images/7guide2.png" alt="Страница инструкции: содержание и установка Python на Windows со скриншотами установщика" width="536" height="378" loading="lazy">
-                  </figure>
-                  <figure class="carousel__slide shot" data-alt="Страница инструкции: настройка Google-таблицы">
-                    <img src="images/7guide3.png" alt="Страница инструкции: настройка Google-таблицы и доступа через Google Cloud" width="541" height="381" loading="lazy">
-                  </figure>
-                  <figure class="carousel__slide shot" data-alt="Страница инструкции: частые проблемы">
-                    <img src="images/7guide4.png" alt="Страница инструкции: частые проблемы и что делать в каждом случае" width="535" height="375" loading="lazy">
-                  </figure>
-                </div>
-                <div class="carousel__controls">
-                  <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущая страница">←</button>
-                  <div class="carousel__dots" data-carousel-dots></div>
-                  <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующая страница">→</button>
-                </div>
-              </div>
+              <figure class="shot shot--card showcase__narrow" data-alt="Скриншот: первая страница инструкции">
+                <img src="images/7guide_scroll-poster.jpg" alt="Первая страница инструкции «Т-Инвест: все портфели в Google Таблице и в Telegram-боте»" width="400" height="554" loading="lazy">
+                <figcaption>Первая страница инструкции</figcaption>
+              </figure>
             </div>
           </div>
           <div class="showcase__item reveal">
@@ -212,53 +186,6 @@
               </figure>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4.1 · продолжение — Один час -->
-    <section class="section section--soft" id="time">
-      <div class="container split">
-        <div class="split__text">
-          <div class="section__head reveal">
-            <span class="bar" aria-hidden="true"></span>
-            <h2 class="section__title">Один час — и навсегда</h2>
-            <p class="section__text">Тратишь около часа один раз. Дальше таблица и отчёты работают без тебя.</p>
-          </div>
-          <table class="time-table reveal">
-            <thead>
-              <tr><th scope="col">Что делаешь</th><th scope="col">Время</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Ставишь Python</td><td>10 мин</td></tr>
-              <tr><td>Делаешь настройки в Google-аккаунте</td><td>15 мин</td></tr>
-              <tr><td>Копируешь готовый шаблон Google Таблицы и даёшь доступ</td><td>5 мин</td></tr>
-              <tr><td>Получаешь токен Т&#8209;Инвестиций «только для чтения»</td><td>5 мин</td></tr>
-              <tr><td>Создаёшь своего Telegram-бота</td><td>10 мин</td></tr>
-              <tr><td>Вписываешь ключи и запускаешь</td><td>15 мин</td></tr>
-            </tbody>
-            <tfoot>
-              <tr><th scope="row">Итого</th><td><strong>60 минут</strong></td></tr>
-            </tfoot>
-          </table>
-          <p class="note reveal">Инструкция выглядит большой&nbsp;— в&nbsp;ней много скриншотов. Но&nbsp;каждый шаг простой: открыть страницу, нажать кнопку, скопировать значение. Иди по&nbsp;порядку&nbsp;— к&nbsp;концу станет понятно, что всё устроено логично.</p>
-        </div>
-        <figure class="shot shot--card split__media reveal" data-alt="Скриншот: пустой шаблон таблицы">
-          <img src="images/4template.png" alt="Готовый шаблон таблицы для импорта: блоки RUB-активы, Валюта и Денежный рынок с формулами" width="1048" height="858" loading="lazy">
-          <figcaption>Шаблон таблицы — импортируешь и сразу пользуешься</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 4.2 Как работает автоматизация? -->
-    <section class="section" id="automation">
-      <div class="container">
-        <div class="section__head reveal">
-          <span class="bar" aria-hidden="true"></span>
-          <h2 class="section__title">Как работает автоматизация?</h2>
-        </div>
-
-        <div class="showcase">
           <div class="showcase__item reveal">
             <div class="showcase__text">
               <span class="feature__icon" aria-hidden="true">📅</span>
@@ -297,92 +224,207 @@
               </div>
             </div>
           </div>
-          <div class="showcase__item reveal">
-            <div class="showcase__text">
-              <span class="feature__icon" aria-hidden="true">🔄</span>
-              <p><strong>Кнопка «Обновить сейчас»</strong>&nbsp;— в&nbsp;Telegram или галочкой прямо в&nbsp;таблице</p>
-            </div>
-            <div class="showcase__media">
-              <div class="showcase__stack">
-                <figure class="shot shot--card" data-alt="Скриншот: лист «Управление»">
-                  <img src="images/3checkbox.png" alt="Лист «Управление» в Google Таблице: галочки «Обновить сейчас» и «Очистить данные» со статусом обновления" width="747" height="546" loading="lazy">
-                  <figcaption>Галочка «Обновить сейчас» на листе «Управление»</figcaption>
-                </figure>
-                <figure class="shot shot--card" data-alt="Скриншот: команда /update">
-                  <img src="images/10update.png" alt="Команда /update в Telegram: бот собирает данные и сообщает «Данные обновлены»" width="652" height="142" loading="lazy">
-                  <figcaption>Или команда /update в Telegram</figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- 4.2 · продолжение — Как это работает? -->
-    <section class="section section--dark" id="how">
+    <!-- 4.1 · продолжение — Что в инструкции? (аккордеон) -->
+    <section class="section section--soft section--acc" id="time">
+      <div class="container">
+        <details class="acc">
+          <summary class="acc__summary"><h2 class="acc__title">Что в&nbsp;инструкции?</h2><span class="acc__chevron" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="acc__body">
+            <div class="split">
+              <div class="split__text">
+                <div class="section__head">
+                  <p class="section__text">Тратишь около часа один раз. Дальше таблица и отчёты работают без тебя.</p>
+                </div>
+                <table class="time-table reveal">
+                  <thead>
+                    <tr><th scope="col">Что делаешь</th><th scope="col">Время</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Ставишь Python</td><td>10 мин</td></tr>
+                    <tr><td>Делаешь настройки в Google-аккаунте</td><td>15 мин</td></tr>
+                    <tr><td>Копируешь готовый шаблон Google Таблицы и даёшь доступ</td><td>5 мин</td></tr>
+                    <tr><td>Получаешь токен Т&#8209;Инвестиций «только для чтения»</td><td>5 мин</td></tr>
+                    <tr><td>Создаёшь своего Telegram-бота</td><td>10 мин</td></tr>
+                    <tr><td>Вписываешь ключи и запускаешь</td><td>15 мин</td></tr>
+                  </tbody>
+                  <tfoot>
+                    <tr><th scope="row">Итого</th><td><strong>60 минут</strong></td></tr>
+                  </tfoot>
+                </table>
+                <p class="note reveal">Инструкция выглядит большой&nbsp;— в&nbsp;ней много скриншотов. Но&nbsp;каждый шаг простой: открыть страницу, нажать кнопку, скопировать значение. Иди по&nbsp;порядку&nbsp;— к&nbsp;концу станет понятно, что всё устроено логично.</p>
+              </div>
+              <div class="split__media acc__media">
+                <!-- Карусель страниц инструкции -->
+                <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Страницы инструкции">
+                  <div class="carousel__track" data-carousel-track tabindex="0">
+                    <figure class="carousel__slide shot" data-alt="Страница инструкции: получение токенов">
+                      <img data-src="images/7guide1.png" alt="Страница инструкции: получение токенов доступа в Т&#8209;Инвестициях, выбор типа «Только просмотр»" width="535" height="378" loading="lazy">
+                    </figure>
+                    <figure class="carousel__slide shot" data-alt="Страница инструкции: установка Python">
+                      <img data-src="images/7guide2.png" alt="Страница инструкции: содержание и установка Python на Windows со скриншотами установщика" width="536" height="378" loading="lazy">
+                    </figure>
+                    <figure class="carousel__slide shot" data-alt="Страница инструкции: настройка Google-таблицы">
+                      <img data-src="images/7guide3.png" alt="Страница инструкции: настройка Google-таблицы и доступа через Google Cloud" width="541" height="381" loading="lazy">
+                    </figure>
+                    <figure class="carousel__slide shot" data-alt="Страница инструкции: частые проблемы">
+                      <img data-src="images/7guide4.png" alt="Страница инструкции: частые проблемы и что делать в каждом случае" width="535" height="375" loading="lazy">
+                    </figure>
+                  </div>
+                  <div class="carousel__controls">
+                    <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущая страница">←</button>
+                    <div class="carousel__dots" data-carousel-dots></div>
+                    <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующая страница">→</button>
+                  </div>
+                </div>
+                <!-- Предпросмотр инструкции: видео грузится только по клику -->
+                <div class="preview">
+                  <div class="preview__frame" data-preview>
+                    <img class="preview__poster" data-src="images/7guide_scroll-poster.jpg" alt="Первая страница инструкции «Т-Инвест: все портфели в Google Таблице и в Telegram-боте»" width="400" height="554" loading="lazy">
+                    <button class="btn btn--dark preview__btn" type="button" data-preview-btn>▶ Загрузить предпросмотр инструкции</button>
+                  </div>
+                  <p class="preview__note">Пролистай инструкцию целиком: ~1,4&nbsp;МБ, загружается по&nbsp;кнопке.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 4.2 Как работает автоматизация? -->
+    <section class="section" id="automation">
       <div class="container">
         <div class="section__head reveal">
           <span class="bar" aria-hidden="true"></span>
-          <h2 class="section__title">Как это работает?</h2>
+          <h2 class="section__title">Как работает автоматизация?</h2>
         </div>
-
-        <!-- Схема: Т-Инвест → Python → Google Таблица + Telegram -->
-        <div class="flow reveal" role="img" aria-label="Схема: Т-Инвест передаёт данные программе на Python, она записывает их в Google Таблицу и отправляет в Telegram">
-          <div class="flow__node">
-            <span class="flow__icon flow__icon--tinvest" aria-hidden="true">Т</span>
-            <span class="flow__label">Т-Инвест</span>
-          </div>
-          <span class="flow__arrow" aria-hidden="true"></span>
-          <div class="flow__node">
-            <span class="flow__icon flow__icon--python" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path fill="#4B8BBE" d="M11.9 2C7 2 7.3 4.1 7.3 4.1v2.2h4.7V7H5.4S2 6.6 2 11.9c0 5.2 3 5 3 5h1.8v-2.4s-.1-3 3-3h4.6s2.9.1 2.9-2.8V4.9S17.7 2 11.9 2zM9.3 3.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/><path fill="#FFD43B" d="M12.1 22c4.9 0 4.6-2.1 4.6-2.1v-2.2H12V17h6.6s3.4.4 3.4-4.9c0-5.2-3-5-3-5h-1.8v2.4s.1 3-3 3H9.6s-2.9-.1-2.9 2.8v3.8S6.3 22 12.1 22zm2.6-1.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>
-            </span>
-            <span class="flow__label">Python</span>
-          </div>
-          <span class="flow__arrow" aria-hidden="true"></span>
-          <div class="flow__node flow__node--pair">
-            <span class="flow__pair">
-              <span class="flow__icon flow__icon--sheets" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="30" height="30"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M4 10h16M4 15h16M10 4v16" stroke="#fff" stroke-width="2"/></svg>
-              </span>
-              <span class="flow__icon flow__icon--tg" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="28" height="28"><path fill="#fff" d="M21.5 3.6 2.9 10.8c-1.3.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.8c.3-1.3-.5-1.9-1.5-1.8zM8.7 13.4l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5z"/></svg>
-              </span>
-            </span>
-            <span class="flow__label">Google Таблица + Telegram</span>
-          </div>
-        </div>
-
-        <div class="how__grid">
-          <div class="how__text">
-            <p class="reveal">Внутри — одна небольшая <strong class="hl">безопасная</strong> программа (набор файлов со скриптами). Она делает три вещи: спрашивает у Т&#8209;Инвестиций твой портфель, записывает его в твою Google Таблицу и отвечает тебе в Telegram.</p>
-            <p class="reveal">Чтобы она работала, на компьютер один раз ставится Python. Это бесплатный официальный "движок" для таких программ, им пользуются миллионы людей, в том числе банки. Установка — как у любой другой программы. Больше ты его не открываешь.</p>
-            <p class="reveal">Дальше программа тихо "дежурит" в фоне: раз в сутки обновляет таблицу и слушает, не попросил ли ты обновить прямо сейчас — командой в Telegram или галочкой в таблице.</p>
-          </div>
-          <!-- Карусель: программа → таблица → автозагрузка -->
-          <div class="carousel carousel--single carousel--fit how__media reveal" data-carousel aria-roledescription="карусель" aria-label="Как устроена программа">
-            <div class="carousel__track" data-carousel-track tabindex="0">
-              <figure class="carousel__slide shot" data-alt="Скриншот: папка проекта">
-                <img src="images/11files.png" alt="Папка программы на компьютере: скрипты Python, файл настроек .env и README" width="491" height="769" loading="lazy">
-                <figcaption>Вся программа — одна папка на твоём компьютере</figcaption>
-              </figure>
-              <figure class="carousel__slide shot" data-alt="Скриншот: шаблон Google Таблицы">
-                <img src="images/4template.png" alt="Шаблон таблицы: блоки RUB-активы, Валюта и Денежный рынок, куда программа записывает портфель" width="1048" height="858" loading="lazy">
-                <figcaption>Сюда программа записывает портфель — шаблон Google Таблицы</figcaption>
-              </figure>
-              <figure class="carousel__slide shot" data-alt="Скриншот: автозагрузка Windows">
-                <img src="images/12autoloading.png" alt="Папка автозагрузки Windows с ярлыком start_bot_hidden — бот запускается сам при включении компьютера" width="744" height="284" loading="lazy">
-                <figcaption>Ярлык в автозагрузке — бот стартует сам при включении компьютера</figcaption>
-              </figure>
+        <ol class="auto-steps">
+          <li class="auto-step reveal"><span class="auto-step__num" aria-hidden="true">1</span>
+            <div class="auto-step__body">
+              <p><strong>Скачиваешь и&nbsp;копируешь файлы автоматизации</strong></p>
             </div>
-            <div class="carousel__controls">
-              <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущий слайд">←</button>
-              <div class="carousel__dots" data-carousel-dots></div>
-              <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующий слайд">→</button>
+          </li>
+          <li class="auto-step auto-step--media reveal"><span class="auto-step__num" aria-hidden="true">2</span>
+            <div class="auto-step__body">
+              <p><strong>Скачиваешь готовый к&nbsp;работе красивый шаблон Google Таблицы</strong></p>
+              <div class="auto-step__media">
+                <figure class="shot shot--card" data-alt="Скриншот: шаблон таблицы">
+                  <img src="images/4template.png" alt="Готовый шаблон таблицы для импорта: блоки RUB-активы, Валюта и Денежный рынок с формулами" width="1048" height="858" loading="lazy">
+                  <figcaption>Шаблон таблицы — импортируешь и&nbsp;сразу пользуешься</figcaption>
+                </figure>
+              </div>
+            </div>
+          </li>
+          <li class="auto-step reveal"><span class="auto-step__num" aria-hidden="true">3</span>
+            <div class="auto-step__body">
+              <p><strong>Один раз проходишь инструкцию по&nbsp;шагам со&nbsp;скриншотами.</strong> За&nbsp;один вечер.</p>
+            </div>
+          </li>
+          <li class="auto-step reveal"><span class="auto-step__num" aria-hidden="true">4</span>
+            <div class="auto-step__body">
+              <p><strong>Скрипт каждый день в&nbsp;10:00 автоматически обновляет таблицу (время настраивается индивидуально).</strong> Или вручную хоть сколько раз в&nbsp;день.</p>
+            </div>
+          </li>
+          <li class="auto-step auto-step--media reveal"><span class="auto-step__num" aria-hidden="true">5</span>
+            <div class="auto-step__body">
+              <p><strong>Открываешь Telegram и&nbsp;за&nbsp;10&nbsp;секунд видишь, что изменилось.</strong></p>
+              <div class="auto-step__media">
+                <figure class="shot shot--card" data-alt="Скриншот: команда /total в Telegram">
+                  <img src="images/8total_tg.png" alt="Ответ Telegram-бота на команду /total: итоги по RUB-активам, валюте, USD и EUR, общая стоимость всех счетов" width="656" height="379" loading="lazy">
+                  <figcaption>Команда /total — весь портфель одним сообщением</figcaption>
+                </figure>
+              </div>
+            </div>
+          </li>
+          <li class="auto-step auto-step--media reveal"><span class="auto-step__num" aria-hidden="true">6</span>
+            <div class="auto-step__body">
+              <p><strong>Кнопка «Обновить данные»</strong>&nbsp;— в&nbsp;Telegram или галочкой прямо в&nbsp;таблице</p>
+              <div class="auto-step__media">
+                <div class="showcase__stack">
+                  <figure class="shot shot--card" data-alt="Скриншот: лист «Управление»">
+                    <img src="images/3checkbox.png" alt="Лист «Управление» в Google Таблице: галочки «Обновить данные» и «Очистить данные» со статусом обновления" width="747" height="546" loading="lazy">
+                    <figcaption>Галочка «Обновить данные» на листе «Управление»</figcaption>
+                  </figure>
+                  <figure class="shot shot--card" data-alt="Скриншот: команда /update">
+                    <img src="images/10update.png" alt="Команда /update в Telegram: бот собирает данные и сообщает «Данные обновлены»" width="652" height="142" loading="lazy">
+                    <figcaption>Или команда /update в Telegram</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 4.2 · продолжение — Техническая логика работы (аккордеон) -->
+    <section class="section section--dark section--acc" id="how">
+      <div class="container">
+        <details class="acc">
+          <summary class="acc__summary"><h2 class="acc__title">Техническая логика работы</h2><span class="acc__chevron" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="acc__body">
+            <!-- Схема: Т-Инвест → Python → Google Таблица + Telegram -->
+            <div class="flow reveal" role="img" aria-label="Схема: Т-Инвест передаёт данные программе на Python, она записывает их в Google Таблицу и отправляет в Telegram">
+              <div class="flow__node">
+                <span class="flow__icon flow__icon--tinvest" aria-hidden="true">Т</span>
+                <span class="flow__label">Т-Инвест</span>
+              </div>
+              <span class="flow__arrow" aria-hidden="true"></span>
+              <div class="flow__node">
+                <span class="flow__icon flow__icon--python" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="34" height="34"><path fill="#4B8BBE" d="M11.9 2C7 2 7.3 4.1 7.3 4.1v2.2h4.7V7H5.4S2 6.6 2 11.9c0 5.2 3 5 3 5h1.8v-2.4s-.1-3 3-3h4.6s2.9.1 2.9-2.8V4.9S17.7 2 11.9 2zM9.3 3.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/><path fill="#FFD43B" d="M12.1 22c4.9 0 4.6-2.1 4.6-2.1v-2.2H12V17h6.6s3.4.4 3.4-4.9c0-5.2-3-5-3-5h-1.8v2.4s.1 3-3 3H9.6s-2.9-.1-2.9 2.8v3.8S6.3 22 12.1 22zm2.6-1.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>
+                </span>
+                <span class="flow__label">Python</span>
+              </div>
+              <span class="flow__arrow" aria-hidden="true"></span>
+              <div class="flow__node flow__node--pair">
+                <span class="flow__pair">
+                  <span class="flow__icon flow__icon--sheets" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="30" height="30"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M4 10h16M4 15h16M10 4v16" stroke="#fff" stroke-width="2"/></svg>
+                  </span>
+                  <span class="flow__icon flow__icon--tg" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="28" height="28"><path fill="#fff" d="M21.5 3.6 2.9 10.8c-1.3.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.8c.3-1.3-.5-1.9-1.5-1.8zM8.7 13.4l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5z"/></svg>
+                  </span>
+                </span>
+                <span class="flow__label">Google Таблица + Telegram</span>
+              </div>
+            </div>
+
+            <div class="how__grid">
+              <div class="how__text">
+                <p class="reveal">Внутри — одна небольшая <strong class="hl">безопасная</strong> программа (набор файлов со скриптами). Она делает три вещи: спрашивает у Т&#8209;Инвестиций твой портфель, записывает его в твою Google Таблицу и отвечает тебе в Telegram.</p>
+                <p class="reveal">Чтобы она работала, на компьютер один раз ставится Python. Это бесплатный официальный "движок" для таких программ, им пользуются миллионы людей, в том числе банки. Установка — как у любой другой программы. Больше ты его не открываешь.</p>
+                <p class="reveal">Дальше программа тихо "дежурит" в фоне: раз в сутки обновляет таблицу и слушает, не попросил ли ты обновить прямо сейчас — командой в Telegram или галочкой в таблице.</p>
+              </div>
+              <!-- Карусель: программа → таблица → автозагрузка -->
+              <div class="carousel carousel--single carousel--fit how__media reveal" data-carousel aria-roledescription="карусель" aria-label="Как устроена программа">
+                <div class="carousel__track" data-carousel-track tabindex="0">
+                  <figure class="carousel__slide shot" data-alt="Скриншот: папка проекта">
+                    <img data-src="images/11files.png" alt="Папка программы на компьютере: скрипты Python, файл настроек .env и README" width="491" height="769" loading="lazy">
+                    <figcaption>Вся программа — одна папка на твоём компьютере</figcaption>
+                  </figure>
+                  <figure class="carousel__slide shot" data-alt="Скриншот: шаблон Google Таблицы">
+                    <img data-src="images/4template.png" alt="Шаблон таблицы: блоки RUB-активы, Валюта и Денежный рынок, куда программа записывает портфель" width="1048" height="858" loading="lazy">
+                    <figcaption>Сюда программа записывает портфель — шаблон Google Таблицы</figcaption>
+                  </figure>
+                  <figure class="carousel__slide shot" data-alt="Скриншот: автозагрузка Windows">
+                    <img data-src="images/12autoloading.png" alt="Папка автозагрузки Windows с ярлыком start_bot_hidden — бот запускается сам при включении компьютера" width="744" height="284" loading="lazy">
+                    <figcaption>Ярлык в автозагрузке — бот стартует сам при включении компьютера</figcaption>
+                  </figure>
+                </div>
+                <div class="carousel__controls">
+                  <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущий слайд">←</button>
+                  <div class="carousel__dots" data-carousel-dots></div>
+                  <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующий слайд">→</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </details>
       </div>
     </section>
 
@@ -397,17 +439,6 @@
         <div class="callout reveal">
           <p><strong>Есть решение</strong>&nbsp;— программа сама безопасно берёт твой портфель у&nbsp;Т&#8209;Инвестиций, сама раскладывает его по&nbsp;таблице и&nbsp;сама пишет тебе в&nbsp;Telegram. Ты&nbsp;только смотришь.</p>
         </div>
-        <div class="solution__grid">
-          <ol class="steps">
-            <li class="step reveal"><span class="step__num">01</span><p>Один раз проходишь инструкцию&nbsp;— около часа, по&nbsp;шагам со&nbsp;скриншотами. За&nbsp;один вечер.</p></li>
-            <li class="step reveal"><span class="step__num">02</span><p>Программа каждый день в 10:00 сама обновляет таблицу (время настраивается индивидуально). Или вручную хоть сколько раз в день.</p></li>
-            <li class="step reveal"><span class="step__num">03</span><p>Ты открываешь Telegram и за 10 секунд видишь, что изменилось.</p></li>
-          </ol>
-          <figure class="shot shot--card reveal" data-alt="Скриншот: команда /total в Telegram">
-            <img src="images/8total_tg.png" alt="Ответ Telegram-бота на команду /total: итоги по RUB-активам, валюте, USD и EUR, общая стоимость всех счетов" width="656" height="379" loading="lazy">
-            <figcaption>Команда /total — весь портфель одним сообщением</figcaption>
-          </figure>
-        </div>
       </div>
     </section>
 
@@ -420,12 +451,12 @@
             <h2 class="section__title">Безопасность</h2>
           </div>
           <ul class="checklist">
-            <li class="reveal"><strong>Токен «только для чтения».</strong> Программа видит портфель, но не может совершить ни одной сделки и вывести деньги.</li>
+            <li class="reveal"><strong>Токен «только для чтения».</strong> Программа видит портфель, но&nbsp;не&nbsp;может совершить ни&nbsp;одной сделки и&nbsp;вывести деньги.</li>
             <li class="reveal"><strong>Всё остаётся у тебя.</strong> Программа работает на твоём компьютере, таблица лежит в твоём Google-аккаунте. Никаких чужих серверов.</li>
             <li class="reveal"><strong>Бот отвечает только тебе.</strong> Он привязан к твоему Telegram-аккаунту и игнорирует всех остальных.</li>
             <li class="reveal"><strong>Никаких подписок.</strong> Python, Google Таблицы, Telegram и API Т&#8209;Инвестиций бесплатны.</li>
           </ul>
-          <article class="feature feature--accent reveal"><span class="feature__icon" aria-hidden="true">🔒</span><p>Программа физически не может купить или продать ни одной бумаги</p></article>
+          <article class="feature feature--accent reveal"><span class="feature__icon" aria-hidden="true">🔒</span><p>Программа физически не&nbsp;может купить или продать ни&nbsp;одной бумаги</p></article>
         </div>
         <!-- TODO: заменить на отдельный скриншот images/screen-6-token.png, когда он будет готов -->
         <figure class="shot shot--card split__media reveal" data-alt="Скриншот: настройки токена «Только просмотр»">

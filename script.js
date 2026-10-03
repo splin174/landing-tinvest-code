@@ -58,6 +58,17 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
     });
   }
 
+  /* ---------- Аккордеоны: картинки внутри грузятся только при первом раскрытии ---------- */
+  document.querySelectorAll('details.acc').forEach(function (details) {
+    details.addEventListener('toggle', function () {
+      if (!details.open) return;
+      details.querySelectorAll('img[data-src]').forEach(function (img) {
+        img.setAttribute('src', img.getAttribute('data-src'));
+        img.removeAttribute('data-src');
+      });
+    });
+  });
+
   /* ---------- Плейсхолдер, если картинка не загрузилась ---------- */
   function markMissing(img) {
     const box = img.closest('.shot');
@@ -103,6 +114,9 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
       if (e.key === 'ArrowLeft') { e.preventDefault(); go(current() - 1); }
     });
     update();
+    // Карусель внутри свёрнутого аккордеона: пересчитать точки после раскрытия
+    const details = root.closest('details');
+    if (details) details.addEventListener('toggle', function () { if (details.open) update(); });
   });
 
   /* ---------- Предпросмотр инструкции (видео грузится по клику) ---------- */
