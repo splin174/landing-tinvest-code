@@ -68,7 +68,7 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
     img.addEventListener('error', function () { markMissing(img); });
   });
 
-  /* ---------- Карусель страниц гайда ---------- */
+  /* ---------- Карусель страниц инструкции ---------- */
   document.querySelectorAll('[data-carousel]').forEach(function (root) {
     const track = root.querySelector('[data-carousel-track]');
     const slides = Array.prototype.slice.call(track.children);
@@ -105,7 +105,7 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
     update();
   });
 
-  /* ---------- Предпросмотр гайда (видео грузится по клику) ---------- */
+  /* ---------- Предпросмотр инструкции (видео грузится по клику) ---------- */
   const previewBtn = document.querySelector('[data-preview-btn]');
   if (previewBtn) {
     previewBtn.addEventListener('click', function () {
@@ -120,7 +120,7 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
       video.setAttribute('playsinline', '');
       video.controls = true;
       video.className = 'preview__video';
-      video.setAttribute('aria-label', 'Видео: прокрутка страниц гайда');
+      video.setAttribute('aria-label', 'Видео: прокрутка страниц инструкции');
       frame.replaceChildren(video);
       const p = video.play();
       if (p && p.catch) p.catch(function () {});

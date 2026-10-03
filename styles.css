@@ -1003,6 +1003,7 @@ button { font: inherit; }
   .buy { flex-direction: row; gap: 24px; text-align: left; }
   .buy--center { justify-content: center; }
   .price { flex-shrink: 0; max-width: 200px; }
+  .buy > .btn { flex-shrink: 0; white-space: nowrap; }
 
   .section__title { font-size: 36px; }
   .hero { padding: 64px 0 64px; }
