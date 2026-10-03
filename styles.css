@@ -282,8 +282,8 @@ button { font: inherit; }
 
 .hero__audience {
   margin-top: 0;
-  font-size: 19px;
-  line-height: 1.4;
+  font-size: 22px;
+  line-height: 1.35;
   font-weight: 700;
   color: var(--yellow);
 }
@@ -972,7 +972,7 @@ button { font: inherit; }
 
   .section__title { font-size: 36px; }
   .hero { padding: 64px 0 80px; }
-  .hero__audience { font-size: 20px; }
+  .hero__audience { font-size: 26px; }
   .hero__promise { font-size: 24px; }
   .hero__lead { font-size: 19px; }
   /* Отступы в левой колонке hero по шкале 16 / 24 / 32: плашки ближе к обещанию, шаги — отдельной группой */
