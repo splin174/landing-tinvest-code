@@ -301,6 +301,27 @@ button { font: inherit; }
 }
 
 .hero__cta { margin-top: 28px; }
+.hero__accent { color: var(--yellow); font-weight: 800; }
+
+/* Сроки: три шага — на мобильном столбиком, с 768px в ряд */
+.hero-steps {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.hero-step {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--navy-2);
+  border: 1px solid var(--navy-3);
+}
+.hero-step__time { font-size: 26px; line-height: 1.15; font-weight: 800; color: var(--yellow); }
+.hero-step__text { font-size: 17px; line-height: 1.35; font-weight: 600; color: var(--on-dark); }
 
 .hero__media {
   background: var(--white);
@@ -903,6 +924,7 @@ button { font: inherit; }
   .hero__audience { font-size: 18px; }
   .hero__promise { font-size: 24px; }
   .hero__lead { font-size: 19px; }
+  .hero-steps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
   .pain-list { grid-template-columns: 1fr 1fr; }
   .pain-list li:last-child { grid-column: 1 / -1; }
