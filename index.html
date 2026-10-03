@@ -23,7 +23,7 @@
 </head>
 <body>
 
-  <!-- Блок 1. Шапка -->
+  <!-- Шапка (вне нумерации блоков) -->
   <header class="header" id="top">
     <div class="container header__inner">
       <a class="logo" href="#hero" aria-label="Т-Инвест → Таблица и телеграм бот, на главный экран">
@@ -36,7 +36,7 @@
 
   <main>
 
-    <!-- Блок 2. Hero -->
+    <!-- Блок 1 — Первый экран -->
     <section class="hero section--dark" id="hero">
       <div class="container hero__inner">
         <div class="hero__content">
@@ -76,7 +76,7 @@
       </div>
     </section>
 
-    <!-- Блок 3. Боль -->
+    <!-- Блок 2 — Боль (Знакомо?) -->
     <section class="section" id="pain">
       <div class="container">
         <div class="section__head reveal">
@@ -84,24 +84,17 @@
           <h2 class="section__title">Знакомо?</h2>
         </div>
         <ul class="pain-list">
-          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">📱</span><p>Открываешь приложение и&nbsp;листаешь: брокерский счёт, ИИС, валютный. У&nbsp;каждого свои цифры, а&nbsp;общая картина по&nbsp;всему портфелю так и&nbsp;не&nbsp;складывается.</p></li>
-          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">💱</span><p><strong>Сколько активов у&nbsp;тебя в&nbsp;долларах и&nbsp;евро, а&nbsp;сколько в&nbsp;рублях?</strong> Чтобы ответить, нужен калькулятор&nbsp;— и&nbsp;каждый раз на&nbsp;это уходит время.</p></li>
-          <li class="pain-card pain-card--shot reveal"><span class="pain-card__icon" aria-hidden="true">🔒</span>
-            <div class="pain-card__body">
-              <p><strong>Какие сейчас активы</strong> заблокированы, а&nbsp;какие доступны к&nbsp;продаже или покупке?</p>
-              <figure class="shot pain-card__shot" data-alt="Скриншот: итоги по доступным и недоступным активам в Telegram">
-                <img src="images/2total.png" alt="Утренний отчёт в Telegram: итоги по классам активов, внизу — сумма недоступных (заблокированных) активов в рублях, долларах и евро и сумма доступных активов" width="422" height="297" loading="lazy">
-              </figure>
-            </div>
-          </li>
-          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">📝</span><p><strong>Заводил Excel, вносил сделки руками.</strong> Хватило на&nbsp;месяц. Потом таблица устарела, и&nbsp;ты&nbsp;просто перестал её&nbsp;обновлять.</p></li>
-          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">📉</span><p><strong>О&nbsp;просадке узнаёшь случайно, а&nbsp;когда следующий купон&nbsp;— вообще не&nbsp;помнишь.</strong> Приложение не&nbsp;присылает сводку, а&nbsp;держать всё в&nbsp;голове не&nbsp;получается&nbsp;— важное проходит мимо.</p></li>
-          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">💸</span><p><strong>Трекеры портфеля просят подписку каждый месяц. Платить за&nbsp;то, чтобы просто видеть свои&nbsp;же деньги,&nbsp;— странно.</strong> Раньше я&nbsp;тоже пользовался такими платными сервисами, но&nbsp;перестал видеть в&nbsp;этом смысл.</p></li>
+          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">📱</span><div class="pain-card__body"><h3 class="pain-card__title">Данные есть, понимания&nbsp;—&nbsp;нет</h3><p>Открываешь приложение и&nbsp;долго листаешь счета и&nbsp;все активы в&nbsp;них по&nbsp;отдельности. А&nbsp;хочется понимать, какая реальная доступная сумма активов в&nbsp;рублях.</p></div></li>
+          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">💱</span><div class="pain-card__body"><h3 class="pain-card__title">Валютная головоломка</h3><p>Сколько активов у&nbsp;тебя в&nbsp;долларах и&nbsp;евро, а&nbsp;сколько в&nbsp;рублях? Чтобы получить точный ответ, нужно открывать калькулятор и&nbsp;каждый раз тратить время на&nbsp;ручные пересчёты.</p></div></li>
+          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">🔒</span><div class="pain-card__body"><h3 class="pain-card__title">Не&nbsp;всегда понятно, что доступно</h3><p>Какие активы сейчас можно продать или купить, а&nbsp;какие заблокированы? Чтобы разобраться, приходится искать информацию по&nbsp;отдельным позициям.</p></div></li>
+          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">📊</span><div class="pain-card__body"><h3 class="pain-card__title">Excel быстро устаревает</h3><p>Были попытки вести портфель в&nbsp;Excel и&nbsp;вносить сделки вручную? Сначала всё работает, но&nbsp;через месяц таблица уже не&nbsp;совпадает с&nbsp;реальностью&nbsp;— и&nbsp;обновлять её&nbsp;больше не&nbsp;хочется.</p></div></li>
+          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">📉</span><div class="pain-card__body"><h3 class="pain-card__title">Важное легко пропустить</h3><p>О&nbsp;просадке можно узнать случайно, а&nbsp;дату следующего купона или дивиденда легко забыть. Отдельной общей сводки нет&nbsp;— приходится держать всё в&nbsp;голове или проверять вручную.</p></div></li>
+          <li class="pain-card reveal"><span class="pain-card__icon" aria-hidden="true">💸</span><div class="pain-card__body"><h3 class="pain-card__title">Надоело платить за&nbsp;просмотр своих денег</h3><p>Сервисы аналитики портфелей берут ежемесячную подписку за&nbsp;сводку активов в&nbsp;одном месте. Платить абонентскую плату за&nbsp;просмотр своих&nbsp;же&nbsp;денег&nbsp;— финансово нелогично.</p></div></li>
         </ul>
       </div>
     </section>
 
-    <!-- Блок 4. Решение -->
+    <!-- Блок 3 — Решение -->
     <section class="section section--soft" id="solution">
       <div class="container">
         <div class="section__head reveal">
@@ -126,7 +119,7 @@
       </div>
     </section>
 
-    <!-- Блок 5. Как это работает -->
+    <!-- Блок 4 — Как это работает -->
     <section class="section section--dark" id="how">
       <div class="container">
         <div class="section__head reveal">
@@ -193,7 +186,7 @@
       </div>
     </section>
 
-    <!-- Блок 6. Безопасность -->
+    <!-- Блок 5 — Безопасность -->
     <section class="section" id="security">
       <div class="container split">
         <div class="split__text">
@@ -217,7 +210,7 @@
       </div>
     </section>
 
-    <!-- Блок 7. 1 час — и навсегда -->
+    <!-- Блок 6 — 1 час — и навсегда -->
     <section class="section section--soft" id="time">
       <div class="container split">
         <div class="split__text">
@@ -251,7 +244,7 @@
       </div>
     </section>
 
-    <!-- Блок 8. Что внутри -->
+    <!-- Блок 7 — Что внутри -->
     <section class="section" id="inside">
       <div class="container">
         <div class="section__head reveal">
@@ -375,7 +368,7 @@
       </div>
     </section>
 
-    <!-- Блок 9. История автора -->
+    <!-- Блок 8 — История автора -->
     <section class="section section--soft" id="author">
       <div class="container author author--accent reveal">
         <!-- TODO: заменить плейсхолдер на фото автора (например, images/author.jpg) -->
@@ -388,7 +381,7 @@
       </div>
     </section>
 
-    <!-- Блок 10. Гарантия -->
+    <!-- Блок 9 — Гарантия -->
     <section class="section" id="guarantee">
       <div class="container narrow">
         <div class="guarantee reveal">
@@ -402,7 +395,7 @@
       </div>
     </section>
 
-    <!-- Блок 11. FAQ -->
+    <!-- Блок 10 — FAQ -->
     <section class="section section--soft" id="faq">
       <div class="container narrow">
         <div class="section__head reveal">
@@ -438,7 +431,7 @@
       </div>
     </section>
 
-    <!-- Блок 12. Финальный CTA -->
+    <!-- Блок 11 — Финальный CTA -->
     <section class="section section--dark cta" id="cta">
       <div class="container cta__inner reveal">
         <img class="cta__logo" src="images/logo.webp" alt="" width="96" height="96" loading="lazy">
@@ -458,7 +451,7 @@
 
   </main>
 
-  <!-- Блок 13. Подвал -->
+  <!-- Блок 12 — Подвал -->
   <footer class="footer">
     <div class="container">
       <p>ИП Иванов И.И. · ИНН 000000000000</p> <!-- TODO: реальные реквизиты -->

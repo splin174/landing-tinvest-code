@@ -226,7 +226,7 @@ button { font: inherit; }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 
 /* =========================================================
-   Блок 1. Шапка
+   Шапка (вне нумерации блоков)
    ========================================================= */
 .header {
   position: sticky;
@@ -260,7 +260,7 @@ button { font: inherit; }
 .header__inner > .btn { flex-shrink: 0; white-space: nowrap; }
 
 /* =========================================================
-   Блок 2. Hero
+   Блок 1 — Первый экран
    ========================================================= */
 .hero {
   padding: 40px 0 56px;
@@ -384,7 +384,7 @@ button { font: inherit; }
 .hero__bonus-shot img { width: 100%; box-shadow: 0 12px 32px rgba(0, 0, 0, .35); }
 
 /* =========================================================
-   Блок 3. Боль
+   Блок 2 — Боль (Знакомо?)
    ========================================================= */
 .pain-list {
   list-style: none;
@@ -403,12 +403,9 @@ button { font: inherit; }
   padding: 18px;
 }
 
-.pain-card strong { font-weight: 700; color: inherit; }
-
-/* Карточка со скриншотом: на мобильном картинка под текстом */
-.pain-card__body { display: grid; gap: 14px; min-width: 0; }
-.pain-card__shot { max-width: 422px; }
-.pain-card__shot img { width: 100%; box-shadow: var(--shadow); }
+.pain-card__body { display: grid; align-content: start; gap: 6px; min-width: 0; padding-top: 2px; }
+.pain-card__title { font-size: 18px; line-height: 1.3; font-weight: 700; color: var(--text); }
+.pain-card__body p { color: var(--text); }
 
 .pain-card__icon {
   flex-shrink: 0;
@@ -422,7 +419,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   Блок 4. Решение
+   Блок 3 — Решение
    ========================================================= */
 .solution__grid { display: grid; gap: 28px; margin-top: 28px; }
 
@@ -458,7 +455,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   Блок 5. Как это работает
+   Блок 4 — Как это работает
    ========================================================= */
 .flow {
   display: flex;
@@ -527,7 +524,7 @@ button { font: inherit; }
 .split { display: grid; gap: 32px; align-items: start; }
 
 /* =========================================================
-   Блок 6. Безопасность
+   Блок 5 — Безопасность
    ========================================================= */
 .checklist {
   list-style: none;
@@ -556,7 +553,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   Блок 7. Один час — и навсегда
+   Блок 6 — Один час — и навсегда
    ========================================================= */
 .time-table {
   width: 100%;
@@ -610,7 +607,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   Блок 8. Что внутри
+   Блок 7 — Что внутри
    ========================================================= */
 .inside-group {
   display: grid;
@@ -768,7 +765,7 @@ button { font: inherit; }
 .preview__note { font-size: 14px; color: var(--muted); text-align: center; }
 
 /* =========================================================
-   Блок 9. История автора
+   Блок 8 — История автора
    ========================================================= */
 .author {
   display: grid;
@@ -817,7 +814,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   Блок 10. Гарантия
+   Блок 9 — Гарантия
    ========================================================= */
 .guarantee {
   display: grid;
@@ -843,7 +840,7 @@ button { font: inherit; }
 .guarantee__note { color: var(--muted); font-size: 15px; }
 
 /* =========================================================
-   Блок 11. FAQ
+   Блок 10 — FAQ
    ========================================================= */
 .faq { display: grid; gap: 10px; }
 
@@ -891,7 +888,7 @@ button { font: inherit; }
 .faq__a { padding: 0 18px 18px; color: var(--muted); }
 
 /* =========================================================
-   Блок 12. Финальный CTA
+   Блок 11 — Финальный CTA
    ========================================================= */
 .cta {
   background:
@@ -928,7 +925,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   Блок 13. Подвал
+   Блок 12 — Подвал
    ========================================================= */
 .footer {
   padding: 32px 0 40px;
@@ -992,9 +989,6 @@ button { font: inherit; }
   .hero__bonus { grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; }
 
   .pain-list { grid-template-columns: 1fr 1fr; }
-  .pain-list li:last-child { grid-column: 1 / -1; }
-  .pain-list .pain-card--shot { grid-column: 1 / -1; align-items: center; }
-  .pain-card--shot .pain-card__body { grid-template-columns: 1fr 1fr; align-items: center; gap: 20px; }
 
   .steps { grid-template-columns: repeat(3, 1fr); }
   .step { flex-direction: column; }
@@ -1053,10 +1047,7 @@ button { font: inherit; }
   .hero__bonus-shot { justify-self: center; }
   .hero__title { font-size: 42px; }
 
-  /* 3 колонки: карточка со скриншотом справа на две строки, последняя — во всю ширину */
   .pain-list { grid-template-columns: repeat(3, 1fr); }
-  .pain-list .pain-card--shot { grid-column: 3; grid-row: 1 / span 2; align-items: flex-start; }
-  .pain-card--shot .pain-card__body { grid-template-columns: 1fr; gap: 16px; }
 
   .solution__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
   .steps { grid-template-columns: 1fr; }
