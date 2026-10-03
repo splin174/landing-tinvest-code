@@ -973,7 +973,14 @@ button { font: inherit; }
   .hero__audience { font-size: 20px; }
   .hero__promise { font-size: 24px; }
   .hero__lead { font-size: 19px; }
-  .hero-steps { grid-template-columns: repeat(2, auto); justify-content: start; gap: 28px; }
+  /* Отступы в левой колонке hero по шкале 16 / 24 / 32: подзаголовок и плашки ближе, шаги — отдельной группой */
+  .hero__inner { row-gap: 32px; }
+  .hero__audience { margin-top: 16px; }
+  .hero__promise { margin-top: 24px; }
+  .hero-tags { margin-top: 16px; }
+  .hero-steps { margin-top: 32px; }
+
+  .hero-steps { grid-template-columns: repeat(3, auto); justify-content: start; gap: 28px; }
   .hero-step { grid-template-columns: 1fr; gap: 10px; }
   .hero-step:not(:last-child)::after {
     left: 46px;
@@ -1040,7 +1047,7 @@ button { font: inherit; }
   .hero__inner {
     grid-template-columns: 1.05fr 1fr;
     align-items: center;
-    gap: 56px;
+    gap: 32px 56px;
   }
   /* Бонус — отдельной строкой под обеими колонками hero, по той же сетке */
   .hero__bonus { grid-column: 1 / -1; grid-template-columns: 1.05fr 1fr; gap: 56px; }
