@@ -128,7 +128,8 @@
       </div>
     </section>
 
-    <!-- Блок 4 — Решение -->
+    <!-- Блок 4 — Продукт -->
+    <!-- 4 · без номера — Дело не в тебе -->
     <section class="section section--soft" id="solution">
       <div class="container">
         <div class="section__head reveal">
@@ -153,12 +154,12 @@
       </div>
     </section>
 
-    <!-- Блок 5 — Как это работает -->
+    <!-- 4.1 Как это работает? -->
     <section class="section section--dark" id="how">
       <div class="container">
         <div class="section__head reveal">
           <span class="bar" aria-hidden="true"></span>
-          <h2 class="section__title">Как это работает — простыми словами</h2>
+          <h2 class="section__title">Как это работает?</h2>
         </div>
 
         <!-- Схема: Т-Инвест → Python → Google Таблица + Telegram -->
@@ -220,32 +221,8 @@
       </div>
     </section>
 
-    <!-- Блок 6 — Безопасность -->
-    <section class="section" id="security">
-      <div class="container split">
-        <div class="split__text">
-          <div class="section__head reveal">
-            <span class="bar" aria-hidden="true"></span>
-            <h2 class="section__title">Безопасно ли это</h2>
-          </div>
-          <ul class="checklist">
-            <li class="reveal"><strong>Токен «только для чтения».</strong> Программа видит портфель, но не может совершить ни одной сделки и вывести деньги.</li>
-            <li class="reveal"><strong>Всё остаётся у тебя.</strong> Программа работает на твоём компьютере, таблица лежит в твоём Google-аккаунте. Никаких чужих серверов.</li>
-            <li class="reveal"><strong>Бот отвечает только тебе.</strong> Он привязан к твоему Telegram-аккаунту и игнорирует всех остальных.</li>
-            <li class="reveal"><strong>Никаких подписок.</strong> Python, Google Таблицы, Telegram и API Т&#8209;Инвестиций бесплатны.</li>
-          </ul>
-          <article class="feature feature--accent reveal"><span class="feature__icon" aria-hidden="true">🔒</span><p>Программа физически не может купить или продать ни одной бумаги</p></article>
-        </div>
-        <!-- TODO: заменить на отдельный скриншот images/screen-6-token.png, когда он будет готов -->
-        <figure class="shot shot--card split__media reveal" data-alt="Скриншот: настройки токена «Только просмотр»">
-          <img src="images/7guide1.png" alt="Страница инструкции «Получение токенов доступа»: в настройках токена выбран тип «Только просмотр»" width="535" height="378" loading="lazy">
-          <figcaption>В&nbsp;инструкции показано, где выбрать тип токена «Только просмотр»</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Блок 7 — 1 час — и навсегда -->
-    <section class="section section--soft" id="time">
+    <!-- 4 · без номера — Один час -->
+    <section class="section" id="time">
       <div class="container split">
         <div class="split__text">
           <div class="section__head reveal">
@@ -278,12 +255,12 @@
       </div>
     </section>
 
-    <!-- Блок 8 — Что внутри -->
-    <section class="section" id="inside">
+    <!-- 4.2 Что получаю? -->
+    <section class="section section--soft" id="inside">
       <div class="container">
         <div class="section__head reveal">
           <span class="bar" aria-hidden="true"></span>
-          <h2 class="section__title">Что внутри</h2>
+          <h2 class="section__title">Что получаю?</h2>
         </div>
 
         <div class="inside-group">
@@ -402,20 +379,44 @@
       </div>
     </section>
 
-    <!-- Блок 9 — История автора -->
+    <!-- 4.3 Безопасность -->
+    <section class="section" id="security">
+      <div class="container split">
+        <div class="split__text">
+          <div class="section__head reveal">
+            <span class="bar" aria-hidden="true"></span>
+            <h2 class="section__title">Безопасность</h2>
+          </div>
+          <ul class="checklist">
+            <li class="reveal"><strong>Токен «только для чтения».</strong> Программа видит портфель, но не может совершить ни одной сделки и вывести деньги.</li>
+            <li class="reveal"><strong>Всё остаётся у тебя.</strong> Программа работает на твоём компьютере, таблица лежит в твоём Google-аккаунте. Никаких чужих серверов.</li>
+            <li class="reveal"><strong>Бот отвечает только тебе.</strong> Он привязан к твоему Telegram-аккаунту и игнорирует всех остальных.</li>
+            <li class="reveal"><strong>Никаких подписок.</strong> Python, Google Таблицы, Telegram и API Т&#8209;Инвестиций бесплатны.</li>
+          </ul>
+          <article class="feature feature--accent reveal"><span class="feature__icon" aria-hidden="true">🔒</span><p>Программа физически не может купить или продать ни одной бумаги</p></article>
+        </div>
+        <!-- TODO: заменить на отдельный скриншот images/screen-6-token.png, когда он будет готов -->
+        <figure class="shot shot--card split__media reveal" data-alt="Скриншот: настройки токена «Только просмотр»">
+          <img src="images/7guide1.png" alt="Страница инструкции «Получение токенов доступа»: в настройках токена выбран тип «Только просмотр»" width="535" height="378" loading="lazy">
+          <figcaption>В&nbsp;инструкции показано, где выбрать тип токена «Только просмотр»</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Блок 5 — Прувы -->
     <section class="section section--soft" id="author">
       <div class="container author author--accent reveal">
         <!-- TODO: заменить плейсхолдер на фото автора (например, images/author.jpg) -->
         <div class="author__avatar" role="img" aria-label="Аватар автора">👤</div>
         <div class="author__text">
-          <h2 class="section__title">Почему я&nbsp;это&nbsp;сделал</h2>
+          <h2 class="section__title">Почему я&nbsp;создал эту&nbsp;автоматизацию</h2>
           <p>Я сам пользуюсь этим решением каждый день. Раньше пользовался сервисами по&nbsp;подписке и&nbsp;в&nbsp;какой-то момент посчитал: платить каждый месяц за&nbsp;то, чтобы видеть свой же портфель, нецелесообразно. Поэтому сделал своё решение: платишь <strong>один&nbsp;раз</strong>&nbsp;— и&nbsp;пользуешься.</p>
           <p class="author__punch">Без абонентской&nbsp;платы</p>
         </div>
       </div>
     </section>
 
-    <!-- Блок 10 — Гарантия -->
+    <!-- Блок 6 — Гарантия -->
     <section class="section" id="guarantee">
       <div class="container narrow">
         <div class="guarantee reveal">
@@ -429,7 +430,7 @@
       </div>
     </section>
 
-    <!-- Блок 11 — FAQ -->
+    <!-- Блок 7 — Вопросы -->
     <section class="section section--soft" id="faq">
       <div class="container narrow">
         <div class="section__head reveal">
@@ -465,7 +466,7 @@
       </div>
     </section>
 
-    <!-- Блок 12 — Финальный CTA -->
+    <!-- Блок 8 — Финальный CTA -->
     <section class="section section--dark cta" id="cta">
       <div class="container cta__inner reveal">
         <img class="cta__logo" src="images/logo.webp" alt="" width="96" height="96" loading="lazy">
@@ -485,7 +486,7 @@
 
   </main>
 
-  <!-- Блок 13 — Подвал -->
+  <!-- Блок 9 — Подвал -->
   <footer class="footer">
     <div class="container">
       <p>ИП Иванов И.И. · ИНН 000000000000</p> <!-- TODO: реальные реквизиты -->
