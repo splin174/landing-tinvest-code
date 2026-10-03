@@ -379,6 +379,13 @@ button { font: inherit; }
 }
 .hero__media img { width: 100%; }
 
+/* Бонус под шагами: текст + скриншот утреннего отчёта */
+.hero__bonus { display: grid; gap: 18px; }
+.hero__bonus .hero__lead { margin-top: 0; }
+.hero__bonus .hero__footnote { margin-top: 12px; }
+.hero__bonus-shot { width: 100%; max-width: 422px; }
+.hero__bonus-shot img { width: 100%; box-shadow: 0 12px 32px rgba(0, 0, 0, .35); }
+
 /* =========================================================
    Блок 3. Боль
    ========================================================= */
@@ -985,6 +992,8 @@ button { font: inherit; }
   }
   .hero-step__time { font-size: 22px; }
 
+  .hero__bonus { grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; }
+
   .pain-list { grid-template-columns: 1fr 1fr; }
   .pain-list li:last-child { grid-column: 1 / -1; }
   .pain-list .pain-card--shot { grid-column: 1 / -1; align-items: center; }
@@ -1042,6 +1051,9 @@ button { font: inherit; }
     align-items: center;
     gap: 56px;
   }
+  /* Бонус — отдельной строкой под обеими колонками hero, по той же сетке */
+  .hero__bonus { grid-column: 1 / -1; grid-template-columns: 1.05fr 1fr; gap: 56px; }
+  .hero__bonus-shot { justify-self: center; }
   .hero__title { font-size: 42px; }
 
   /* 3 колонки: карточка со скриншотом справа на две строки, последняя — во всю ширину */
