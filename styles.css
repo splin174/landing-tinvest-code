@@ -271,7 +271,7 @@ button { font: inherit; }
    Блок 1 — Первый экран
    ========================================================= */
 .hero {
-  padding: 40px 0 56px;
+  padding: 40px 0 48px;
   background:
     radial-gradient(circle at 85% 10%, rgba(255, 221, 45, .14), transparent 45%),
     var(--navy);
@@ -282,7 +282,7 @@ button { font: inherit; }
 
 .hero__audience {
   margin-top: 0;
-  font-size: 22px;
+  font-size: 21px;
   line-height: 1.35;
   font-weight: 700;
   color: var(--yellow);
@@ -290,7 +290,7 @@ button { font: inherit; }
 
 .hero__promise {
   margin-top: 22px;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1.35;
   font-weight: 700;
   color: var(--on-dark);
@@ -380,7 +380,8 @@ button { font: inherit; }
 .hero__media img { width: 100%; }
 
 /* Бонус под шагами: текст + скриншот утреннего отчёта */
-.hero__bonus { display: grid; gap: 18px; }
+/* Расстояние от главного скриншота до бонуса: 36 + 4 = 40px на мобильном, 32 + 24 = 56px с 768px */
+.hero__bonus { display: grid; gap: 18px; margin-top: 4px; }
 .hero__bonus .hero__lead { margin-top: 0; }
 .hero__bonus-shot { width: 100%; max-width: 422px; }
 .hero__bonus-shot img { width: 100%; box-shadow: 0 12px 32px rgba(0, 0, 0, .35); }
@@ -388,6 +389,8 @@ button { font: inherit; }
 /* =========================================================
    Блок 2 — Боль (Знакомо?)
    ========================================================= */
+/* Верхний отступ на треть меньше обычного (56 / 80 / 104 → 38 / 54 / 70): после тёмного hero не было лишней пустоты */
+#pain { padding-top: 38px; }
 .pain-list {
   list-style: none;
   margin: 0;
@@ -1002,9 +1005,10 @@ button { font: inherit; }
   .price { flex-shrink: 0; max-width: 200px; }
 
   .section__title { font-size: 36px; }
-  .hero { padding: 64px 0 80px; }
-  .hero__audience { font-size: 26px; }
-  .hero__promise { font-size: 22px; }
+  .hero { padding: 64px 0 64px; }
+  #pain { padding-top: 54px; }
+  .hero__audience { font-size: 24px; }
+  .hero__promise { font-size: 23px; }
   .hero__lead { font-size: 19px; }
   /* Отступы в левой колонке hero по шкале 16 / 24 / 32: плашки ближе к обещанию, шаги — отдельной группой */
   .hero__inner { row-gap: 32px; }
@@ -1026,7 +1030,7 @@ button { font: inherit; }
   .hero-step__time { font-size: 22px; }
 
   .hero__bonus { grid-template-columns: 1fr 1fr; align-items: start; gap: 24px; }
-  .hero__bonus-text { margin-top: 56px; }
+  .hero__bonus { margin-top: 24px; }
 
   .pain-list { grid-template-columns: 1fr 1fr; }
 
@@ -1098,11 +1102,10 @@ button { font: inherit; }
   /* Левая группа (заголовок → подзаголовок → плашки → шаги) по высоте совпадает с главным скриншотом:
      ширина скриншота подобрана под высоту группы с отступами 24 / 16 / 32,
      а группа растягивается до высоты скриншота — лишнее место делится между отступами поровну */
-  .hero__media { max-width: 519px; justify-self: center; }
+  .hero__media { max-width: 471px; justify-self: center; }
   .hero__content { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; }
-  /* Текст бонуса — примерно на 1/4 высоты скриншота отчёта ниже его верха */
-  .hero__bonus-text { margin-top: 72px; }
   .header__title { font-size: 28px; }
+  #pain { padding-top: 70px; }
 
 
   .solution__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
