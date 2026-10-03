@@ -1224,6 +1224,8 @@ button { font: inherit; }
     padding: 36px;
     gap: 32px;
   }
+  /* Абзацы карточки — по ширине, с переносами; последняя строка по левому краю */
+  .author--accent .author__text p:not(.author__punch) { text-align: justify; text-align-last: left; hyphens: auto; -webkit-hyphens: auto; }
   .author--accent .author__text .author__punch { font-size: 32px; }
 
   .guarantee { grid-template-columns: auto 1fr; padding: 32px; gap: 24px; }
