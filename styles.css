@@ -145,15 +145,6 @@ button { font: inherit; }
 }
 .section--dark .section__text { color: var(--on-dark-muted); }
 
-.eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--yellow-ink);
-}
-.eyebrow--light { color: var(--yellow); }
-
 .hl {
   background: linear-gradient(transparent 58%, rgba(255, 221, 45, .55) 58%);
   padding: 0 2px;
@@ -264,15 +255,30 @@ button { font: inherit; }
 .hero__inner { display: grid; gap: 36px; }
 
 .hero__title {
-  margin-top: 14px;
   font-size: 26px;
   line-height: 1.22;
   font-weight: 800;
   letter-spacing: -0.01em;
 }
 
+.hero__audience {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--yellow);
+}
+
+.hero__promise {
+  margin-top: 22px;
+  font-size: 21px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--on-dark);
+}
+
 .hero__lead {
-  margin-top: 18px;
+  margin-top: 16px;
   font-size: 17px;
   color: var(--on-dark-muted);
 }
@@ -933,6 +939,8 @@ button { font: inherit; }
   .section__title { font-size: 36px; }
   .hero { padding: 64px 0 80px; }
   .hero__title { font-size: 36px; }
+  .hero__audience { font-size: 16px; }
+  .hero__promise { font-size: 24px; }
   .hero__lead { font-size: 19px; }
 
   .pain-list { grid-template-columns: 1fr 1fr; }
