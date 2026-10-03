@@ -309,7 +309,7 @@ button { font: inherit; }
 /* Две строки на всех ширинах: «Без навыков программирования», ниже «Навсегда» · «Без подписок» */
 .hero-tags {
   list-style: none;
-  margin: 14px 0 0;
+  margin: 22px 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, max-content);
@@ -537,6 +537,7 @@ button { font: inherit; }
 .auto-step__body strong { font-weight: 700; }
 .auto-step__media { display: grid; gap: 16px; justify-items: start; }
 .auto-step__media .shot { width: 100%; max-width: 560px; }
+.auto-step__stack { display: grid; gap: 16px; width: 100%; max-width: 560px; }
 .auto-step__media .shot img { width: 100%; }
 
 /* =========================================================
@@ -750,21 +751,83 @@ button { font: inherit; }
 /* =========================================================
    Блок 4 — Продукт · 4.1 Что получаю? и 4.2 Как работает автоматизация? (пункты «текст + скриншот»)
    ========================================================= */
-/* Пункты «текст + скриншот» (4.1 и 4.2): на мобильном текст, под ним картинка;
-   с 1024px — две колонки в шахматном порядке */
-.showcase { display: grid; gap: 48px; }
-.showcase__item { display: grid; gap: 18px; align-items: center; }
-.showcase__text { display: grid; gap: 12px; justify-items: start; }
-.showcase__text p { font-size: 18px; line-height: 1.5; color: var(--text); }
-.showcase__text strong { font-weight: 700; }
-.showcase__media { min-width: 0; display: grid; justify-items: center; }
-.showcase__media > .shot,
-.showcase__media > .carousel,
-.showcase__stack { width: 100%; }
-.showcase__media > .shot img { width: 100%; }
-.showcase__narrow { max-width: 340px; }
-.showcase__mid { max-width: 460px; }
-.showcase__stack { display: grid; gap: 16px; }
+/* 4.1: плашки + общая карусель скриншотов в рамке 4:3 */
+.gallery { display: grid; gap: 24px; }
+.gallery__media { display: grid; gap: 8px; min-width: 0; order: -1; }
+.gallery__hint { font-size: 13px; color: var(--muted); text-align: center; }
+.pick-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.pick {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  text-align: left;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--card);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.pick:hover { border-color: var(--yellow-border); }
+.pick:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+.pick[aria-current="true"] { background: var(--yellow-soft); border-color: var(--yellow); }
+.pick__text strong { font-weight: 700; }
+.pick .feature__icon { width: 40px; height: 40px; font-size: 20px; }
+
+.carousel--frame { min-width: 0; }
+.carousel--frame .carousel__slide {
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+/* Картинка вписана целиком, без обрезки и без растягивания сверх натурального размера */
+.carousel--frame .carousel__slide img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  cursor: zoom-in;
+}
+
+/* Лайтбокс */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 56px 16px 16px;
+  background: rgba(11, 31, 58, .92);
+}
+.lightbox[hidden] { display: none; }
+.lightbox__img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; background: var(--white); }
+.lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--navy);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+.lightbox__close:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
 
 .feature {
   display: flex;
@@ -1118,10 +1181,10 @@ button { font: inherit; }
   .hero__audience { font-size: 24px; }
   .hero__promise { font-size: 23px; }
   .hero__lead { font-size: 19px; }
-  /* Отступы в левой колонке hero по шкале 16 / 24 / 32: плашки ближе к обещанию, шаги — отдельной группой */
+  /* Отступы в левой колонке hero: заголовок → обещание → плашки по 24px, шаги — отдельной группой */
   .hero__inner { row-gap: 32px; }
   .hero__promise { margin-top: 24px; }
-  .hero-tags { margin-top: 16px; }
+  .hero-tags { margin-top: 24px; }
   .hero-steps { margin-top: 32px; }
 
   .hero-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -1181,10 +1244,29 @@ button { font: inherit; }
    ========================================================= */
 @media (min-width: 1024px) {
   .pain-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .showcase { gap: 64px; }
-  .showcase__item { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 56px; }
-  .showcase__item:nth-child(even) { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
-  .showcase__item:nth-child(even) .showcase__text { order: 2; }
+  /* 4.1: плашки слева, карусель справа и липнет при прокрутке */
+  .gallery { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 40px; align-items: start; }
+  .gallery__media { position: sticky; top: calc(var(--header-h) + 24px); }
+  .gallery__media { order: 1; }
+
+  /* Блок 1 — две колонки с «этажами» с 1024px */
+  .hero__inner {
+    grid-template-columns: 1.05fr 1fr;
+    grid-template-rows: auto auto auto 1fr auto auto;
+    align-items: start;
+    gap: 0 56px;
+  }
+  .hero__content { display: contents; }
+  .hero__audience { grid-column: 1; grid-row: 1; }
+  .hero__promise { grid-column: 1; grid-row: 2; }
+  .hero-tags { grid-column: 1; grid-row: 3; }
+  .hero__media { grid-column: 2; grid-row: 1 / 5; max-width: 471px; justify-self: center; }
+  .hero-steps { grid-column: 1; grid-row: 5; margin: 48px 0; }
+  .hero__bonus { grid-column: 1 / -1; grid-row: 6; margin-top: 0; grid-template-columns: 1.05fr 1fr; gap: 56px; }
+  .hero__bonus-shot { justify-self: center; }
+  .hero__bonus-text { margin-top: 40px; }
+  .hero-step__time { font-size: 20px; }
+  .hero-tag { font-size: 18px; padding: 9px 17px; }
   .auto-step--media .auto-step__body { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); column-gap: 40px; align-items: start; }
   .auto-step--media .auto-step__media { justify-items: stretch; }
   .fit-list { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: 24px 48px; }
@@ -1192,6 +1274,15 @@ button { font: inherit; }
   .nofit-list { display: block; columns: 2; column-gap: 48px; }
   .nofit-item { break-inside: avoid; margin-bottom: 14px; }
   .nofit__title { font-size: 26px; }
+}
+
+/* 1024–1199: левая колонка hero узкая — шаги компактнее, чтобы три стояли в ряд */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .hero__inner { column-gap: 40px; }
+  .hero-steps { gap: 10px; }
+  .hero-step__time { font-size: 17px; }
+  .hero-step__text { font-size: 15px; }
+  .hero-step:not(:last-child)::after { right: -6px; }
 }
 
 /* =========================================================
@@ -1202,29 +1293,6 @@ button { font: inherit; }
 
   .section__title { font-size: 42px; }
 
-  .hero__inner {
-    grid-template-columns: 1.05fr 1fr;
-    align-items: start;
-    gap: 32px 56px;
-  }
-  /* В узкой левой колонке время в шагах — 20px, чтобы три шага стояли в ряд */
-  .hero-step__time { font-size: 20px; }
-  /* Бонус — отдельной строкой под обеими колонками hero, по той же сетке */
-  .hero__bonus { grid-column: 1 / -1; grid-template-columns: 1.05fr 1fr; gap: 56px; }
-  .hero__bonus-shot { justify-self: center; }
-  /* Три «этажа»: заголовок, подзаголовок и плашки ↔ главный скриншот; шаги ↔ промежуток между скриншотами;
-     бонус ↔ скриншот отчёта. Содержимое левой колонки становится строками общей сетки:
-     скриншот занимает строки 1–4, лишняя высота уходит в гибкую строку 4 */
-  .hero__inner { grid-template-rows: auto auto auto 1fr auto auto; row-gap: 0; }
-  .hero__content { display: contents; }
-  .hero__audience { grid-column: 1; grid-row: 1; }
-  .hero__promise { grid-column: 1; grid-row: 2; }
-  .hero-tags { grid-column: 1; grid-row: 3; }
-  .hero__media { grid-column: 2; grid-row: 1 / 5; max-width: 471px; justify-self: center; }
-  .hero-steps { grid-column: 1; grid-row: 5; margin: 48px 0; }
-  .hero__bonus { grid-row: 6; margin-top: 0; }
-  .hero__bonus-text { margin-top: 96px; }
-  .hero-tag { font-size: 18px; padding: 9px 17px; }
   .header__title { font-size: 28px; }
   #pain { padding-top: 70px; }
 
