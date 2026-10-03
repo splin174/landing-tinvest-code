@@ -682,6 +682,8 @@ button { font: inherit; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 28px 20px;
+  /* .author сам является .container, поэтому боковые поля — через ширину */
+  width: calc(100% - 2 * var(--gutter));
   max-width: 860px;
 }
 
