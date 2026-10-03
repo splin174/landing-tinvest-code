@@ -706,8 +706,16 @@ button { font: inherit; }
   box-shadow: 0 16px 40px rgba(11, 31, 58, .22);
 }
 .author--accent .author__avatar { border-color: var(--yellow); }
-.author--accent .author__text p { font-size: 20px; line-height: 1.5; color: var(--on-dark); }
-.author__accent { color: var(--yellow); font-weight: 800; }
+.author--accent .author__text p { font-size: 18px; line-height: 1.5; color: var(--on-dark); }
+.author--accent .author__text strong { color: var(--on-dark); font-weight: 800; }
+.author--accent .author__text .author__punch {
+  margin-top: 18px;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--yellow);
+}
 
 /* =========================================================
    Блок 10. Бонусы
@@ -934,6 +942,8 @@ button { font: inherit; }
   .btn--xl { width: auto; padding: 24px 44px; font-size: 22px; }
   .hero__title { font-size: 30px; }
   .bonus-grid { grid-template-columns: 1fr 1fr; }
+  .author--accent .author__text p { font-size: 20px; }
+  .author--accent .author__text .author__punch { font-size: 28px; }
 }
 
 /* =========================================================
@@ -991,6 +1001,7 @@ button { font: inherit; }
     gap: 32px;
   }
   .author--accent .author__text p { font-size: 22px; }
+  .author--accent .author__text .author__punch { font-size: 32px; }
 
   .guarantee { grid-template-columns: auto 1fr; padding: 32px; gap: 24px; }
 
