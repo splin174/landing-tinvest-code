@@ -461,28 +461,28 @@ button { font: inherit; }
   padding-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, .12);
 }
-.nofit__title { font-size: 20px; line-height: 1.3; font-weight: 700; color: var(--on-dark); }
-.nofit__lead { margin-top: 6px; font-size: 14px; line-height: 1.45; color: var(--on-dark-muted); }
+.nofit__title { font-size: 22px; line-height: 1.3; font-weight: 700; color: var(--on-dark); }
+.nofit__lead { margin-top: 8px; font-size: 16px; line-height: 1.5; color: var(--on-dark-muted); }
 .nofit-list {
   list-style: none;
-  margin: 18px 0 0;
+  margin: 20px 0 0;
   padding: 0;
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 .nofit-item {
   display: grid;
-  grid-template-columns: 22px minmax(0, 1fr);
+  grid-template-columns: 26px minmax(0, 1fr);
   column-gap: 12px;
   align-items: start;
-  font-size: 15px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 26px;
 }
 .nofit-item__x {
   display: grid;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: rgba(229, 115, 107, .14);
   border: 1px solid rgba(229, 115, 107, .45);
@@ -1118,7 +1118,8 @@ button { font: inherit; }
   .fit-list { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: 24px 48px; }
   /* Колонки без общей сетки строк: пункты идут подряд, без пустот из-за соседа в другой колонке */
   .nofit-list { display: block; columns: 2; column-gap: 48px; }
-  .nofit-item { break-inside: avoid; margin-bottom: 12px; }
+  .nofit-item { break-inside: avoid; margin-bottom: 14px; }
+  .nofit__title { font-size: 26px; }
 }
 
 /* =========================================================
