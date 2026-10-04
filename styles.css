@@ -381,7 +381,7 @@ button { font: inherit; }
 /* Карусель листов таблицы: рамка 5:4 — высота не меняется при листании, картинка вписана целиком */
 .hero__media { width: 100%; min-width: 0; }
 .hero__carousel .carousel__track { box-shadow: 0 20px 50px rgba(0, 0, 0, .35); }
-.hero__carousel.carousel--frame .carousel__slide { aspect-ratio: 5 / 4; margin: 0; padding: 8px; background: var(--white); border: 0; }
+.hero__carousel.carousel--frame .carousel__slide { aspect-ratio: 5 / 4; padding: 8px; background: var(--white); border: 0; }
 .hero__carousel.carousel--frame .carousel__slide img { border-radius: 4px; }
 
 /* Бонус под шагами: текст + скриншот утреннего отчёта */
@@ -885,6 +885,7 @@ img[data-zoom] { cursor: zoom-in; }
 
 .carousel__slide {
   flex: 0 0 100%;
+  margin: 0; /* без браузерного отступа <figure>: рамка по ширине карусели */
   scroll-snap-align: start;
   background: var(--card);
   border-radius: var(--radius);
