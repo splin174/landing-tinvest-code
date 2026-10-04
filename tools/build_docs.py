@@ -1,4 +1,4 @@
-"""Собирает oferta.html и privacy.html из oferta-text.md и privacy-text.md.
+"""Собирает oferta.html и privacy.html из docs-src/oferta-text.md и docs-src/privacy-text.md.
 
 Запуск из корня проекта:  python tools/build_docs.py
 
@@ -16,6 +16,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC = 'docs-src'  # папка с текстами документов
 
 # Адрес сайта в тексте документов: становится ссылкой и подсвечивается как отложенное поле.
 # После переезда на новый домен поменяйте его здесь и в .md-файлах.
@@ -67,7 +68,7 @@ def typo(s):
 def read(name):
     path = os.path.join(ROOT, name)
     if not os.path.exists(path):
-        sys.exit(f'Нет файла {name} в корне проекта')
+        sys.exit(f'Нет файла {name}')
     with open(path, encoding='utf-8') as f:
         return f.read()
 
@@ -163,9 +164,9 @@ def page(md, out, page_title, desc):
 
 
 if __name__ == '__main__':
-    page('oferta-text.md', 'oferta.html',
+    page(os.path.join(SRC, 'oferta-text.md'), 'oferta.html',
          'Публичная оферта — Т-Инвест: все портфели в Google Таблице и Telegram-боте',
          'Публичная оферта ИП Куликова В.С. на предоставление доступа к цифровому продукту «Автоматизация сбора данных из Т-Инвест: все портфели в Google Таблице и Telegram-боте».')
-    page('privacy-text.md', 'privacy.html',
+    page(os.path.join(SRC, 'privacy-text.md'), 'privacy.html',
          'Политика конфиденциальности — Т-Инвест: все портфели в Google Таблице и Telegram-боте',
          'Политика конфиденциальности и обработки персональных данных ИП Куликова В.С.: какие данные обрабатываются при покупке продукта и обращении в поддержку.')

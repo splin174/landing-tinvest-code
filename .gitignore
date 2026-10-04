@@ -6,8 +6,6 @@ node_modules
 # Исходные материалы — не публикуются
 *.pdf
 landing-micro.md.txt
-oferta-text.md
-privacy-text.md
 deploy/
 
 # Неиспользуемые на странице оригиналы картинок
