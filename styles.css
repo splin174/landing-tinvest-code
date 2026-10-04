@@ -753,6 +753,9 @@ button { font: inherit; }
 .gallery { display: grid; gap: 24px; }
 .gallery__media { display: grid; gap: 8px; min-width: 0; order: -1; }
 .gallery__hint { font-size: 13px; color: var(--muted); text-align: center; }
+/* Подсказка под каруселью на тёмном фоне блока 1: читается, но второстепенная */
+.section--dark .gallery__hint { color: rgba(184, 195, 214, .75); }
+.hero__media .gallery__hint { margin-top: 8px; }
 .pick-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .pick {
   width: 100%;
@@ -1263,23 +1266,22 @@ img[data-zoom] { cursor: zoom-in; }
   .gallery__media { position: sticky; top: calc(var(--header-h) + 24px); }
   .gallery__media { order: 1; }
 
-  /* Блок 1 — две колонки с «этажами» с 1024px */
+  /* Блок 1 — две колонки с «этажами» с 1024px.
+     Строка 1: слева текст, плашки и шаги; справа карусель с подсказкой (верх — на линии жёлтого заголовка).
+     Строка 2: слева «Бонус*», справа скриншот отчёта — через 64px под каруселью.
+     Если левая колонка выше карусели, строка 2 начинается не раньше, чем через 32px после шагов (−8 + 40). */
   .hero__inner {
     grid-template-columns: 1.05fr 1fr;
-    grid-template-rows: auto auto auto 1fr auto auto;
+    grid-template-rows: auto auto;
     align-items: start;
     gap: 0 56px;
   }
-  .hero__content { display: contents; }
-  .hero__audience { grid-column: 1; grid-row: 1; }
-  .hero__promise { grid-column: 1; grid-row: 2; }
-  .hero-tags { grid-column: 1; grid-row: 3; }
-  /* Карусель занимает строки 1–4: верх на одной линии с жёлтым заголовком, шаги — в промежутке между каруселью и отчётом */
-  .hero__media { grid-column: 2; grid-row: 1 / 5; max-width: 471px; justify-self: center; }
-  .hero-steps { grid-column: 1; grid-row: 5; margin: 24px 0 0; }
-  .hero__bonus { grid-column: 1 / -1; grid-row: 6; margin-top: 32px; grid-template-columns: 1.05fr 1fr; gap: 56px; }
-  .hero__bonus-shot { justify-self: center; }
-  .hero__bonus-text { margin-top: 40px; }
+  .hero__content { grid-column: 1; grid-row: 1; margin-bottom: -8px; }
+  .hero__media { grid-column: 2; grid-row: 1; max-width: 471px; justify-self: center; margin-bottom: 64px; }
+  .hero-steps { margin-top: 24px; }
+  .hero__bonus { display: contents; }
+  .hero__bonus-text { grid-column: 1; grid-row: 2; margin-top: 40px; }
+  .hero__bonus-shot { grid-column: 2; grid-row: 2; justify-self: center; }
   .hero-step__time { font-size: 20px; }
   .hero-tag { font-size: 18px; padding: 9px 17px; }
   .fit-list { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: 24px 48px; }
@@ -1307,10 +1309,8 @@ img[data-zoom] { cursor: zoom-in; }
   .section__title { font-size: 42px; }
 
   .header__title { font-size: 28px; }
-  /* С 1200px скриншот крупнее, шаги — по центру между плашками и скриншотом отчёта */
+  /* С 1200px карусель крупнее */
   .hero__media { max-width: 520px; }
-  .hero-steps { margin-top: 32px; }
-  .hero__bonus { margin-top: 40px; }
   #pain { padding-top: 70px; }
 
 
