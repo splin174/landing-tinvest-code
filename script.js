@@ -225,6 +225,115 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
     });
   }
 
+  /* ---------- Оферта и политика: открываются во всплывающем окне ---------- */
+  // Текст берётся из oferta.html / privacy.html — документы остаются в одном месте
+  // и доступны по прямой ссылке. Кнопка «Назад» в браузере закрывает окно.
+  if (document.querySelector('a[data-doc]')) {
+    const modal = document.createElement('div');
+    modal.className = 'doc-modal';
+    modal.hidden = true;
+    modal.innerHTML =
+      '<div class="doc-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="doc-modal-title" tabindex="-1">' +
+        '<div class="doc-modal__head">' +
+          '<h2 class="doc-modal__title" id="doc-modal-title"></h2>' +
+          '<button class="doc-modal__close" type="button" aria-label="Закрыть">×</button>' +
+        '</div>' +
+        '<div class="doc-modal__body" tabindex="0"></div>' +
+      '</div>';
+    document.body.appendChild(modal);
+    const dialog = modal.querySelector('.doc-modal__dialog');
+    const titleEl = modal.querySelector('.doc-modal__title');
+    const bodyEl = modal.querySelector('.doc-modal__body');
+    const closeBtn = modal.querySelector('.doc-modal__close');
+    const cache = {};
+    let opener = null;
+
+    function load(href) {
+      if (!cache[href]) {
+        cache[href] = fetch(href).then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.text();
+        }).then(function (html) {
+          const page = new DOMParser().parseFromString(html, 'text/html');
+          const inner = page.querySelector('.doc__inner');
+          if (!inner) throw new Error('no content');
+          inner.querySelectorAll('.doc__back').forEach(function (a) { a.remove(); });
+          const h1 = inner.querySelector('.doc__title');
+          const title = h1 ? h1.textContent : page.title;
+          if (h1) h1.remove();
+          return { title: title, html: inner.innerHTML };
+        });
+        cache[href].catch(function () { delete cache[href]; });
+      }
+      return cache[href];
+    }
+
+    function show(href) {
+      return load(href).then(function (doc) {
+        titleEl.textContent = doc.title;
+        bodyEl.innerHTML = doc.html;
+        bodyEl.scrollTop = 0;
+        if (modal.hidden) {
+          modal.hidden = false;
+          document.documentElement.style.overflow = 'hidden';
+        }
+        dialog.focus();
+      });
+    }
+
+    function hide() {
+      if (modal.hidden) return;
+      modal.hidden = true;
+      document.documentElement.style.overflow = '';
+      if (opener) opener.focus({ preventScroll: true });
+    }
+
+    // Крестик, фон и Esc закрывают через history.back(): так снимается запись истории окна
+    function requestClose() {
+      if (history.state && history.state.docModal) history.back();
+      else hide();
+    }
+
+    document.addEventListener('click', function (e) {
+      const link = e.target.closest('a[data-doc]');
+      if (!link || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      const wasOpen = !modal.hidden;
+      if (!wasOpen) opener = link;
+      show(href).then(function () {
+        const state = { docModal: href };
+        if (wasOpen) history.replaceState(state, '');
+        else history.pushState(state, '');
+      }).catch(function () {
+        // Не удалось загрузить (например, страница открыта как файл) — обычный переход
+        window.location.href = href;
+      });
+    });
+
+    window.addEventListener('popstate', hide);
+    closeBtn.addEventListener('click', requestClose);
+    modal.addEventListener('click', function (e) { if (e.target === modal) requestClose(); });
+
+    modal.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { e.preventDefault(); requestClose(); return; }
+      if (e.key !== 'Tab') return;
+      // Фокус не уходит за пределы окна
+      const items = Array.prototype.filter.call(
+        dialog.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])'),
+        function (el) { return el.offsetParent !== null; }
+      );
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    });
+  }
+
   /* ---------- Предпросмотр инструкции (видео грузится по клику) ---------- */
   const previewBtn = document.querySelector('[data-preview-btn]');
   if (previewBtn) {
