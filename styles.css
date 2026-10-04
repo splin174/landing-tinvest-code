@@ -1172,6 +1172,54 @@ img[data-zoom] { cursor: zoom-in; }
 .footer__legal { font-size: 12px; opacity: .8; }
 
 /* =========================================================
+   Уведомление о cookie (до согласия Метрика не загружается)
+   ========================================================= */
+.cookie {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  display: grid;
+  gap: 12px;
+  max-height: 33vh;
+  overflow-y: auto;
+  padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+  background: var(--navy);
+  color: var(--on-dark);
+  border-top: 2px solid var(--yellow);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, .25);
+}
+.cookie__text { font-size: 14px; line-height: 1.45; }
+.cookie__text a { color: var(--yellow); text-underline-offset: 3px; }
+.cookie__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* Обе кнопки одинакового веса: выбор не навязывается */
+.cookie__btn {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 2px solid var(--white);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cookie__btn:hover { background: rgba(255, 255, 255, .1); }
+.cookie__btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+
+@media (min-width: 768px) {
+  .cookie {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 16px max(24px, calc((100% - 1136px) / 2)) calc(16px + env(safe-area-inset-bottom));
+  }
+  .cookie__actions { grid-template-columns: repeat(2, 140px); }
+}
+
+/* =========================================================
    Страницы документов: оферта и политика конфиденциальности
    ========================================================= */
 .doc { padding: 32px 0 56px; background: var(--white); }

@@ -1,6 +1,9 @@
 // Ссылка на оплату. Пока пустая — кнопка в финальном блоке ведёт к #cta.
 const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
 
+// Номер счётчика Яндекс Метрики. Пока пустой — счётчик не загружается даже после «Принять».
+const METRIKA_ID = ''; // TODO: вставить номер счётчика, например '12345678'
+
 (function () {
   'use strict';
 
@@ -331,6 +334,65 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
       } else if (!e.shiftKey && document.activeElement === last) {
         e.preventDefault(); first.focus();
       }
+    });
+  }
+
+  /* ---------- Cookie и Яндекс Метрика: счётчик грузится только после «Принять» ---------- */
+  const CONSENT_KEY = 'cookieConsent'; // 'accepted' или 'declined'
+
+  function readConsent() {
+    try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+  }
+  function saveConsent(value) {
+    try { localStorage.setItem(CONSENT_KEY, value); } catch (e) { /* без хранилища плашка покажется снова */ }
+  }
+
+  let metrikaLoaded = false;
+  function loadMetrika() {
+    if (metrikaLoaded || !METRIKA_ID) return;
+    metrikaLoaded = true;
+    window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
+    window.ym.l = Date.now();
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://mc.yandex.ru/metrika/tag.js';
+    document.head.appendChild(s);
+    window.ym(Number(METRIKA_ID), 'init', {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: false
+    });
+  }
+
+  const consent = readConsent();
+  if (consent === 'accepted') {
+    loadMetrika();
+  } else if (consent !== 'declined') {
+    const bar = document.createElement('div');
+    bar.className = 'cookie';
+    bar.setAttribute('role', 'region');
+    bar.setAttribute('aria-label', 'Уведомление о cookie');
+    bar.innerHTML =
+      '<p class="cookie__text">Мы используем файлы cookie и&nbsp;Яндекс Метрику, чтобы понимать, как работает сайт. Подробнее&nbsp;— в&nbsp;<a href="privacy.html" data-doc>политике&nbsp;конфиденциальности</a>.</p>' +
+      '<div class="cookie__actions">' +
+        '<button class="cookie__btn" type="button" data-consent="accepted">Принять</button>' +
+        '<button class="cookie__btn" type="button" data-consent="declined">Отказаться</button>' +
+      '</div>';
+    document.body.appendChild(bar);
+    // Отступ снизу на высоту плашки: под ней не прячется ни кнопка покупки, ни подвал
+    function reserve() { document.body.style.paddingBottom = bar.offsetHeight + 'px'; }
+    reserve();
+    window.addEventListener('resize', reserve);
+    bar.addEventListener('click', function (e) {
+      const btn = e.target.closest('[data-consent]');
+      if (!btn) return;
+      const value = btn.getAttribute('data-consent');
+      saveConsent(value);
+      window.removeEventListener('resize', reserve);
+      document.body.style.paddingBottom = '';
+      bar.remove();
+      if (value === 'accepted') loadMetrika();
     });
   }
 
