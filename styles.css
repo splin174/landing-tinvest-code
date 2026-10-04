@@ -1068,6 +1068,16 @@ img[data-zoom] { cursor: zoom-in; }
 
 .guarantee p { margin-top: 12px; font-size: 17px; }
 .guarantee__note { color: var(--muted); font-size: 15px; }
+/* Ссылки на почту в «Гарантии»: тёмно-синий текст с жёлтым подчёркиванием, как ссылки в документах */
+.guarantee__link {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.guarantee__link:hover { color: var(--yellow-ink); }
+.guarantee .guarantee__mail { margin-top: 4px; font-size: 14px; }
 
 /* =========================================================
    Блок 7 — Вопросы
