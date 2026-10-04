@@ -78,7 +78,9 @@ const PAYMENT_URL = 'https://...';
 
 ## Выкладка на хостинг (Sprinthost)
 
-Сайт: `t-invest.boxguide.ru`, корень — `~/domains/t-invest.boxguide.ru/public_html` на сервере `splin74.xsph.ru`.
+Сайт: `t-invest.boxguide.ru` — поддомен сайта `boxguide.ru`, корень — `~/domains/boxguide.ru/public_html/t-invest` на сервере `splin74.xsph.ru`.
+
+**Важно:** папка `t-invest` лежит внутри корня `boxguide.ru`. При выкладках на `boxguide.ru` её нельзя удалять или перезаписывать (никаких `rsync --delete` и очистки `public_html` без исключения `t-invest/`). Подробнее — в комментарии в начале `tools/deploy.sh`.
 
 Выложить свежую версию из GitHub (в Git Bash, из корня проекта):
 
@@ -86,8 +88,10 @@ const PAYMENT_URL = 'https://...';
 bash tools/deploy.sh
 ```
 
-Скрипт скачивает ветку `main` из GitHub (поэтому сначала сделайте `git push`), делает на сервере бэкап текущего сайта в `~/backups/t-invest.boxguide.ru/<дата-время>`, выкладывает `index.html`, `oferta.html`, `privacy.html`, `styles.css`, `script.js`, `images/` (и `.htaccess`, если он есть в репозитории) и проверяет, что страницы открываются.
+Скрипт скачивает ветку `main` из GitHub (поэтому сначала сделайте `git push`), делает на сервере бэкап текущего сайта в `~/backup_<дата-время>/t-invest`, выкладывает `index.html`, `oferta.html`, `privacy.html`, `styles.css`, `script.js`, `images/` и `.htaccess` и проверяет, что страницы открываются.
 Файлы перезаписываются, но ничего не удаляется: файл, убранный из репозитория, на сервере нужно удалить вручную. Старые бэкапы тоже удаляются вручную.
+
+`.htaccess` в корне репозитория — 301-редиректы с `www.t-invest.boxguide.ru` и с `boxguide.ru/t-invest/` на `https://t-invest.boxguide.ru/`. На GitHub Pages он не действует.
 
 Для входа нужен ключ `~/.ssh/sprinthost_ed25519` и алиас `sprint` в `~/.ssh/config` (проверка: `ssh sprint pwd` — без запроса пароля).
 

@@ -1,0 +1,16 @@
+# Хостинг Sprinthost: папка сайта t-invest.boxguide.ru лежит внутри корня boxguide.ru
+# (~/domains/boxguide.ru/public_html/t-invest), поэтому лендинг доступен ещё и как
+# boxguide.ru/t-invest/. Оба лишних адреса ведём 301-редиректом на основной.
+# Условия проверяют только имя хоста, а целевой хост t-invest.boxguide.ru под них
+# не подходит, — редиректы не зацикливаются.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # boxguide.ru/t-invest/… и www.boxguide.ru/t-invest/… → https://t-invest.boxguide.ru/…
+  RewriteCond %{HTTP_HOST} ^(www\.)?boxguide\.ru$ [NC]
+  RewriteRule ^(.*)$ https://t-invest.boxguide.ru/$1 [R=301,L]
+
+  # www.t-invest.boxguide.ru/… → https://t-invest.boxguide.ru/…
+  RewriteCond %{HTTP_HOST} ^www\.t-invest\.boxguide\.ru$ [NC]
+  RewriteRule ^(.*)$ https://t-invest.boxguide.ru/$1 [R=301,L]
+</IfModule>
