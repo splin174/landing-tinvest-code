@@ -63,16 +63,40 @@
           </div>
           -->
         </div>
-        <figure class="hero__media shot" data-alt="Скриншот: лист «Итого» в Google Таблице">
-          <img src="images/1table.png" alt="Лист «Итого» в Google Таблице: RUB-активы, валюта, денежный рынок с вложениями, текущей стоимостью и прибылью" width="966" height="915" fetchpriority="high">
-        </figure>
+        <!-- Карусель листов Google Таблицы: рамка 5:4, клик — на весь экран -->
+        <div class="hero__media">
+          <div class="carousel carousel--single carousel--frame hero__carousel" data-carousel aria-roledescription="карусель" aria-label="Листы Google Таблицы">
+            <div class="carousel__track" data-carousel-track tabindex="0">
+              <figure class="carousel__slide">
+                <img src="images/1block1.png" alt="Лист «Итого» в Google Таблице: RUB-активы, валюта и денежный рынок — вложено, текущая стоимость, прибыль и купоны/дивиденды" width="962" height="869" fetchpriority="high" data-zoom>
+              </figure>
+              <figure class="carousel__slide">
+                <img src="images/1block2.png" alt="Лист «RUB акции» в Google Таблице: рублёвые акции с количеством, вложениями, текущей стоимостью, прибылью, дивидендами и датой очередной выплаты" width="1208" height="871" loading="lazy" data-zoom>
+              </figure>
+              <figure class="carousel__slide">
+                <img src="images/1block3.png" alt="Лист «USD, EUR акции» в Google Таблице: акции в долларах с количеством, вложениями, текущей стоимостью и прибылью" width="1018" height="875" loading="lazy" data-zoom>
+              </figure>
+              <figure class="carousel__slide">
+                <img src="images/1block4.png" alt="Лист «Облигации» в Google Таблице: облигации с вложениями, стоимостью, прибылью, купонами, датой очередной выплаты купона и датой окончания" width="1237" height="873" loading="lazy" data-zoom>
+              </figure>
+              <figure class="carousel__slide">
+                <img src="images/1block5.png" alt="Лист «Фонды» в Google Таблице: действующие и заблокированные фонды с вложениями, текущей стоимостью и прибылью" width="1087" height="870" loading="lazy" data-zoom>
+              </figure>
+            </div>
+            <div class="carousel__controls">
+              <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущий лист">←</button>
+              <div class="carousel__dots" data-carousel-dots></div>
+              <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующий лист">→</button>
+            </div>
+          </div>
+        </div>
         <!-- Бонус: на мобильном картинка под текстом, с 768px — текст слева, картинка справа -->
         <div class="hero__bonus">
           <div class="hero__bonus-text">
             <p class="hero__lead"><strong class="hero__accent">Бонус*:</strong> каждое утро в&nbsp;Telegram приходит короткий отчёт с&nbsp;динамикой: что выросло, что упало&nbsp;— за&nbsp;день, неделю и&nbsp;месяц.</p>
           </div>
           <figure class="shot hero__bonus-shot" data-alt="Скриншот: утренний отчёт в Telegram">
-            <img src="images/2total.png" alt="Утренний отчёт в Telegram: динамика портфеля за день, неделю и месяц" width="422" height="297" loading="lazy">
+            <img src="images/1block6_tg_total.png" alt="Утренний отчёт в Telegram: динамика портфеля за день, неделю и месяц" width="422" height="297" loading="lazy" data-zoom>
           </figure>
         </div>
       </div>
@@ -157,10 +181,10 @@
                   <img src="images/7guide_scroll-poster.jpg" alt="Первая страница инструкции «Т-Инвест: все портфели в Google Таблице и в Telegram-боте»" width="400" height="554" loading="lazy" data-zoom>
                 </figure>
                 <figure class="carousel__slide" data-plate="2">
-                  <img src="images/4template.png" alt="Готовый шаблон Google Таблицы: RUB-активы, валюта и денежный рынок с вложениями, стоимостью и прибылью" width="1048" height="858" loading="lazy" data-zoom>
+                  <img src="images/4block3.png" alt="Готовый шаблон Google Таблицы: RUB-активы, валюта и денежный рынок с вложениями, стоимостью и прибылью" width="966" height="874" loading="lazy" data-zoom>
                 </figure>
                 <figure class="carousel__slide" data-plate="3">
-                  <img src="images/2total.png" alt="Утренний отчёт в Telegram: итоги по RUB-активам, денежному рынку, валюте, USD и EUR активам" width="422" height="297" loading="lazy" data-zoom>
+                  <img src="images/1block6_tg_total.png" alt="Утренний отчёт в Telegram: итоги по RUB-активам, денежному рынку, валюте, USD и EUR активам" width="422" height="297" loading="lazy" data-zoom>
                 </figure>
                 <figure class="carousel__slide" data-plate="4">
                   <img src="images/coupons_table.png" alt="Лист «Облигации» в Google Таблице: по каждой облигации стоимость, прибыль, полученные купоны, дата очередной выплаты купона и дата окончания" width="797" height="300" loading="lazy" data-zoom>
@@ -276,7 +300,7 @@
                   <img src="images/11files.png" alt="Папка с файлами автоматизации на компьютере: скрипты Python, файл настроек .env и README" width="491" height="769" loading="lazy" data-zoom>
                 </figure>
                 <figure class="carousel__slide" data-plate="1">
-                  <img src="images/4template.png" alt="Готовый шаблон таблицы для импорта: блоки RUB-активы, Валюта и Денежный рынок с формулами" width="1048" height="858" loading="lazy" data-zoom>
+                  <img src="images/4block3.png" alt="Готовый шаблон таблицы для импорта: блоки RUB-активы, Валюта и Денежный рынок с формулами" width="966" height="874" loading="lazy" data-zoom>
                 </figure>
                 <figure class="carousel__slide" data-plate="2">
                   <img src="images/7guide1.png" alt="Страница инструкции: получение токенов доступа в Т&#8209;Инвестициях, выбор типа «Только просмотр»" width="535" height="378" loading="lazy" data-zoom>
@@ -356,7 +380,7 @@
                     <figcaption>Все файлы со&nbsp;скриптами&nbsp;— в&nbsp;одной папке на&nbsp;твоём компьютере</figcaption>
                   </figure>
                   <figure class="carousel__slide shot" data-alt="Скриншот: шаблон Google Таблицы">
-                    <img data-src="images/4template.png" alt="Шаблон таблицы: блоки RUB-активы, Валюта и Денежный рынок, куда файлы со скриптами записывают портфель" width="1048" height="858" loading="lazy">
+                    <img data-src="images/4block3.png" alt="Шаблон таблицы: блоки RUB-активы, Валюта и Денежный рынок, куда файлы со скриптами записывают портфель" width="966" height="874" loading="lazy">
                     <figcaption>Сюда скрипты записывают портфель&nbsp;— шаблон Google Таблицы</figcaption>
                   </figure>
                   <figure class="carousel__slide shot" data-alt="Скриншот: автозагрузка Windows">

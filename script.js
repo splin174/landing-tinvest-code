@@ -159,7 +159,7 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
     highlight(0);
   });
 
-  /* ---------- Лайтбокс: клик по скриншоту в карусели 4.1 ---------- */
+  /* ---------- Лайтбокс: клик по скриншоту (блок 1, карусели 4.1 и 4.2) ---------- */
   const zoomImgs = document.querySelectorAll('[data-zoom]');
   if (zoomImgs.length) {
     const box = document.createElement('div');
@@ -168,23 +168,42 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-modal', 'true');
     box.setAttribute('aria-label', 'Скриншот крупно');
-    box.innerHTML = '<button class="lightbox__close" type="button" aria-label="Закрыть">×</button><img class="lightbox__img" alt="">';
+    box.innerHTML = '<button class="lightbox__close" type="button" aria-label="Закрыть">×</button>' +
+      '<button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Предыдущий скриншот">←</button>' +
+      '<img class="lightbox__img" alt="">' +
+      '<button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Следующий скриншот">→</button>';
     document.body.appendChild(box);
     const boxImg = box.querySelector('.lightbox__img');
     const closeBtn = box.querySelector('.lightbox__close');
+    const prevBtn = box.querySelector('.lightbox__nav--prev');
+    const nextBtn = box.querySelector('.lightbox__nav--next');
     let opener = null;
+    let group = []; // скриншоты той же карусели, которые листаются стрелками
+    let pos = 0;
+    function show(i) {
+      pos = (i + group.length) % group.length;
+      const img = group[pos];
+      opener = img;
+      boxImg.src = img.currentSrc || img.src || img.getAttribute('data-src');
+      boxImg.alt = img.alt;
+      // Карусель на странице идёт следом — после закрытия виден тот же скриншот
+      const car = img.closest('[data-carousel]');
+      const slide = img.closest('.carousel__slide');
+      if (car && car.carouselGo && slide) car.carouselGo(Array.prototype.indexOf.call(slide.parentNode.children, slide));
+    }
     function close() {
       box.hidden = true;
       document.documentElement.style.overflow = '';
-      if (opener) opener.focus();
+      if (opener) opener.focus({ preventScroll: true });
     }
     zoomImgs.forEach(function (img) {
       img.setAttribute('tabindex', '0');
       img.setAttribute('role', 'button');
       function open() {
-        opener = img;
-        boxImg.src = img.currentSrc || img.src;
-        boxImg.alt = img.alt;
+        const track = img.closest('[data-carousel-track]');
+        group = track ? Array.prototype.slice.call(track.querySelectorAll('[data-zoom]')) : [img];
+        prevBtn.hidden = nextBtn.hidden = group.length < 2;
+        show(group.indexOf(img));
         box.hidden = false;
         document.documentElement.style.overflow = 'hidden';
         closeBtn.focus();
@@ -195,8 +214,15 @@ const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
       });
     });
     closeBtn.addEventListener('click', close);
+    prevBtn.addEventListener('click', function () { show(pos - 1); });
+    nextBtn.addEventListener('click', function () { show(pos + 1); });
     box.addEventListener('click', function (e) { if (e.target === box) close(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (box.hidden) return;
+      if (e.key === 'Escape') close();
+      if (group.length > 1 && e.key === 'ArrowLeft') { e.preventDefault(); show(pos - 1); }
+      if (group.length > 1 && e.key === 'ArrowRight') { e.preventDefault(); show(pos + 1); }
+    });
   }
 
   /* ---------- Предпросмотр инструкции (видео грузится по клику) ---------- */

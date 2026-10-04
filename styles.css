@@ -378,13 +378,11 @@ button { font: inherit; }
 .hero-step__time { font-size: 24px; line-height: 1.2; font-weight: 800; color: var(--yellow); white-space: nowrap; }
 .hero-step__text { font-size: 17px; line-height: 1.35; font-weight: 600; color: var(--on-dark); }
 
-.hero__media {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 8px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
-}
-.hero__media img { width: 100%; }
+/* Карусель листов таблицы: рамка 5:4 — высота не меняется при листании, картинка вписана целиком */
+.hero__media { width: 100%; min-width: 0; }
+.hero__carousel .carousel__track { box-shadow: 0 20px 50px rgba(0, 0, 0, .35); }
+.hero__carousel.carousel--frame .carousel__slide { aspect-ratio: 5 / 4; margin: 0; padding: 8px; background: var(--white); border: 0; }
+.hero__carousel.carousel--frame .carousel__slide img { border-radius: 4px; }
 
 /* Бонус под шагами: текст + скриншот утреннего отчёта */
 /* Расстояние от главного скриншота до бонуса: 36 + 4 = 40px на мобильном, 32 + 24 = 56px с 768px */
@@ -821,6 +819,25 @@ button { font: inherit; }
   cursor: pointer;
 }
 .lightbox__close:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+/* Стрелки лайтбокса — листают скриншоты той же карусели */
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--navy);
+  font-size: 18px;
+  cursor: pointer;
+}
+.lightbox__nav[hidden] { display: none; }
+.lightbox__nav--prev { left: 12px; }
+.lightbox__nav--next { right: 12px; }
+.lightbox__nav:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+img[data-zoom] { cursor: zoom-in; }
 
 .feature {
   display: flex;
@@ -1256,8 +1273,8 @@ button { font: inherit; }
   .hero__audience { grid-column: 1; grid-row: 1; }
   .hero__promise { grid-column: 1; grid-row: 2; }
   .hero-tags { grid-column: 1; grid-row: 3; }
-  /* Скриншот занимает строки 1–5: шаги стоят напротив его нижней части, промежуток до отчёта — 72px */
-  .hero__media { grid-column: 2; grid-row: 1 / 6; max-width: 471px; justify-self: center; }
+  /* Карусель занимает строки 1–4: верх на одной линии с жёлтым заголовком, шаги — в промежутке между каруселью и отчётом */
+  .hero__media { grid-column: 2; grid-row: 1 / 5; max-width: 471px; justify-self: center; }
   .hero-steps { grid-column: 1; grid-row: 5; margin: 24px 0 0; }
   .hero__bonus { grid-column: 1 / -1; grid-row: 6; margin-top: 32px; grid-template-columns: 1.05fr 1fr; gap: 56px; }
   .hero__bonus-shot { justify-self: center; }
