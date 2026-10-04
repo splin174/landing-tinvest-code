@@ -308,7 +308,9 @@ button { font: inherit; }
 }
 
 .hero__cta { margin-top: 28px; }
-.hero__accent { color: var(--yellow); font-weight: 800; }
+/* Акцент и звёздочка-сноска: тёмно-золотой на светлом фоне, жёлтый — на тёмных секциях */
+.hero__accent { color: var(--yellow-ink); font-weight: 800; }
+.section--dark .hero__accent { color: var(--yellow); }
 
 /* Плашки-теги под обещанием */
 /* Две строки на всех ширинах: «Без навыков программирования», ниже «Навсегда» · «Без подписок» */
