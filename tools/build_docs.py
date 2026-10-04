@@ -59,6 +59,7 @@ def typo(s):
     s = re.sub(r'(\d) (?=\d|\(|рубл|дн|лет|час|календ|рабоч|минут|секунд)', lambda m: m.group(1) + ' ', s)
     s = re.sub(r'(№|ст\.|п\.|ч\.) (?=\d)', lambda m: m.group(1) + ' ', s)
     s = s.replace(SITE, '<mark class="doc__fill"><a href="index.html">' + SITE + '</a></mark>')
+    s = re.sub(r'[\w.+-]+@[\w-]+(?:\.[\w-]+)+', lambda m: '<a href="mailto:' + m.group(0) + '">' + m.group(0) + '</a>', s)
     # Ссылка на политику из оферты открывается во всплывающем окне (data-doc)
     s = s.replace('(privacy.html)', '(<a href="privacy.html" data-doc>privacy.html</a>)')
     s = s.replace(FILL_OPEN, '<mark class="doc__fill">').replace(FILL_CLOSE, '</mark>')
