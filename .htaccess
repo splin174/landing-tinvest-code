@@ -13,4 +13,12 @@
   # www.t-invest.boxguide.ru/… → https://t-invest.boxguide.ru/…
   RewriteCond %{HTTP_HOST} ^www\.t-invest\.boxguide\.ru$ [NC]
   RewriteRule ^(.*)$ https://t-invest.boxguide.ru/$1 [R=301,L]
+
+  # http://t-invest.boxguide.ru/… → https://t-invest.boxguide.ru/…
+  # HTTPS принимает прокси хостинга, поэтому проверяем и %{HTTPS}, и X-Forwarded-Proto —
+  # иначе Apache видел бы https-запросы как http и редирект зациклился бы.
+  RewriteCond %{HTTP_HOST} ^t-invest\.boxguide\.ru$ [NC]
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+  RewriteRule ^(.*)$ https://t-invest.boxguide.ru/$1 [R=301,L]
 </IfModule>
