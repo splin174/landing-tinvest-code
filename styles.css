@@ -338,6 +338,11 @@ button { font: inherit; }
   white-space: nowrap;
 }
 .hero-tag::before { content: "✓"; color: var(--yellow); font-weight: 800; }
+/* Уже 360px: плашка «Без навыков программирования» не помещалась в 288px и давала горизонтальную прокрутку */
+@media (max-width: 359px) {
+  .hero-tag { padding: 8px 12px; font-size: 15px; white-space: normal; }
+  .hero__content { min-width: 0; }
+}
 
 /* Сроки: шаги с номерами. На мобильном столбиком с вертикальной линией, с 768px в ряд со стрелкой-линией */
 .hero-steps {
