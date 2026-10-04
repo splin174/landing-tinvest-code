@@ -1,8 +1,8 @@
 // Ссылка на оплату. Пока пустая — кнопка в финальном блоке ведёт к #cta.
 const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
 
-// Номер счётчика Яндекс Метрики. Пока пустой — счётчик не загружается даже после «Принять».
-const METRIKA_ID = ''; // TODO: вставить номер счётчика, например '12345678'
+// Номер счётчика Яндекс Метрики. Если сделать пустым — счётчик не загружается даже после «Принять».
+const METRIKA_ID = '113395885';
 
 (function () {
   'use strict';
@@ -56,6 +56,7 @@ const METRIKA_ID = ''; // TODO: вставить номер счётчика, н
         if (!isOpen) {
           btn.setAttribute('aria-expanded', 'true');
           document.getElementById(btn.getAttribute('aria-controls')).hidden = false;
+          reachGoal('faq_open');
         }
       });
     });
@@ -274,6 +275,7 @@ const METRIKA_ID = ''; // TODO: вставить номер счётчика, н
     function show(href) {
       return load(href).then(function (doc) {
         titleEl.textContent = doc.title;
+        reachGoal('doc_open');
         bodyEl.innerHTML = doc.html;
         bodyEl.scrollTop = 0;
         if (modal.hidden) {
@@ -355,14 +357,41 @@ const METRIKA_ID = ''; // TODO: вставить номер счётчика, н
     window.ym.l = Date.now();
     const s = document.createElement('script');
     s.async = true;
-    s.src = 'https://mc.yandex.ru/metrika/tag.js';
+    s.src = 'https://mc.yandex.ru/metrika/tag.js?id=' + METRIKA_ID; // с ssr:true номер нужен в адресе скрипта
     document.head.appendChild(s);
     window.ym(Number(METRIKA_ID), 'init', {
+      ssr: true,
+      webvisor: true,
       clickmap: true,
-      trackLinks: true,
+      referrer: document.referrer,
+      url: location.href,
       accurateTrackBounce: true,
-      webvisor: false
+      trackLinks: true
     });
+  }
+
+  // Цели отправляются, только если Метрика загружена после согласия
+  function reachGoal(name) {
+    if (metrikaLoaded && window.ym) window.ym(Number(METRIKA_ID), 'reachGoal', name);
+  }
+
+  // buy_click — клик по кнопке покупки
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-pay]')) reachGoal('buy_click');
+  });
+
+  // cta_view — финальный CTA показался на экране, один раз за визит
+  const ctaBlock = document.getElementById('cta');
+  if (ctaBlock && 'IntersectionObserver' in window) {
+    const CTA_SEEN = 'ctaViewSent';
+    const ctaSeen = function () { try { return sessionStorage.getItem(CTA_SEEN) === '1'; } catch (e) { return false; } };
+    const ctaIo = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting || !metrikaLoaded || ctaSeen()) return;
+      reachGoal('cta_view');
+      try { sessionStorage.setItem(CTA_SEEN, '1'); } catch (e) { /* без хранилища — один раз до перезагрузки */ }
+      ctaIo.disconnect();
+    }, { threshold: 0.3 });
+    ctaIo.observe(ctaBlock);
   }
 
   const consent = readConsent();
@@ -374,7 +403,7 @@ const METRIKA_ID = ''; // TODO: вставить номер счётчика, н
     bar.setAttribute('role', 'region');
     bar.setAttribute('aria-label', 'Уведомление о cookie');
     bar.innerHTML =
-      '<p class="cookie__text">Мы используем файлы cookie и&nbsp;Яндекс Метрику, чтобы понимать, как работает сайт. Подробнее&nbsp;— в&nbsp;<a href="privacy.html" data-doc>политике&nbsp;конфиденциальности</a>.</p>' +
+      '<p class="cookie__text">Мы используем файлы cookie и&nbsp;Яндекс Метрику, в&nbsp;том числе Вебвизор, который записывает действия на&nbsp;сайте: прокрутку, движения мыши и&nbsp;клики. Подробнее&nbsp;— в&nbsp;<a href="privacy.html" data-doc>политике&nbsp;конфиденциальности</a>.</p>' +
       '<div class="cookie__actions">' +
         '<button class="cookie__btn" type="button" data-consent="accepted">Принять</button>' +
         '<button class="cookie__btn" type="button" data-consent="declined">Отказаться</button>' +
