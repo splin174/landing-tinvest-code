@@ -311,6 +311,11 @@ button { font: inherit; }
 /* Акцент и звёздочка-сноска: тёмно-золотой на светлом фоне, жёлтый — на тёмных секциях */
 .hero__accent { color: var(--yellow-ink); font-weight: 800; }
 .section--dark .hero__accent { color: var(--yellow); }
+/* Звёздочка-ссылка на сноску и сама сноска: мелкий приглушённый текст, звёздочка цветом акцента */
+.fn-ref { color: inherit; text-decoration: none; }
+.fn-ref:hover { text-decoration: underline; }
+.footnote { margin-top: 12px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.section--dark .footnote { color: var(--on-dark-muted); }
 
 /* Плашки-теги под обещанием */
 /* Две строки на всех ширинах: «Без навыков программирования», ниже «Навсегда» · «Без подписок» */
@@ -1241,6 +1246,7 @@ img[data-zoom] { cursor: zoom-in; }
   .hero__audience { font-size: 24px; }
   .hero__promise { font-size: 23px; }
   .hero__lead { font-size: 19px; }
+  .footnote { font-size: 14px; }
   /* Отступы в левой колонке hero: заголовок → обещание → плашки по 24px, шаги — отдельной группой */
   .hero__inner { row-gap: 32px; }
   .hero__promise { margin-top: 24px; }
