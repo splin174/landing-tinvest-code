@@ -272,17 +272,26 @@ const METRIKA_ID = '113395885';
       return cache[href];
     }
 
+    function render(title, html) {
+      titleEl.textContent = title;
+      bodyEl.innerHTML = html;
+      bodyEl.scrollTop = 0;
+      if (modal.hidden) {
+        modal.hidden = false;
+        document.documentElement.style.overflow = 'hidden';
+      }
+      dialog.focus();
+    }
+
     function show(href) {
       return load(href).then(function (doc) {
-        titleEl.textContent = doc.title;
         reachGoal('doc_open');
-        bodyEl.innerHTML = doc.html;
-        bodyEl.scrollTop = 0;
-        if (modal.hidden) {
-          modal.hidden = false;
-          document.documentElement.style.overflow = 'hidden';
-        }
-        dialog.focus();
+        render(doc.title, doc.html);
+      }, function () {
+        // Текст не загрузился (нет сети, страница открыта как файл) — сообщение в окне, без перехода
+        render('Не удалось загрузить документ',
+          '<p class="doc-modal__error">Проверьте подключение к интернету и попробуйте ещё раз.</p>' +
+          '<p class="doc-modal__error"><a href="' + href + '">Открыть документ на&nbsp;отдельной странице</a></p>');
       });
     }
 
@@ -310,9 +319,6 @@ const METRIKA_ID = '113395885';
         const state = { docModal: href };
         if (wasOpen) history.replaceState(state, '');
         else history.pushState(state, '');
-      }).catch(function () {
-        // Не удалось загрузить (например, страница открыта как файл) — обычный переход
-        window.location.href = href;
       });
     });
 
