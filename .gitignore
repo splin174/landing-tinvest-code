@@ -14,3 +14,7 @@ images/logo.png
 images/logo2.png
 images/7guide_scroll.gif
 images/coupons.png
+
+# Токены API — никогда не коммитить (токен Метрики хранится в ~/.metrika_token, вне проекта)
+.metrika_token
+*.token

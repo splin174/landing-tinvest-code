@@ -21,6 +21,7 @@ privacy.html   — политика конфиденциальности (соб
 docs-src/      — тексты оферты и политики в Markdown
 tools/build_docs.py — сборка oferta.html и privacy.html
 tools/deploy.sh — выкладка на хостинг Sprinthost
+tools/metrika.sh — статистика Яндекс Метрики через API
 images/        — скриншоты, логотип, оптимизированные копии (webp/jpg/mp4)
 ```
 
@@ -135,6 +136,23 @@ bash tools/deploy.sh
 - **Адрес сайта** — `https://t-invest.boxguide.ru/`. Он же должен стоять в интерфейсе Метрики (Настройки счётчика → Адрес сайта),
   иначе статистика собираться не будет. При смене домена адрес меняется там, в `docs-src/oferta-text.md` / `docs-src/privacy-text.md`,
   в константе `SITE` в `tools/build_docs.py` и в мета-тегах `og:url`, `og:image`, `twitter:image`.
+
+## Статистика Метрики через API
+
+`tools/metrika.sh` — запросы к API Яндекс Метрики, только чтение, счётчик `113395885`. Запуск в Git Bash из корня проекта:
+
+```
+bash tools/metrika.sh counters             # счётчики аккаунта: номер, имя, адрес сайта
+bash tools/metrika.sh goals-list           # цели счётчика
+bash tools/metrika.sh summary              # визиты, посетители, отказы, глубина, время по дням за 7 дней
+bash tools/metrika.sh sources 2026-10-01 today   # источники трафика за период
+bash tools/metrika.sh goals 30daysAgo today      # достижения целей по дням
+bash tools/metrika.sh raw /stat/v1/data "ids=113395885&metrics=ym:s:visits&date1=today&date2=today"
+```
+
+Даты: `YYYY-MM-DD`, `today`, `yesterday`, `NdaysAgo`; по умолчанию — последние 7 дней. Нужны `curl` и Python 3.
+
+**Токен** OAuth берётся из переменной `YANDEX_METRIKA_TOKEN`, а если её нет — из файла `~/.metrika_token` в домашней папке (вне проекта; права только для владельца: `chmod 600 ~/.metrika_token`). Скрипт не выводит токен и не передаёт его в аргументах команд. В репозиторий токен не попадает: файл лежит вне проекта, а `.metrika_token` и `*.token` дополнительно перечислены в `.gitignore`.
 
 ## Отложенный чеклист перед запуском
 
