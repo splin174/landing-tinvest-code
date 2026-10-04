@@ -984,14 +984,15 @@ img[data-zoom] { cursor: zoom-in; }
    Блок 5 — Прувы (Почему я создал эту автоматизацию)
    ========================================================= */
 .author {
+  /* Раскладка как у карточки «Гарантия 7 дней»: аватар слева/сверху, текст по одной левой линии */
   display: grid;
-  gap: 20px;
-  justify-items: center;
-  text-align: center;
+  gap: 16px;
+  justify-items: start;
+  text-align: left;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 28px 20px;
+  padding: 24px 20px;
   /* .author сам является .container, поэтому боковые поля — через ширину */
   width: calc(100% - 2 * var(--gutter));
   max-width: calc(1200px - 2 * var(--gutter));
@@ -1019,12 +1020,10 @@ img[data-zoom] { cursor: zoom-in; }
 }
 .author--accent .author__avatar { border-color: var(--yellow); }
 .author--accent .author__text p { margin-top: .875em; font-size: 16px; line-height: 1.5; color: var(--on-dark); }
-/* Абзацы — по левому краю на всех ширинах (на мобильном заголовок и «Без абонентской платы» по центру) */
-.author--accent .author__text p:not(.author__punch) { text-align: left; }
 .author--accent .author__text strong { color: var(--on-dark); font-weight: 800; }
 .author--accent .author__text .author__punch {
   margin-top: 18px;
-  font-size: 26px;
+  font-size: min(24px, calc((100vw - 76px) / 12)); /* вся фраза в одну строку и на 320 */
   line-height: 1.2;
   font-weight: 800;
   letter-spacing: -0.01em;
@@ -1239,13 +1238,7 @@ img[data-zoom] { cursor: zoom-in; }
   .carousel__slide { flex-basis: calc(50% - 8px); }
   .carousel--single .carousel__slide { flex-basis: 100%; }
 
-  .author {
-    grid-template-columns: auto 1fr;
-    justify-items: start;
-    text-align: left;
-    padding: 36px;
-    gap: 32px;
-  }
+  .author { grid-template-columns: auto 1fr; padding: 32px; gap: 24px; }
   .author--accent .author__text .author__punch { font-size: 32px; }
 
   .guarantee { grid-template-columns: auto 1fr; padding: 32px; gap: 24px; }
@@ -1257,8 +1250,8 @@ img[data-zoom] { cursor: zoom-in; }
    Breakpoint 1024px
    ========================================================= */
 @media (min-width: 1024px) {
-  /* Блок 5: абзацы карточки не шире ~68 символов, текст чуть крупнее */
-  .author--accent .author__text p { max-width: 68ch; font-size: 17px; }
+  /* Блок 5: текст чуть крупнее, абзацы на всю ширину карточки */
+  .author--accent .author__text p { font-size: 17px; }
   .pain-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   /* 4.1: плашки слева, карусель справа и липнет при прокрутке */
   .gallery { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 40px; align-items: start; }
