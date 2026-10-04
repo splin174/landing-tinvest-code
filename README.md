@@ -31,7 +31,7 @@ images/        — скриншоты, логотип, оптимизирова�
 | `11files.png`, `7guide_scroll-poster.jpg`, `4block3.png`, `1block6_tg_total.png`, `1block4.png`, `5rub.png`, `5rub_total.png` | 4.1 «Что получаю?» — общая карусель (рамка 4:3, клик — на весь экран); слайды привязаны к плашкам через `data-plate` / `data-pick` |
 | `7guide1–4.png` | 4.1 · аккордеон «Что в инструкции?» — карусель страниц инструкции |
 | `7guide_scroll.mp4` + `7guide_scroll-poster.jpg` | 4.1 · аккордеон «Что в инструкции?» — предпросмотр (грузится по кнопке) |
-| `11files.png`, `4block3.png`, `7guide1.png`, `12autoloading.png`, `8total_tg.png`, `3checkbox.png`, `10update.png` | 4.2 «Как запустить автоматизацию?» — общая карусель, по слайду на шаги 1–6 (у шага 6 два) |
+| `11files.png`, `4block3.png`, `7guide1.png`, `12autoloading.png`, `1block6_tg_total.png`, `4block2.png`, `4block2_2.png` | 4.2 «Как запустить автоматизацию?» — общая карусель, по слайду на шаги 1–6 (у шага 6 два) |
 | `11files.png`, `4block3.png`, `12autoloading.png` | 4.2 · аккордеон «Техническая логика работы» — карусель: папка с файлами автоматизации, шаблон таблицы, автозагрузка |
 | `7guide1.png` | Блок 6 «Безопасность и гарантия» — токен «Только просмотр» (временно, вместо `screen-6-token.png`) |
 | `logo.webp`, `favicon.png` | Шапка, финальный CTA, иконка вкладки |
