@@ -342,6 +342,8 @@ button { font: inherit; }
 /* Звёздочка-ссылка на сноску и сама сноска: мелкий приглушённый текст, звёздочка цветом акцента */
 .fn-ref { color: inherit; text-decoration: none; }
 .fn-ref:hover { text-decoration: underline; }
+/* Звёздочка внутри кнопки-плашки (span вместо ссылки) — тоже кликабельна */
+.fn-ref[data-fn] { cursor: pointer; }
 .footnote { margin-top: 12px; font-size: 13px; line-height: 1.5; color: var(--muted); }
 .section--dark .footnote { color: var(--on-dark-muted); }
 
@@ -919,6 +921,7 @@ button { font: inherit; }
 /* Подсказка под каруселью на тёмном фоне блока 1: читается, но второстепенная */
 .section--dark .gallery__hint { color: rgba(184, 195, 214, .75); }
 .hero__media .gallery__hint { margin-top: 8px; }
+.gallery__list { min-width: 0; }
 .pick-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .pick {
   width: 100%;

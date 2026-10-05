@@ -147,15 +147,37 @@ const METRIKA_ID = '113395885';
     if (details) details.addEventListener('toggle', function () { if (details.open) update(); });
   });
 
+  /* ---------- Звёздочка-сноска внутри кнопки-плашки ----------
+     Ссылку внутрь <button> вкладывать нельзя, поэтому звёздочка — <span data-fn="id сноски">.
+     Клик по ней прокручивает к сноске и не переключает слайд (обработчик на фазе перехвата) */
+  document.addEventListener('click', function (e) {
+    const star = e.target.closest('[data-fn]');
+    if (!star) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const note = document.getElementById(star.getAttribute('data-fn'));
+    if (!note) return;
+    const offset = header && getComputedStyle(header).position === 'sticky' ? header.offsetHeight : 0;
+    const top = note.getBoundingClientRect().top + window.pageYOffset - offset - 16;
+    window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }, true);
+
   /* ---------- 4.1: плашки ↔ общая карусель ---------- */
   document.querySelectorAll('[data-gallery]').forEach(function (gallery) {
     const car = gallery.querySelector('[data-carousel]');
     const picks = Array.prototype.slice.call(gallery.querySelectorAll('[data-pick]'));
+    const slides = Array.prototype.slice.call(car.querySelectorAll('.carousel__slide'));
     function highlight(plate) {
       picks.forEach(function (b, i) { b.setAttribute('aria-current', i === plate ? 'true' : 'false'); });
     }
+    // Плашка открывает первый слайд со своим data-plate: у плашки может быть несколько слайдов,
+    // поэтому номер плашки и номер слайда не обязаны совпадать
     picks.forEach(function (btn) {
-      btn.addEventListener('click', function () { car.carouselGo(Number(btn.getAttribute('data-pick'))); });
+      btn.addEventListener('click', function () {
+        const plate = btn.getAttribute('data-pick');
+        const index = slides.findIndex(function (s) { return s.getAttribute('data-plate') === plate; });
+        car.carouselGo(index < 0 ? 0 : index);
+      });
     });
     car.addEventListener('carousel:change', function (e) {
       highlight(Number(e.detail.slide.getAttribute('data-plate')));
