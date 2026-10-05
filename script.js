@@ -12,6 +12,22 @@ const METRIKA_ID = '113395885';
   const header = document.querySelector('.header');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Положение элемента на странице без учёта transform. Элементы с .reveal до появления сдвинуты
+  // анимацией вниз; getBoundingClientRect учёл бы этот сдвиг, и после анимации цель уехала бы вверх
+  function layoutTop(el) {
+    let top = 0;
+    for (let node = el; node; node = node.offsetParent) top += node.offsetTop;
+    return top;
+  }
+
+  // Куда прокрутить, чтобы цель встала под шапкой. Шапка липкая только с 768px — на мобильном
+  // отступ под неё не нужен. Секции — вплотную к шапке, остальное (сноски) — с зазором 16px
+  function scrollTarget(target) {
+    const offset = header && getComputedStyle(header).position === 'sticky' ? header.offsetHeight : 0;
+    const gap = target.tagName === 'SECTION' ? -1 : 16;
+    window.scrollTo({ top: layoutTop(target) - offset - gap, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       const id = link.getAttribute('href');
@@ -19,10 +35,7 @@ const METRIKA_ID = '113395885';
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      // Шапка липкая только с 768px — на мобильном отступ под неё не нужен
-      const offset = header && getComputedStyle(header).position === 'sticky' ? header.offsetHeight : 0;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset + 1;
-      window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      scrollTarget(target);
       history.replaceState(null, '', id);
     });
   });
@@ -157,13 +170,10 @@ const METRIKA_ID = '113395885';
     e.preventDefault();
     e.stopPropagation();
     const note = document.getElementById(star.getAttribute('data-fn'));
-    if (!note) return;
-    const offset = header && getComputedStyle(header).position === 'sticky' ? header.offsetHeight : 0;
-    const top = note.getBoundingClientRect().top + window.pageYOffset - offset - 16;
-    window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+    if (note) scrollTarget(note);
   }, true);
 
-  /* ---------- 4.1: плашки ↔ общая карусель ---------- */
+  /* ---------- Блок 2 «Что получаю?»: плашки ↔ общая карусель ---------- */
   document.querySelectorAll('[data-gallery]').forEach(function (gallery) {
     const car = gallery.querySelector('[data-carousel]');
     const picks = Array.prototype.slice.call(gallery.querySelectorAll('[data-pick]'));
@@ -186,7 +196,7 @@ const METRIKA_ID = '113395885';
     highlight(0);
   });
 
-  /* ---------- Лайтбокс: клик по скриншоту (блок 1, карусели 4.1 и 4.3; 4.3 сейчас скрыта) ---------- */
+  /* ---------- Лайтбокс: клик по скриншоту (блок 1, карусели блока 2 и скрытой секции «Как запустить автоматизацию?») ---------- */
   const zoomImgs = document.querySelectorAll('[data-zoom]');
   if (zoomImgs.length) {
     const box = document.createElement('div');
