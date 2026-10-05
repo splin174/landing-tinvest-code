@@ -11,8 +11,12 @@
 #    остаются без метки, поэтому выложенные .html отличаются от репозитория только этой меткой.
 # 2. Делает на сервере бэкап текущего корня сайта в ~/backup_<дата-время>/t-invest.
 # 3. Выкладывает файлы сайта (страницы, стили, скрипты, картинки, .htaccess) в корень сайта.
-#    Файлы перезаписываются, но ничего не удаляется: если файл убрали из репозитория,
-#    на сервере его нужно удалить вручную.
+#    Файлы перезаписываются. Файлы, убранные из репозитория после прошлой выкладки, удаляются
+#    с хостинга: скрипт сравнивает прошлый выложенный коммит (из ~/t-invest-deployed.txt) с текущим
+#    и удаляет только то, что было в прошлой выкладке и пропало из репозитория, — только внутри
+#    папки сайта и только среди страниц, styles.css, script.js и images/. .htaccess не удаляется
+#    никогда; бэкапы, другие сайты и файлы, которые не выкладывались из репозитория, не трогаются.
+#    Список к удалению печатается до выкладки. Если прошлый коммит неизвестен — удаление пропускается.
 #    Выложенный коммит записывается в ~/t-invest-deployed.txt на сервере (вне папки сайта).
 # 4. Проверяет, что главная, оферта и политика открываются.
 #
@@ -34,6 +38,8 @@ DEPLOYED_FILE="t-invest-deployed.txt"                  # от домашней �
 FILES=(index.html oferta.html privacy.html styles.css script.js images)
 # Страницы, в которых к ссылкам на стили и скрипт дописывается метка коммита
 PAGES=(index.html oferta.html privacy.html)
+# Где файлы могут удаляться с хостинга (если их убрали из репозитория). .htaccess сюда не входит
+PRUNE_PATHS=(index.html oferta.html privacy.html styles.css script.js images)
 # BatchMode — без запроса пароля; LogLevel=ERROR — без информационных предупреждений ssh
 SSH_OPTS=(-o BatchMode=yes -o LogLevel=ERROR)
 
@@ -74,6 +80,31 @@ for page in "${PAGES[@]}"; do
 done
 echo "    метка версии в страницах: ?v=$SHORT"
 
+# Файлы, убранные из репозитория после прошлой выкладки: были в выложенном коммите, нет в HEAD
+PREV="$(ssh "${SSH_OPTS[@]}" "$SSH_HOST" "head -1 ~/$DEPLOYED_FILE 2>/dev/null" || true)"
+REMOVED=()
+if [ -z "$PREV" ]; then
+  echo "    прошлый выложенный коммит неизвестен (~/$DEPLOYED_FILE) — удаление с хостинга пропущено"
+elif ! git -C "$SRC" cat-file -e "$PREV^{commit}" 2>/dev/null; then
+  echo "    коммита прошлой выкладки ${PREV:0:7} нет в локальном репозитории — удаление с хостинга пропущено"
+else
+  while IFS= read -r f; do
+    # Только простые относительные пути внутри папки сайта: без пробелов, кавычек, «..» и «/» в начале
+    if [[ ! "$f" =~ ^[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$ || "$f" == *..* ]]; then
+      echo "    Подозрительный путь к удалению: «$f» — выкладка остановлена" >&2
+      exit 1
+    fi
+    REMOVED+=("$f")
+  done < <(comm -23 <(git -C "$SRC" ls-tree -r --name-only "$PREV" -- "${PRUNE_PATHS[@]}" | LC_ALL=C sort) \
+                    <(git -C "$SRC" ls-tree -r --name-only HEAD -- "${PRUNE_PATHS[@]}" | LC_ALL=C sort))
+  if [ ${#REMOVED[@]} -eq 0 ]; then
+    echo "    к удалению с хостинга: ничего (с прошлой выкладки ${PREV:0:7} файлы не убирались)"
+  else
+    echo "    к удалению с хостинга (убраны из репозитория после ${PREV:0:7}):"
+    printf '      %s\n' "${REMOVED[@]}"
+  fi
+fi
+
 echo "2/4 Бэкап текущего сайта на сервере…"
 BACKUP="${BACKUP_PREFIX}$(date +%Y%m%d-%H%M%S)/t-invest"
 ssh "${SSH_OPTS[@]}" "$SSH_HOST" \
@@ -83,6 +114,13 @@ echo "3/4 Выкладываю файлы…"
 # Права как у git archive: файлы 644, папки 755; владелец в архиве не важен
 tar -c -C "$TMP" --owner=0 --group=0 --mode='u=rwX,go=rX' "${FILES[@]}" \
   | ssh "${SSH_OPTS[@]}" "$SSH_HOST" "umask 022 && tar -x -C ~/$SITE_ROOT && echo '    готово'"
+if [ ${#REMOVED[@]} -gt 0 ]; then
+  echo "    удаляю с хостинга:"
+  printf '      %s\n' "${REMOVED[@]}"
+  # cd в папку сайта: если её нет, rm не выполнится; пути проверены выше и взяты в кавычки
+  ssh "${SSH_OPTS[@]}" "$SSH_HOST" \
+    "cd ~/$SITE_ROOT && rm -f -- $(printf "'%s' " "${REMOVED[@]}")&& echo '    удалено файлов: ${#REMOVED[@]}'"
+fi
 ssh "${SSH_OPTS[@]}" "$SSH_HOST" \
   "printf '%s\n%s\n%s\n' '$COMMIT_FULL' \"\$(date '+%Y-%m-%d %H:%M:%S %z')\" '$BRANCH' > ~/$DEPLOYED_FILE \
    && echo '    коммит записан в ~/$DEPLOYED_FILE'"
