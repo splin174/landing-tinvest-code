@@ -8,6 +8,7 @@
 # 3. Выкладывает файлы сайта (страницы, стили, скрипты, картинки, .htaccess) в корень сайта.
 #    Файлы перезаписываются, но ничего не удаляется: если файл убрали из репозитория,
 #    на сервере его нужно удалить вручную.
+#    Выложенный коммит записывается в ~/t-invest-deployed.txt на сервере (вне папки сайта).
 # 4. Проверяет, что главная, оферта и политика открываются.
 #
 # ВНИМАНИЕ. Поддомен t-invest.boxguide.ru живёт в папке public_html/t-invest ВНУТРИ корня
@@ -25,6 +26,7 @@ SSH_HOST="sprint"
 SITE_ROOT="domains/boxguide.ru/public_html/t-invest"   # от домашней папки на сервере
 BACKUP_PREFIX="backup_"                                # бэкап: ~/backup_<дата-время>/t-invest
 SITE_URL="https://t-invest.boxguide.ru"
+DEPLOYED_FILE="t-invest-deployed.txt"                  # от домашней папки на сервере
 # Что выкладывать. README, docs-src/ и tools/ на хостинг не нужны.
 FILES=(index.html oferta.html privacy.html styles.css script.js images)
 # BatchMode — без запроса пароля; LogLevel=ERROR — без информационных предупреждений ssh
@@ -36,6 +38,7 @@ trap 'rm -rf "$TMP"' EXIT
 echo "1/4 Скачиваю $BRANCH из GitHub…"
 git clone --quiet --depth 1 --branch "$BRANCH" "$REPO" "$TMP/src"
 COMMIT="$(git -C "$TMP/src" log -1 --format='%h %s')"
+COMMIT_FULL="$(git -C "$TMP/src" rev-parse HEAD)"
 echo "    версия: $COMMIT"
 
 # Файл .htaccess (например, с редиректом) выкладывается, только если он есть в репозитории
@@ -47,8 +50,13 @@ ssh "${SSH_OPTS[@]}" "$SSH_HOST" \
   "mkdir -p ~/$BACKUP && cp -a ~/$SITE_ROOT/. ~/$BACKUP/ && echo '    бэкап: ~/$BACKUP'"
 
 echo "3/4 Выкладываю файлы…"
-git -C "$TMP/src" archive --format=tar HEAD "${FILES[@]}" \
+# core.autocrlf=false: файлы уходят на сервер байт в байт как в репозитории (LF).
+# Иначе при autocrlf=true из настроек Git для Windows архив получил бы CRLF.
+git -C "$TMP/src" -c core.autocrlf=false archive --format=tar HEAD "${FILES[@]}" \
   | ssh "${SSH_OPTS[@]}" "$SSH_HOST" "umask 022 && tar -x -C ~/$SITE_ROOT && echo '    готово'"
+ssh "${SSH_OPTS[@]}" "$SSH_HOST" \
+  "printf '%s\n%s\n%s\n' '$COMMIT_FULL' \"\$(date '+%Y-%m-%d %H:%M:%S %z')\" '$BRANCH' > ~/$DEPLOYED_FILE \
+   && echo '    коммит записан в ~/$DEPLOYED_FILE'"
 
 echo "4/4 Проверяю сайт…"
 for page in / /oferta.html /privacy.html; do
