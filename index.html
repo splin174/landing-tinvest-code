@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Т-Инвест: все портфели в Google Таблице и Telegram-боте</title>
-  <meta name="description" content="Все активы Т&#8209;Инвестиций в одной Google Таблице: настраиваешь за 1 час, и она обновляется сама. Каждое утро — отчёт в Telegram. Без подписок и без программирования.">
+  <meta name="description" content="Весь портфель Т&#8209;Инвестиций — в одной Google Таблице: настраиваешь за 1 час, и она обновляется сама. Каждое утро — отчёт в Telegram. Без подписок и без программирования.">
   <meta name="theme-color" content="#0B1F3A">
 
   <!-- Open Graph -->
@@ -31,7 +31,7 @@
       <a class="logo" href="#hero" aria-label="На главный экран">
         <img class="logo__img" src="images/logo.webp" alt="Логотип: Т-Инвест, Python, Google Таблица и Telegram" width="56" height="56">
       </a>
-      <h1 class="header__title">Все активы Т&#8209;Инвестиций в&nbsp;одной Google Таблице</h1>
+      <h1 class="header__title">Весь портфель Т&#8209;Инвестиций&nbsp;— в&nbsp;одной Google Таблице</h1>
       <!-- Кнопка покупки в шапке временно скрыта. Чтобы вернуть — раскомментировать:
       <a class="btn btn--primary btn--sm" href="#cta" data-scroll>Купить это решение сейчас</a>
       -->
@@ -104,6 +104,11 @@
           </figure>
         </div>
       </div>
+      <!-- Кнопка покупки после первого экрана. Ссылка на оплату задаётся в script.js (PAYMENT_URL) -->
+      <div class="container buy-strip">
+        <a class="btn btn--primary btn--lg" href="#cta" data-pay>Получить автоматизацию</a>
+        <p class="buy-strip__note">Файлы скрипта и&nbsp;инструкция сразу после оплаты · <span class="nowrap">Windows</span> · <span class="nowrap">настройка ~1&nbsp;час</span></p>
+      </div>
     </section>
 
     <!-- Блок 2 — Боль (Знакомо?) -->
@@ -135,7 +140,7 @@
           <li class="fit-item reveal"><span class="fit-item__check" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>У&nbsp;тебя несколько счетов в&nbsp;Т&#8209;Инвестициях (брокерский, ИИС)</strong>&nbsp;— и&nbsp;хочется видеть всё в&nbsp;одном месте, а&nbsp;не&nbsp;переключаться между ними.</p></li>
           <li class="fit-item reveal"><span class="fit-item__check" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>У&nbsp;тебя много активов</strong>&nbsp;— и&nbsp;уже неудобно ориентироваться в&nbsp;длинном списке позиций.</p></li>
           <li class="fit-item reveal"><span class="fit-item__check" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Хочешь понимать, что происходит с&nbsp;портфелем в&nbsp;динамике,</strong> без ручных подсчётов.</p></li>
-          <li class="fit-item reveal"><span class="fit-item__check" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Ценишь приватность</strong>&nbsp;— хочешь, чтобы данные хранились только в&nbsp;твоём Google&#8209;аккаунте, а&nbsp;скрипт работал на&nbsp;твоём компьютере, без сторонних серверов&#8209;посредников.</p></li>
+          <li class="fit-item reveal"><span class="fit-item__check" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Ценишь приватность</strong>&nbsp;— хочешь, чтобы данные хранились только в&nbsp;твоём Google&#8209;аккаунте, а&nbsp;скрипт работал на&nbsp;твоём компьютере, без серверов&#8209;посредников разработчика.</p></li>
           <li class="fit-item reveal"><span class="fit-item__check" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Готов один раз потратить время на&nbsp;настройку по&nbsp;подробной инструкции со&nbsp;скриншотами</strong>&nbsp;— и&nbsp;дальше автоматически получать актуальные данные.</p></li>
           <li class="fit-item reveal"><span class="fit-item__check" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Без навыков программирования</strong>&nbsp;— достаточно следовать инструкции, копировать и&nbsp;вставлять.</p></li>
         </ul>
@@ -208,6 +213,10 @@
             </div>
             <p class="gallery__hint">Нажми на скриншот, чтобы открыть его крупно</p>
           </div>
+        </div>
+        <!-- Кнопка покупки после «Что получаю?» -->
+        <div class="buy-strip">
+          <a class="btn btn--primary btn--lg" href="#cta" data-pay>Хочу такую таблицу с&nbsp;данными</a>
         </div>
       </div>
     </section>
@@ -369,13 +378,13 @@
             </div>
 
             <div class="callout acc__intro">
-              <p><strong>Файлы автоматизации</strong> сами безопасно берут данные по&nbsp;портфелю у&nbsp;Т&#8209;Инвестиций по&nbsp;API, сами собирают их&nbsp;и&nbsp;заполняют таблицу и&nbsp;сами пишут тебе в&nbsp;Telegram.</p>
+              <p>Каждый день скрипт запускается на&nbsp;вашем Windows&#8209;компьютере, получает данные через T&#8209;Invest API и&nbsp;записывает их&nbsp;в&nbsp;вашу Google Таблицу.</p>
+              <p class="acc__intro-more">Для автоматического обновления компьютер должен быть включён и&nbsp;иметь интернет. Выключили компьютер&nbsp;→ автоматическое обновление не&nbsp;выполняется. После включения скрипт запускается автоматически.</p>
             </div>
 
             <div class="how__grid">
               <div class="how__text">
-                <p class="reveal">Чтобы автоматизация работала, на&nbsp;компьютер один раз ставится Python. Это бесплатный официальный «движок» для таких программ, им&nbsp;пользуются миллионы людей, в&nbsp;том числе банки. Установка&nbsp;— как у&nbsp;любой другой программы. Больше ты&nbsp;его&nbsp;не&nbsp;открываешь.</p>
-                <p class="reveal">Дальше файлы со&nbsp;скриптами тихо «дежурят» в&nbsp;фоне: раз в&nbsp;сутки обновляют таблицу и&nbsp;слушают, не&nbsp;попросил ли&nbsp;ты&nbsp;обновить прямо сейчас&nbsp;— командой в&nbsp;Telegram или галочкой в&nbsp;таблице. При этом они почти не&nbsp;нагружают компьютер&nbsp;— подойдёт даже старый и&nbsp;слабый&nbsp;ПК.</p>
+                <p class="reveal">Чтобы автоматизация работала, на&nbsp;компьютер один раз ставится Python. Python нужен только для запуска скрипта. Вам не&nbsp;нужно писать код или разбираться в&nbsp;программировании. Установка&nbsp;— как у&nbsp;любой другой программы. Больше ты&nbsp;его&nbsp;не&nbsp;открываешь.</p>
               </div>
               <!-- Карусель: программа → таблица → автозагрузка -->
               <div class="carousel carousel--single carousel--fit how__media reveal" data-carousel aria-roledescription="карусель" aria-label="Как устроены файлы со скриптами">
@@ -431,18 +440,70 @@
             <span class="bar" aria-hidden="true"></span>
             <h2 class="section__title">Безопасность</h2>
           </div>
+          <!-- Главная карточка: токен «Только просмотр», пароль не нужен -->
+          <article class="feature feature--accent feature--lead reveal">
+            <span class="feature__icon" aria-hidden="true">🔐</span>
+            <div class="feature__body">
+              <h3 class="feature__title">Ваши деньги и&nbsp;пароли скрипт не&nbsp;получает</h3>
+              <p>Скрипту нужен только токен Т&#8209;Инвестиций с&nbsp;правом «Только просмотр». Он&nbsp;может получить информацию о&nbsp;портфеле, но&nbsp;технически не&nbsp;может выставить заявку, купить/продать бумагу или вывести деньги.</p>
+              <p>Ваш пароль от&nbsp;Т&#8209;Инвестиций мы&nbsp;не&nbsp;получаем.</p>
+            </div>
+          </article>
           <ul class="checklist">
-            <li class="reveal"><strong>Токен от&nbsp;Т&#8209;Инвестиций «только для чтения».</strong> Файлы со&nbsp;скриптами видят портфель, но&nbsp;не&nbsp;могут ни&nbsp;совершить сделку, ни&nbsp;вывести деньги.</li>
-            <li class="reveal"><strong>Всё остаётся у&nbsp;тебя.</strong> Скрипты работают на&nbsp;твоём компьютере, таблица лежит в&nbsp;твоём Google&#8209;аккаунте. Никаких чужих серверов.</li>
+            <li class="reveal"><strong>Ваши данные портфеля не&nbsp;проходят через сервер автора продукта.</strong> Скрипт работает на&nbsp;вашем компьютере и&nbsp;записывает данные в&nbsp;ваш Google&#8209;аккаунт.</li>
             <li class="reveal"><strong>Бот отвечает только тебе.</strong> Он&nbsp;привязан к&nbsp;твоему Telegram&#8209;аккаунту и&nbsp;игнорирует всех остальных.</li>
             <li class="reveal"><strong>Никаких подписок.</strong> Python, Google Таблицы, Telegram и API Т&#8209;Инвестиций бесплатны.</li>
           </ul>
-          <article class="feature feature--accent reveal"><span class="feature__icon" aria-hidden="true">🔒</span><p>Файлы со&nbsp;скриптами технически не&nbsp;могут купить или продать ни&nbsp;одной бумаги</p></article>
+          <!-- Что запускается на компьютере -->
+          <div class="runs reveal">
+            <h3 class="runs__title">Что именно запускается на&nbsp;твоём компьютере?</h3>
+            <p>Ты получаешь скрипты на&nbsp;Python и&nbsp;два небольших файла запуска (.bat и&nbsp;.vbs)&nbsp;— все их&nbsp;можно открыть в&nbsp;Блокноте и&nbsp;прочитать. Python ставится официальным бесплатным установщиком с&nbsp;python.org. От&nbsp;меня&nbsp;— никаких программ .exe и&nbsp;никакого удалённого доступа к&nbsp;компьютеру. Файл .vbs нужен только для того, чтобы бот работал в&nbsp;фоне, без открытого окна.</p>
+          </div>
         </div>
         <figure class="shot shot--card split__media reveal" data-alt="Скриншот: настройки токена «Только просмотр»">
           <img src="images/7guide1.png" alt="Страница инструкции «Получение токенов доступа»: в настройках токена выбран тип «Только просмотр»" width="535" height="378" loading="lazy">
           <figcaption>В&nbsp;инструкции показано, где выбрать тип токена «Только просмотр»</figcaption>
         </figure>
+      </div>
+      <!-- 6 · Схема доступа: на мобильном сверху вниз, с 1024px — в одну строку -->
+      <div class="container">
+        <div class="ro-flow reveal">
+          <ol class="ro-flow__steps" aria-label="Схема: данные портфеля идут из Т‑Инвестиций через API только для чтения в скрипт на Python на вашем компьютере и оттуда в Google Таблицу">
+            <li class="ro-flow__node">
+              <span class="ro-flow__icon ro-flow__icon--tinvest" aria-hidden="true">Т</span>
+              <span class="ro-flow__label">Т&#8209;Инвестиции</span>
+            </li>
+            <li class="ro-flow__node ro-flow__node--api">
+              <span class="ro-flow__icon ro-flow__icon--lock" aria-hidden="true">🔒</span>
+              <span class="ro-flow__label">Read Only API</span>
+              <ul class="ro-perms" aria-label="Что разрешает токен">
+                <li class="ro-perm ro-perm--no"><span class="ro-perm__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><span class="sr-only">Запрещено:</span> Покупка</li>
+                <li class="ro-perm ro-perm--no"><span class="ro-perm__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><span class="sr-only">Запрещено:</span> Продажа</li>
+                <li class="ro-perm ro-perm--no"><span class="ro-perm__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><span class="sr-only">Запрещено:</span> Вывод денег</li>
+                <li class="ro-perm ro-perm--yes"><span class="ro-perm__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="sr-only">Разрешено:</span> Чтение портфеля</li>
+              </ul>
+            </li>
+            <li class="ro-flow__node">
+              <span class="ro-flow__icon ro-flow__icon--python" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="32" height="32"><path fill="#4B8BBE" d="M11.9 2C7 2 7.3 4.1 7.3 4.1v2.2h4.7V7H5.4S2 6.6 2 11.9c0 5.2 3 5 3 5h1.8v-2.4s-.1-3 3-3h4.6s2.9.1 2.9-2.8V4.9S17.7 2 11.9 2zM9.3 3.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/><path fill="#FFD43B" d="M12.1 22c4.9 0 4.6-2.1 4.6-2.1v-2.2H12V17h6.6s3.4.4 3.4-4.9c0-5.2-3-5-3-5h-1.8v2.4s.1 3-3 3H9.6s-2.9-.1-2.9 2.8v3.8S6.3 22 12.1 22zm2.6-1.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>
+              </span>
+              <span class="ro-flow__label">Python на&nbsp;вашем&nbsp;ПК</span>
+            </li>
+            <li class="ro-flow__node">
+              <span class="ro-flow__icon ro-flow__icon--sheets" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M4 10h16M4 15h16M10 4v16" stroke="#fff" stroke-width="2"/></svg>
+              </span>
+              <span class="ro-flow__label">Google Таблица</span>
+            </li>
+          </ol>
+        </div>
+        <article class="feature feature--plain reveal">
+          <span class="feature__icon" aria-hidden="true">🤖</span>
+          <div class="feature__body">
+            <h3 class="feature__title">Это не&nbsp;торговый робот</h3>
+            <p>Скрипт только читает данные твоего портфеля и&nbsp;собирает их&nbsp;в&nbsp;удобном виде. Он&nbsp;не&nbsp;покупает, не&nbsp;продаёт и&nbsp;не&nbsp;даёт инвестиционных рекомендаций.</p>
+          </div>
+        </article>
       </div>
       <!-- 6 · Гарантия -->
       <div class="container"><hr class="divider"></div>
@@ -455,6 +516,10 @@
             <p class="guarantee__mail"><a class="guarantee__link" href="mailto:boxguide.ru@gmail.com">boxguide.ru@gmail.com</a></p>
             <p class="guarantee__note">Почему я спокойно даю такую гарантию? Все шаги я&nbsp;проверил на&nbsp;своих счетах. Если идти по&nbsp;порядку, всё работает.</p>
           </div>
+        </div>
+        <!-- Кнопка покупки после безопасности и гарантии -->
+        <div class="buy-strip">
+          <a class="btn btn--primary btn--lg" href="#cta" data-pay>Получить решение</a>
         </div>
       </div>
     </section>
@@ -492,8 +557,12 @@
             <div class="faq__a" id="faq-5" role="region" aria-labelledby="faq-5-q" hidden><p>Нет. Все используемые сервисы бесплатны.</p></div>
           </div>
           <div class="faq__item reveal">
-            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-6-q">Это продукт с&nbsp;инвестиционными рекомендациями?</button></h3>
-            <div class="faq__a" id="faq-6" role="region" aria-labelledby="faq-6-q" hidden><p>Нет. Это техническое решение для сбора данных в&nbsp;таблицу.</p></div>
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-6-q">Это торговый робот или инвестиционные рекомендации?</button></h3>
+            <div class="faq__a" id="faq-6" role="region" aria-labelledby="faq-6-q" hidden><p>Нет. Это техническое решение для сбора данных в&nbsp;таблицу: оно только читает портфель, ничего не&nbsp;покупает и&nbsp;не&nbsp;продаёт и&nbsp;не&nbsp;советует, что делать с&nbsp;активами.</p></div>
+          </div>
+          <div class="faq__item reveal">
+            <h3><button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-api" id="faq-api-q">А&nbsp;если Т&#8209;Инвестиции изменят API?</button></h3>
+            <div class="faq__a" id="faq-api" role="region" aria-labelledby="faq-api-q" hidden><p>Автоматизация использует официальный API Т&#8209;Инвестиций. Т&#8209;Инвестиции могут менять API и&nbsp;форматы данных. Если изменение нарушит работу скрипта в&nbsp;течение срока поддержки, я&nbsp;помогу разобраться в&nbsp;причине. Выпуск обновлений при изменениях сторонних сервисов не&nbsp;гарантируется&nbsp;— подробнее в&nbsp;<a class="faq__link" href="oferta.html" data-doc>п.&nbsp;9.2 оферты</a>.</p></div>
           </div>
         </div>
       </div>

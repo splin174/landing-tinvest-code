@@ -186,6 +186,34 @@ button { font: inherit; }
 /* Финальный CTA: сроки под кнопкой — полужирно и на 2px крупнее */
 .cta-note--strong { font-size: 16px; font-weight: 700; line-height: 1.45; }
 
+/* Промежуточные кнопки покупки (после hero, «Что получаю?» и гарантии): по центру, с подписью под кнопкой */
+.buy-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+  text-align: center;
+}
+.buy-strip > .btn { max-width: 100%; }
+.buy-strip__note { max-width: 520px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+.section--dark .buy-strip__note { color: var(--on-dark-muted); }
+
+.nowrap { white-space: nowrap; }
+
+/* Текст только для экранных дикторов */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Скриншоты + плейсхолдер, если картинка не загрузилась */
 .shot { margin: 0; position: relative; }
 .shot img { border-radius: var(--radius-sm); }
@@ -657,6 +685,8 @@ button { font: inherit; }
   transform: translateX(-50%) rotate(45deg);
 }
 
+.acc__intro .acc__intro-more { margin-top: 10px; }
+
 .how__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
 .how__text { display: grid; gap: 16px; align-content: start; font-size: 17px; color: var(--on-dark-muted); }
 .how__media { align-self: start; min-width: 0; }
@@ -694,6 +724,98 @@ button { font: inherit; }
   border-radius: 50%;
   background: var(--yellow) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%230B1F3A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat;
 }
+
+/* «Что именно запускается на вашем компьютере?» */
+.runs {
+  margin-top: 14px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.runs__title { font-size: 19px; line-height: 1.3; font-weight: 800; color: var(--navy); }
+.runs p { margin-top: 10px; }
+
+/* Схема доступа: Т-Инвестиции → Read Only API → Python → Google Таблица.
+   На мобильном узлы идут сверху вниз, с 1024px — в одну строку. */
+.ro-flow {
+  margin-top: 40px;
+  padding: 24px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.ro-flow__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+  row-gap: 44px;
+}
+.ro-flow__node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  text-align: center;
+}
+/* Стрелка к следующему узлу: вниз на мобильном, вправо с 1024px */
+.ro-flow__node:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -38px;
+  width: 24px;
+  height: 32px;
+  transform: translateX(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M12 2v26M5 21l7 7 7-7' fill='none' stroke='%235C6370' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.ro-flow__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  font-size: 28px;
+  font-weight: 900;
+}
+.ro-flow__icon--tinvest { background: var(--yellow); color: var(--navy); }
+.ro-flow__icon--lock { background: var(--navy); }
+.ro-flow__icon--python { background: #1A1F2B; }
+.ro-flow__icon--sheets { background: var(--green); }
+.ro-flow__label { font-size: 16px; font-weight: 700; line-height: 1.3; color: var(--navy); }
+
+/* Права токена под узлом API */
+.ro-perms {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  text-align: left;
+}
+.ro-perm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--text);
+}
+.ro-perm__mark {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.ro-perm--no { color: var(--muted); }
+.ro-perm--no .ro-perm__mark { background: rgba(217, 48, 37, .08); border: 1px solid rgba(217, 48, 37, .35); color: #B3261E; }
+.ro-perm--yes { font-weight: 700; }
+.ro-perm--yes .ro-perm__mark { background: rgba(30, 158, 90, .12); border: 1px solid rgba(30, 158, 90, .45); color: #17804A; }
 
 /* =========================================================
    4.1 · продолжение — Что в инструкции? (аккордеон; бывший «Один час — и навсегда»)
@@ -733,6 +855,8 @@ button { font: inherit; }
 @media (max-width: 479px) {
   /* Кнопка покупки на телефоне — текст в одну строку */
   .buy > .btn--xl { width: 100%; padding: 20px 16px; font-size: 18px; letter-spacing: 0; white-space: nowrap; }
+  /* Промежуточные кнопки — тоже в одну строку на 360px */
+  .buy-strip > .btn--lg { padding: 18px 12px; font-size: 17px; }
   .time-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .time-table,
   .time-table tbody,
@@ -883,6 +1007,13 @@ img[data-zoom] { cursor: zoom-in; }
   border: 1px solid var(--yellow-border);
   font-weight: 700;
 }
+
+/* Главная карточка блока «Безопасность»: заголовок + обычный текст */
+.feature--lead { margin: 0 0 14px; font-weight: 400; }
+.feature__title { font-size: 19px; line-height: 1.3; font-weight: 800; color: var(--navy); }
+.feature__body p { margin-top: 8px; }
+/* Плашка «Это не торговый робот» под схемой */
+.feature--plain { margin-top: 14px; background: var(--white); border: 1px solid var(--line); font-weight: 400; }
 
 /* Карусель */
 .carousel { position: relative; }
@@ -1126,6 +1257,15 @@ img[data-zoom] { cursor: zoom-in; }
 .faq__q[aria-expanded="true"]::after { content: "−"; }
 
 .faq__a { padding: 0 18px 18px; color: var(--muted); }
+/* Ссылка на оферту в ответе: как ссылки в «Гарантии» */
+.faq__link {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.faq__link:hover { color: var(--yellow-ink); }
 
 /* =========================================================
    Блок 8 — Финальный CTA
@@ -1457,6 +1597,22 @@ img[data-zoom] { cursor: zoom-in; }
   .nofit-list { display: block; columns: 2; column-gap: 48px; }
   .nofit-item { break-inside: avoid; margin-bottom: 14px; }
   .nofit__title { font-size: 26px; }
+
+  /* Схема доступа — в одну строку, стрелки вправо на уровне иконок */
+  .ro-flow { padding: 32px; }
+  .ro-flow__steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-items: stretch;
+    align-items: start;
+    column-gap: 56px;
+  }
+  .ro-flow__node:not(:last-child)::after {
+    left: auto;
+    right: -40px;
+    bottom: auto;
+    top: 12px;
+    transform: rotate(-90deg);
+  }
 }
 
 /* 1024–1199: левая колонка hero узкая — шаги компактнее, чтобы три стояли в ряд */
