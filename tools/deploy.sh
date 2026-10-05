@@ -3,7 +3,8 @@
 #   bash tools/deploy.sh
 #
 # Что делает:
-# 1. Скачивает свежую версию ветки main из GitHub во временную папку.
+# 1. Берёт текущий локальный коммит (HEAD). К GitHub не обращается: ни pull, ни fetch, ни push.
+#    Если в проекте есть незакоммиченные изменения, останавливается — сначала сделайте коммит.
 # 2. Делает на сервере бэкап текущего корня сайта в ~/backup_<дата-время>/t-invest.
 # 3. Выкладывает файлы сайта (страницы, стили, скрипты, картинки, .htaccess) в корень сайта.
 #    Файлы перезаписываются, но ничего не удаляется: если файл убрали из репозитория,
@@ -20,8 +21,6 @@
 # Нужно: Git Bash (git, ssh, tar) и алиас «sprint» в ~/.ssh/config (вход по ключу).
 set -euo pipefail
 
-REPO="git@github-splin174:splin174/landing-tinvest-code.git"
-BRANCH="main"
 SSH_HOST="sprint"
 SITE_ROOT="domains/boxguide.ru/public_html/t-invest"   # от домашней папки на сервере
 BACKUP_PREFIX="backup_"                                # бэкап: ~/backup_<дата-время>/t-invest
@@ -32,17 +31,23 @@ FILES=(index.html oferta.html privacy.html styles.css script.js images)
 # BatchMode — без запроса пароля; LogLevel=ERROR — без информационных предупреждений ssh
 SSH_OPTS=(-o BatchMode=yes -o LogLevel=ERROR)
 
-TMP="$(mktemp -d)"
-trap 'rm -rf "$TMP"' EXIT
+# Корень проекта — на уровень выше папки tools, откуда бы ни запускали скрипт
+SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-echo "1/4 Скачиваю $BRANCH из GitHub…"
-git clone --quiet --depth 1 --branch "$BRANCH" "$REPO" "$TMP/src"
-COMMIT="$(git -C "$TMP/src" log -1 --format='%h %s')"
-COMMIT_FULL="$(git -C "$TMP/src" rev-parse HEAD)"
-echo "    версия: $COMMIT"
+echo "1/4 Проверяю локальный коммит…"
+# Выкладывается только закоммиченное: правки, не попавшие в коммит, на сайт бы не ушли
+if [ -n "$(git -C "$SRC" status --porcelain)" ]; then
+  echo "    Есть незакоммиченные изменения — сначала сделайте коммит:" >&2
+  git -C "$SRC" status --short >&2
+  exit 1
+fi
+COMMIT="$(git -C "$SRC" log -1 --format='%h %s')"
+COMMIT_FULL="$(git -C "$SRC" rev-parse HEAD)"
+BRANCH="$(git -C "$SRC" rev-parse --abbrev-ref HEAD)"
+echo "    версия: $COMMIT ($BRANCH)"
 
-# Файл .htaccess (например, с редиректом) выкладывается, только если он есть в репозитории
-if [ -f "$TMP/src/.htaccess" ]; then FILES+=(.htaccess); fi
+# Файл .htaccess (например, с редиректом) выкладывается, только если он есть в коммите
+if git -C "$SRC" cat-file -e HEAD:.htaccess 2>/dev/null; then FILES+=(.htaccess); fi
 
 echo "2/4 Бэкап текущего сайта на сервере…"
 BACKUP="${BACKUP_PREFIX}$(date +%Y%m%d-%H%M%S)/t-invest"
@@ -52,7 +57,7 @@ ssh "${SSH_OPTS[@]}" "$SSH_HOST" \
 echo "3/4 Выкладываю файлы…"
 # core.autocrlf=false: файлы уходят на сервер байт в байт как в репозитории (LF).
 # Иначе при autocrlf=true из настроек Git для Windows архив получил бы CRLF.
-git -C "$TMP/src" -c core.autocrlf=false archive --format=tar HEAD "${FILES[@]}" \
+git -C "$SRC" -c core.autocrlf=false archive --format=tar HEAD "${FILES[@]}" \
   | ssh "${SSH_OPTS[@]}" "$SSH_HOST" "umask 022 && tar -x -C ~/$SITE_ROOT && echo '    готово'"
 ssh "${SSH_OPTS[@]}" "$SSH_HOST" \
   "printf '%s\n%s\n%s\n' '$COMMIT_FULL' \"\$(date '+%Y-%m-%d %H:%M:%S %z')\" '$BRANCH' > ~/$DEPLOYED_FILE \
