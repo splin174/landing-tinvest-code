@@ -297,18 +297,31 @@ const METRIKA_ID = '113395885';
     function render(title, html) {
       titleEl.textContent = title;
       bodyEl.innerHTML = html;
-      bodyEl.scrollTop = 0;
       if (modal.hidden) {
         modal.hidden = false;
         document.documentElement.style.overflow = 'hidden';
       }
+      // Прокрутку сбрасываем после показа окна: у скрытого окна она не меняется,
+      // и документ открывался бы на месте, где его закрыли в прошлый раз
+      bodyEl.scrollTop = 0;
       dialog.focus();
     }
 
+    // Ссылка вида oferta.html#p-9-2 открывает документ сразу на нужном пункте и подсвечивает его
+    function scrollToItem(hash) {
+      const target = hash && bodyEl.querySelector('#' + CSS.escape(hash));
+      if (!target) return;
+      bodyEl.scrollTop += target.getBoundingClientRect().top - bodyEl.getBoundingClientRect().top - 16;
+      target.classList.add('doc__item--hl');
+      setTimeout(function () { target.classList.remove('doc__item--hl'); }, 2500);
+    }
+
     function show(href) {
-      return load(href).then(function (doc) {
+      const parts = href.split('#');
+      return load(parts[0]).then(function (doc) {
         reachGoal('doc_open');
         render(doc.title, doc.html);
+        scrollToItem(parts[1]);
       }, function () {
         // Текст не загрузился (нет сети, страница открыта как файл) — сообщение в окне, без перехода
         render('Не удалось загрузить документ',

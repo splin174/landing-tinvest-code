@@ -1430,6 +1430,10 @@ img[data-zoom] { cursor: zoom-in; }
 .doc__requisites { margin-top: 12px; font-size: 16px; line-height: 1.6; color: var(--text); }
 .doc__num { font-weight: 700; }
 .doc__item--note { color: var(--muted); }
+/* Пункт, на который ведёт ссылка (oferta.html#p-9-2): в окне документов и на отдельной странице */
+.doc__item { scroll-margin-top: calc(var(--header-h) + 16px); border-radius: 6px; transition: background-color .6s ease, box-shadow .6s ease; }
+.doc__item:target,
+.doc__item--hl { background: var(--yellow-soft); box-shadow: 0 0 0 6px var(--yellow-soft); }
 /* Длинный адрес сайта не должен давать горизонтальную прокрутку на телефоне */
 .doc a { color: var(--navy); overflow-wrap: anywhere; }
 .doc__back { overflow-wrap: normal; }

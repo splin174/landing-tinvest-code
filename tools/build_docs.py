@@ -101,7 +101,9 @@ def body(md):
         else:
             m = re.match(r'^(\d+\.\d+\.)\s+(.*)$', first)
             if m:
-                parts.append('        <p class="doc__item"><span class="doc__num">' + m.group(1) + '</span> ' + typo(m.group(2)) + '</p>')
+                # Якорь пункта: «9.2.» → id="p-9-2" — на него ведут ссылки вида oferta.html#p-9-2
+                anchor = 'p-' + m.group(1).rstrip('.').replace('.', '-')
+                parts.append('        <p class="doc__item" id="' + anchor + '"><span class="doc__num">' + m.group(1) + '</span> ' + typo(m.group(2)) + '</p>')
             else:
                 parts.append('        <p class="doc__item doc__item--note">' + typo(first) + '</p>')
     if in_section:
