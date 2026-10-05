@@ -353,12 +353,12 @@
     </section>
     конец скрытой секции 4.2 -->
 
-    <!-- 4.2 · продолжение — Техническая логика работы (аккордеон). Секция 4.2 скрыта, аккордеон оставлен на месте:
+    <!-- 4.2 · продолжение — «Как всё работает простыми словами» (аккордеон; бывший «Техническая логика работы»). Секция 4.2 скрыта, аккордеон оставлен на месте:
          теперь он идёт сразу после аккордеона 4.1 «Что в инструкции?» -->
     <section class="section section--dark section--acc" id="how">
       <div class="container">
         <details class="acc">
-          <summary class="acc__summary"><h2 class="acc__title">Техническая логика работы</h2><span class="acc__chevron" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <summary class="acc__summary"><h2 class="acc__title">Как всё работает простыми&nbsp;словами</h2><span class="acc__chevron" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
           <div class="acc__body">
             <!-- Схема: Т-Инвест → Python → Google Таблица + Telegram -->
             <div class="flow reveal" role="img" aria-label="Схема: Т-Инвест передаёт данные скриптам на Python, они записывают их в Google Таблицу и отправляют в Telegram">
@@ -388,36 +388,13 @@
             </div>
 
             <div class="callout acc__intro">
-              <p>Каждый день скрипт запускается на&nbsp;твоём Windows&#8209;компьютере, получает данные через API Т&#8209;Инвестиций и&nbsp;записывает их&nbsp;в&nbsp;твою Google Таблицу.</p>
-              <p class="acc__intro-more">Для автоматического обновления компьютер должен быть включён и&nbsp;иметь интернет. Выключили компьютер&nbsp;→ автоматическое обновление не&nbsp;выполняется. После включения скрипт запускается автоматически.</p>
+              <p>Скрипт запускается на&nbsp;твоём Windows&#8209;компьютере, получает данные через API Т&#8209;Инвестиций, записывает их&nbsp;в&nbsp;твою Google Таблицу и&nbsp;отправляет отчёт в&nbsp;Telegram<strong class="hero__accent"><a class="fn-ref" href="#fn-how" aria-label="Сноска">*</a></strong>.</p>
+              <p class="acc__intro-more">Для автоматического обновления компьютер должен быть включён и&nbsp;иметь интернет. Выключили компьютер&nbsp;→ автоматическое обновление не&nbsp;выполняется. <strong>После включения скрипт запускается&nbsp;автоматически.</strong></p>
             </div>
 
-            <div class="how__grid">
-              <div class="how__text">
-                <p class="reveal">Чтобы автоматизация работала, на&nbsp;компьютер один раз ставится Python. Python нужен только для запуска скрипта. Тебе не&nbsp;нужно писать код или разбираться в&nbsp;программировании. Установка&nbsp;— как у&nbsp;любой другой программы. Больше ты&nbsp;его&nbsp;не&nbsp;открываешь.</p>
-              </div>
-              <!-- Карусель: программа → таблица → автозагрузка -->
-              <div class="carousel carousel--single carousel--fit how__media reveal" data-carousel aria-roledescription="карусель" aria-label="Как устроены файлы со скриптами">
-                <div class="carousel__track" data-carousel-track tabindex="0">
-                  <figure class="carousel__slide shot" data-alt="Скриншот: папка проекта">
-                    <img data-src="images/11files.png" alt="Папка с файлами автоматизации на компьютере: скрипты Python, файл настроек .env и README" width="491" height="769" loading="lazy">
-                    <figcaption>Все файлы со&nbsp;скриптами&nbsp;— в&nbsp;одной папке на&nbsp;твоём компьютере</figcaption>
-                  </figure>
-                  <figure class="carousel__slide shot" data-alt="Скриншот: шаблон Google Таблицы">
-                    <img data-src="images/4block3.png" alt="Шаблон таблицы: блоки RUB-активы, Валюта и Денежный рынок, куда файлы со скриптами записывают портфель" width="966" height="874" loading="lazy">
-                    <figcaption>Сюда скрипты записывают портфель&nbsp;— шаблон Google Таблицы</figcaption>
-                  </figure>
-                  <figure class="carousel__slide shot" data-alt="Скриншот: автозагрузка Windows">
-                    <img data-src="images/12autoloading.png" alt="Папка автозагрузки Windows с ярлыком start_bot_hidden — бот запускается сам при включении компьютера" width="744" height="284" loading="lazy">
-                    <figcaption>Ярлык в автозагрузке — бот стартует сам при включении компьютера</figcaption>
-                  </figure>
-                </div>
-                <div class="carousel__controls">
-                  <button class="carousel__btn" type="button" data-carousel-prev aria-label="Предыдущий слайд">←</button>
-                  <div class="carousel__dots" data-carousel-dots></div>
-                  <button class="carousel__btn" type="button" data-carousel-next aria-label="Следующий слайд">→</button>
-                </div>
-              </div>
+            <div class="how__text">
+              <p class="reveal">Программа Python устанавливается один раз и&nbsp;нужна только для работы скрипта. Установка&nbsp;— как у&nbsp;любой другой программы. <strong>Тебе не&nbsp;нужно писать код или разбираться в&nbsp;программировании.</strong> Все файлы уже созданы и&nbsp;готовы к&nbsp;работе.</p>
+              <p class="footnote" id="fn-how"><span class="hero__accent">*</span> Отчёты в&nbsp;Telegram приходят стабильно, если у&nbsp;компьютера с&nbsp;файлами автоматизации есть надёжный доступ к&nbsp;Telegram: через прокси в&nbsp;настройках скрипта или VPN&#8209;подключение. <strong>Google&nbsp;Таблица обновляется в&nbsp;любом&nbsp;случае.</strong></p>
             </div>
           </div>
         </details>

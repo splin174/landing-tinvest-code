@@ -155,7 +155,7 @@ button { font: inherit; }
   font-size: 17px;
 }
 
-/* Плашка-вступление в тёмном аккордеоне «Техническая логика работы» */
+/* Плашка-вступление в тёмном аккордеоне «Как всё работает простыми словами» */
 .acc__intro { margin-bottom: 32px; }
 .section--dark .callout { background: rgba(255, 221, 45, .08); border-color: rgba(255, 221, 45, .4); color: var(--on-dark); }
 .section--dark .callout strong { color: var(--yellow); }
@@ -587,7 +587,7 @@ button { font: inherit; }
 .auto-step__text strong { font-weight: 700; }
 
 /* =========================================================
-   Аккордеон (<details>): «Что в инструкции?», «Техническая логика работы»
+   Аккордеон (<details>): «Что в инструкции?», «Как всё работает простыми словами»
    ========================================================= */
 .section--acc { padding: 40px 0; }
 .acc {
@@ -638,7 +638,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   4.2 · продолжение — Техническая логика работы (аккордеон; бывший «Как это работает?»)
+   4.2 · продолжение — «Как всё работает простыми словами» (аккордеон; бывший «Техническая логика работы»)
    ========================================================= */
 .flow {
   display: flex;
@@ -698,9 +698,7 @@ button { font: inherit; }
 
 .acc__intro .acc__intro-more { margin-top: 10px; }
 
-.how__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
 .how__text { display: grid; gap: 16px; align-content: start; font-size: 17px; color: var(--on-dark-muted); }
-.how__media { align-self: start; min-width: 0; }
 
 /* =========================================================
    Двухколоночный layout (текст + скрин): «Что в инструкции?» и блок 6 «Безопасность»
@@ -1078,21 +1076,8 @@ img[data-zoom] { cursor: zoom-in; }
 .carousel__slide img { width: 100%; background: var(--white); }
 .carousel__slide figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); text-align: center; }
 
-/* Карусель «по одному слайду», картинки разных пропорций вписываются по высоте */
+/* Карусель «по одному слайду» */
 .carousel--single .carousel__slide { flex-basis: 100%; }
-.carousel--fit .carousel__slide {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: var(--white);
-  border: 1px solid var(--line);
-}
-.carousel--fit .carousel__slide img {
-  width: auto;
-  max-width: 100%;
-  max-height: 440px;
-  margin: 0 auto;
-}
 
 .carousel__controls {
   display: flex;
@@ -1681,7 +1666,6 @@ img[data-zoom] { cursor: zoom-in; }
 
 
 
-  .how__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; }
 
   .split { grid-template-columns: 1.1fr 1fr; gap: 56px; }
   .split__media { position: sticky; top: calc(var(--header-h) + 24px); }
@@ -1690,6 +1674,3 @@ img[data-zoom] { cursor: zoom-in; }
 
   .carousel__slide { flex-basis: 100%; }
 }
-
-/* Подписи на белых слайдах внутри тёмной секции */
-.section--dark .carousel--fit figcaption { color: var(--muted); }
