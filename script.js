@@ -290,7 +290,7 @@ const METRIKA_ID = '113395885';
       }, function () {
         // Текст не загрузился (нет сети, страница открыта как файл) — сообщение в окне, без перехода
         render('Не удалось загрузить документ',
-          '<p class="doc-modal__error">Проверьте подключение к интернету и попробуйте ещё раз.</p>' +
+          '<p class="doc-modal__error">Возможно, нет подключения к&nbsp;интернету.</p>' +
           '<p class="doc-modal__error"><a href="' + href + '">Открыть документ на&nbsp;отдельной странице</a></p>');
       });
     }
@@ -409,7 +409,7 @@ const METRIKA_ID = '113395885';
     bar.setAttribute('role', 'region');
     bar.setAttribute('aria-label', 'Уведомление о cookie');
     bar.innerHTML =
-      '<p class="cookie__text">Мы используем файлы cookie и&nbsp;Яндекс Метрику, в&nbsp;том числе Вебвизор, который записывает действия на&nbsp;сайте: прокрутку, движения мыши и&nbsp;клики. Подробнее&nbsp;— в&nbsp;<a href="privacy.html" data-doc>политике&nbsp;конфиденциальности</a>.</p>' +
+      '<p class="cookie__text">На&nbsp;сайте используются файлы cookie и&nbsp;Яндекс Метрика, в&nbsp;том числе Вебвизор, который записывает действия на&nbsp;сайте: прокрутку, движения мыши и&nbsp;клики. Подробнее&nbsp;— в&nbsp;<a href="privacy.html" data-doc>политике&nbsp;конфиденциальности</a>.</p>' +
       '<div class="cookie__actions">' +
         '<button class="cookie__btn" type="button" data-consent="accepted">Принять</button>' +
         '<button class="cookie__btn" type="button" data-consent="declined">Отказаться</button>' +

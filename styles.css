@@ -346,7 +346,8 @@ button { font: inherit; }
 .section--dark .footnote { color: var(--on-dark-muted); }
 
 /* Плашки-теги под обещанием */
-/* Две строки на всех ширинах: «Без навыков программирования», ниже «Навсегда» · «Без подписок» */
+/* С 480px две строки: «Без навыков программирования», ниже «Разовая покупка» · «Без подписки».
+   Уже 480px — обычный перенос: вторая пара не помещается в 360px и давала горизонтальную прокрутку */
 .hero-tags {
   list-style: none;
   margin: 22px 0 0;
@@ -371,10 +372,20 @@ button { font: inherit; }
   white-space: nowrap;
 }
 .hero-tag::before { content: "✓"; color: var(--yellow); font-weight: 800; }
+@media (max-width: 479px) {
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 12px; }
+}
 /* Уже 360px: плашка «Без навыков программирования» не помещалась в 288px и давала горизонтальную прокрутку */
 @media (max-width: 359px) {
   .hero-tag { padding: 8px 12px; font-size: 15px; white-space: normal; }
   .hero__content { min-width: 0; }
+  /* 320px: шаги «Как запустить автоматизацию?» и кнопка предпросмотра давали горизонтальную прокрутку */
+  .gallery,
+  .auto-steps { grid-template-columns: minmax(0, 1fr); }
+  .auto-step { padding: 10px 8px; gap: 10px; font-size: 15px; }
+  .auto-step__num { width: 32px; height: 32px; font-size: 15px; }
+  .auto-step__text { min-width: 0; overflow-wrap: anywhere; }
+  .preview__btn { padding: 12px 14px; font-size: 14px; }
 }
 
 /* Сроки: шаги с номерами. На мобильном столбиком с вертикальной линией, с 768px в ряд со стрелкой-линией */
@@ -787,6 +798,32 @@ button { font: inherit; }
 .ro-flow__icon--sheets { background: var(--green); }
 .ro-flow__label { font-size: 16px; font-weight: 700; line-height: 1.3; color: var(--navy); }
 
+/* Пунктирная ветка от Python: отчёт в Telegram по желанию */
+.ro-branch { display: flex; flex-direction: column; align-items: center; }
+.ro-branch__line { width: 0; height: 18px; border-left: 2px dashed #9AA3B2; }
+.ro-branch__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  text-align: left;
+  border: 1px dashed #9AA3B2;
+  border-radius: 999px;
+  background: var(--white);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--muted);
+}
+.ro-branch__icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #229ED9;
+}
+
 /* Права токена под узлом API */
 .ro-perms {
   list-style: none;
@@ -1013,7 +1050,7 @@ img[data-zoom] { cursor: zoom-in; }
 .feature__title { font-size: 19px; line-height: 1.3; font-weight: 800; color: var(--navy); }
 .feature__body p { margin-top: 8px; }
 /* Плашка «Это не торговый робот» под схемой */
-.feature--plain { margin-top: 14px; background: var(--white); border: 1px solid var(--line); font-weight: 400; }
+.feature--plain { margin-top: 14px; padding: 20px; background: var(--white); border: 1px solid var(--line); font-weight: 400; }
 
 /* Карусель */
 .carousel { position: relative; }
