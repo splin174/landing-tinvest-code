@@ -196,7 +196,7 @@ button { font: inherit; }
   text-align: center;
 }
 .buy-strip > .btn { max-width: 100%; }
-.buy-strip__note { max-width: 520px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+.buy-strip__note { max-width: 640px; font-size: 14px; line-height: 1.45; color: var(--muted); }
 .section--dark .buy-strip__note { color: var(--on-dark-muted); }
 
 .nowrap { white-space: nowrap; }
@@ -346,17 +346,17 @@ button { font: inherit; }
 .section--dark .footnote { color: var(--on-dark-muted); }
 
 /* Плашки-теги под обещанием */
-/* С 480px две строки: «Без навыков программирования», ниже «Разовая покупка» · «Без подписки».
-   Уже 480px — обычный перенос: вторая пара не помещается в 360px и давала горизонтальную прокрутку */
+/* Каждая плашка на своей строке, по левому краю: две длинные плашки в один ряд
+   не помещаются ни на телефоне, ни в левой колонке hero на десктопе */
 .hero-tags {
   list-style: none;
   margin: 22px 0 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
 }
-.hero-tag:first-child { grid-column: 1 / -1; justify-self: start; }
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -372,9 +372,6 @@ button { font: inherit; }
   white-space: nowrap;
 }
 .hero-tag::before { content: "✓"; color: var(--yellow); font-weight: 800; }
-@media (max-width: 479px) {
-  .hero-tags { display: flex; flex-wrap: wrap; gap: 12px; }
-}
 /* Уже 360px: плашка «Без навыков программирования» не помещалась в 288px и давала горизонтальную прокрутку */
 @media (max-width: 359px) {
   .hero-tag { padding: 8px 12px; font-size: 15px; white-space: normal; }
