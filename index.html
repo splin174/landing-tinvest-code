@@ -353,51 +353,52 @@
     </section>
     конец скрытой секции 4.2 -->
 
-    <!-- 4.2 · продолжение — «Как всё работает простыми словами» (аккордеон; бывший «Техническая логика работы»). Секция 4.2 скрыта, аккордеон оставлен на месте:
-         теперь он идёт сразу после аккордеона 4.1 «Что в инструкции?» -->
-    <section class="section section--dark section--acc" id="how">
+    <!-- 4.2 · продолжение — «Как всё работает простыми словами» (бывший аккордеон «Техническая логика работы»): всегда видимый
+         блок с подзаголовком — цепочка Т-Инвест → Python → Google Таблица + Telegram, плашка, абзац про Python и сноска.
+         Секция 4.2 скрыта, поэтому блок идёт сразу после аккордеона 4.1 «Что в инструкции?» -->
+    <section class="section section--dark" id="how">
       <div class="container">
-        <details class="acc">
-          <summary class="acc__summary"><h2 class="acc__title">Как всё работает простыми&nbsp;словами</h2><span class="acc__chevron" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
-          <div class="acc__body">
-            <!-- Схема: Т-Инвест → Python → Google Таблица + Telegram -->
-            <div class="flow reveal" role="img" aria-label="Схема: Т-Инвест передаёт данные скриптам на Python, они записывают их в Google Таблицу и отправляют в Telegram">
-              <div class="flow__node">
-                <span class="flow__icon flow__icon--tinvest" aria-hidden="true">Т</span>
-                <span class="flow__label">Т-Инвест</span>
-              </div>
-              <span class="flow__arrow" aria-hidden="true"></span>
-              <div class="flow__node">
-                <span class="flow__icon flow__icon--python" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="34" height="34"><path fill="#4B8BBE" d="M11.9 2C7 2 7.3 4.1 7.3 4.1v2.2h4.7V7H5.4S2 6.6 2 11.9c0 5.2 3 5 3 5h1.8v-2.4s-.1-3 3-3h4.6s2.9.1 2.9-2.8V4.9S17.7 2 11.9 2zM9.3 3.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/><path fill="#FFD43B" d="M12.1 22c4.9 0 4.6-2.1 4.6-2.1v-2.2H12V17h6.6s3.4.4 3.4-4.9c0-5.2-3-5-3-5h-1.8v2.4s.1 3-3 3H9.6s-2.9-.1-2.9 2.8v3.8S6.3 22 12.1 22zm2.6-1.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>
-                </span>
-                <span class="flow__label">Python</span>
-              </div>
-              <span class="flow__arrow" aria-hidden="true"></span>
-              <div class="flow__node flow__node--pair">
-                <span class="flow__pair">
-                  <span class="flow__icon flow__icon--sheets" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="30" height="30"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M4 10h16M4 15h16M10 4v16" stroke="#fff" stroke-width="2"/></svg>
-                  </span>
-                  <span class="flow__icon flow__icon--tg" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="28" height="28"><path fill="#fff" d="M21.5 3.6 2.9 10.8c-1.3.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.8c.3-1.3-.5-1.9-1.5-1.8zM8.7 13.4l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5z"/></svg>
-                  </span>
-                </span>
-                <span class="flow__label">Google Таблица + Telegram</span>
-              </div>
-            </div>
+        <div class="section__head reveal">
+          <span class="bar" aria-hidden="true"></span>
+          <h2 class="section__title">Как всё работает простыми&nbsp;словами</h2>
+        </div>
 
-            <div class="callout acc__intro">
-              <p>Скрипт запускается на&nbsp;твоём Windows&#8209;компьютере, получает данные через API Т&#8209;Инвестиций, записывает их&nbsp;в&nbsp;твою Google Таблицу и&nbsp;отправляет отчёт в&nbsp;Telegram<strong class="hero__accent"><a class="fn-ref" href="#fn-how" aria-label="Сноска">*</a></strong>.</p>
-              <p class="acc__intro-more">Для автоматического обновления компьютер должен быть включён и&nbsp;иметь интернет. Выключили компьютер&nbsp;→ автоматическое обновление не&nbsp;выполняется. <strong>После включения скрипт запускается&nbsp;автоматически.</strong></p>
-            </div>
-
-            <div class="how__text">
-              <p class="reveal">Программа Python устанавливается один раз и&nbsp;нужна только для работы скрипта. Установка&nbsp;— как у&nbsp;любой другой программы. <strong>Тебе не&nbsp;нужно писать код или разбираться в&nbsp;программировании.</strong> Все файлы уже созданы и&nbsp;готовы к&nbsp;работе.</p>
-              <p class="footnote" id="fn-how"><span class="hero__accent">*</span> Отчёты в&nbsp;Telegram приходят стабильно, если у&nbsp;компьютера с&nbsp;файлами автоматизации есть надёжный доступ к&nbsp;Telegram: через прокси в&nbsp;настройках скрипта или VPN&#8209;подключение. <strong>Google&nbsp;Таблица обновляется в&nbsp;любом&nbsp;случае.</strong></p>
-            </div>
+        <!-- Схема: Т-Инвест → Python → Google Таблица + Telegram -->
+        <div class="flow reveal" role="img" aria-label="Схема: Т-Инвест передаёт данные скриптам на Python, они записывают их в Google Таблицу и отправляют в Telegram">
+          <div class="flow__node">
+            <span class="flow__icon flow__icon--tinvest" aria-hidden="true">Т</span>
+            <span class="flow__label">Т-Инвест</span>
           </div>
-        </details>
+          <span class="flow__arrow" aria-hidden="true"></span>
+          <div class="flow__node">
+            <span class="flow__icon flow__icon--python" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="34" height="34"><path fill="#4B8BBE" d="M11.9 2C7 2 7.3 4.1 7.3 4.1v2.2h4.7V7H5.4S2 6.6 2 11.9c0 5.2 3 5 3 5h1.8v-2.4s-.1-3 3-3h4.6s2.9.1 2.9-2.8V4.9S17.7 2 11.9 2zM9.3 3.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/><path fill="#FFD43B" d="M12.1 22c4.9 0 4.6-2.1 4.6-2.1v-2.2H12V17h6.6s3.4.4 3.4-4.9c0-5.2-3-5-3-5h-1.8v2.4s.1 3-3 3H9.6s-2.9-.1-2.9 2.8v3.8S6.3 22 12.1 22zm2.6-1.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>
+            </span>
+            <span class="flow__label">Python</span>
+          </div>
+          <span class="flow__arrow" aria-hidden="true"></span>
+          <div class="flow__node flow__node--pair">
+            <span class="flow__pair">
+              <span class="flow__icon flow__icon--sheets" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="30" height="30"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M4 10h16M4 15h16M10 4v16" stroke="#fff" stroke-width="2"/></svg>
+              </span>
+              <span class="flow__icon flow__icon--tg" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28"><path fill="#fff" d="M21.5 3.6 2.9 10.8c-1.3.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.8c.3-1.3-.5-1.9-1.5-1.8zM8.7 13.4l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5z"/></svg>
+              </span>
+            </span>
+            <span class="flow__label">Google Таблица + Telegram</span>
+          </div>
+        </div>
+
+        <div class="callout how__intro">
+          <p>Скрипт запускается на&nbsp;твоём Windows&#8209;компьютере, получает данные через API Т&#8209;Инвестиций, записывает их&nbsp;в&nbsp;твою Google Таблицу и&nbsp;отправляет отчёт в&nbsp;Telegram<strong class="hero__accent"><a class="fn-ref" href="#fn-how" aria-label="Сноска">*</a></strong>.</p>
+          <p class="how__intro-more">Для автоматического обновления компьютер должен быть включён и&nbsp;иметь интернет. Выключили компьютер&nbsp;→ автоматическое обновление не&nbsp;выполняется. <strong>После включения скрипт запускается&nbsp;автоматически.</strong></p>
+        </div>
+
+        <div class="how__text">
+          <p class="reveal">Программа Python устанавливается один раз и&nbsp;нужна только для работы скрипта. Установка&nbsp;— как у&nbsp;любой другой программы. <strong>Тебе не&nbsp;нужно писать код или разбираться в&nbsp;программировании.</strong> Все файлы уже созданы и&nbsp;готовы к&nbsp;работе.</p>
+          <p class="footnote" id="fn-how"><span class="hero__accent">*</span> Отчёты в&nbsp;Telegram приходят стабильно, если у&nbsp;компьютера с&nbsp;файлами автоматизации есть надёжный доступ к&nbsp;Telegram: через прокси в&nbsp;настройках скрипта или VPN&#8209;подключение. <strong>Google&nbsp;Таблица обновляется в&nbsp;любом&nbsp;случае.</strong></p>
+        </div>
       </div>
     </section>
 

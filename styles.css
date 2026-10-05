@@ -155,8 +155,8 @@ button { font: inherit; }
   font-size: 17px;
 }
 
-/* Плашка-вступление в тёмном аккордеоне «Как всё работает простыми словами» */
-.acc__intro { margin-bottom: 32px; }
+/* Плашка-вступление в тёмном блоке «Как всё работает простыми словами» */
+.how__intro { margin-bottom: 32px; }
 .section--dark .callout { background: rgba(255, 221, 45, .08); border-color: rgba(255, 221, 45, .4); color: var(--on-dark); }
 .section--dark .callout strong { color: var(--yellow); }
 
@@ -587,7 +587,7 @@ button { font: inherit; }
 .auto-step__text strong { font-weight: 700; }
 
 /* =========================================================
-   Аккордеон (<details>): «Что в инструкции?», «Как всё работает простыми словами»
+   Аккордеон (<details>): «Что в инструкции?»
    ========================================================= */
 .section--acc { padding: 40px 0; }
 .acc {
@@ -638,7 +638,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   4.2 · продолжение — «Как всё работает простыми словами» (аккордеон; бывший «Техническая логика работы»)
+   4.2 · продолжение — «Как всё работает простыми словами» (всегда видимый блок; бывший аккордеон «Техническая логика работы»)
    ========================================================= */
 .flow {
   display: flex;
@@ -696,7 +696,7 @@ button { font: inherit; }
   transform: translateX(-50%) rotate(45deg);
 }
 
-.acc__intro .acc__intro-more { margin-top: 10px; }
+.how__intro .how__intro-more { margin-top: 10px; }
 
 .how__text { display: grid; gap: 16px; align-content: start; font-size: 17px; color: var(--on-dark-muted); }
 
