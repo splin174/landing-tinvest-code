@@ -185,7 +185,7 @@ const METRIKA_ID = '113395885';
     highlight(0);
   });
 
-  /* ---------- Лайтбокс: клик по скриншоту (блок 1, карусели 4.1 и 4.2) ---------- */
+  /* ---------- Лайтбокс: клик по скриншоту (блок 1, карусели 4.1 и 4.2; 4.2 сейчас скрыта) ---------- */
   const zoomImgs = document.querySelectorAll('[data-zoom]');
   if (zoomImgs.length) {
     const box = document.createElement('div');
