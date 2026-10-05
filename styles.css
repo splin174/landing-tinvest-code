@@ -943,6 +943,20 @@ button { font: inherit; }
 .pick:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
 .pick[aria-current="true"] { background: var(--yellow-soft); border-color: var(--yellow); }
 .pick__text strong { font-weight: 700; }
+/* Метка «В таблице» над текстом плашки: где находится функция, а не часть заголовка */
+.pick__tag {
+  display: block;
+  width: fit-content;
+  margin-bottom: 4px;
+  padding: 1px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--muted);
+}
 .pick .feature__icon { width: 40px; height: 40px; font-size: 20px; }
 
 .carousel--frame { min-width: 0; }
