@@ -106,7 +106,7 @@
       </div>
       <!-- Кнопка покупки после первого экрана. Ссылка на оплату задаётся в script.js (PAYMENT_URL) -->
       <div class="container buy-strip">
-        <a class="btn btn--primary btn--lg" href="#cta" data-pay>Получить автоматизацию</a>
+        <a class="btn btn--primary btn--lg" href="#cta" data-pay="hero">Получить автоматизацию</a>
         <p class="buy-strip__note">Файлы скрипта и&nbsp;инструкция сразу после оплаты <span class="nowrap">· для Windows</span> <span class="nowrap">· через час таблица готова</span></p>
       </div>
     </section>
@@ -221,7 +221,7 @@
         </div>
         <!-- Кнопка покупки после «Что получаю?» -->
         <div class="buy-strip">
-          <a class="btn btn--primary btn--lg" href="#cta" data-pay>Хочу такую таблицу с&nbsp;данными</a>
+          <a class="btn btn--primary btn--lg" href="#cta" data-pay="what_you_get">Хочу такую таблицу с&nbsp;данными</a>
         </div>
       </div>
     </section>
@@ -294,8 +294,9 @@
       </div>
     </section>
 
-    <!-- 4.2 Как запустить автоматизацию? — СКРЫТО (заголовок, шаги 1–6 и карусель).
-         Скрыто, вернуть: удалить эти четыре строки пометки (до <section …>) и строку «конец скрытой секции 4.2» в конце,
+    <!-- 4.3 Как запустить автоматизацию? — СКРЫТО (заголовок, шаги 1–6 и карусель).
+         Пока секция скрыта, она стоит в разметке перед 4.2 — на этом месте она была до скрытия.
+         Скрыто, вернуть: удалить эти пять строк пометки (до <section …>) и строку «конец скрытой секции 4.3» в конце,
          а внутренние комментарии <!~~ … ~~> заменить обратно на HTML-комментарии.
          Пока секция в комментарии, её картинки не загружаются, а JS карусели её не видит.
     <section class="section" id="automation">
@@ -351,11 +352,11 @@
         </div>
       </div>
     </section>
-    конец скрытой секции 4.2 -->
+    конец скрытой секции 4.3 -->
 
-    <!-- 4.2 · продолжение — «Как всё работает простыми словами» (бывший аккордеон «Техническая логика работы»): всегда видимый
-         блок с подзаголовком — цепочка Т-Инвест → Python → Google Таблица + Telegram, плашка, абзац про Python и сноска.
-         Секция 4.2 скрыта, поэтому блок идёт сразу после аккордеона 4.1 «Что в инструкции?» -->
+    <!-- 4.2 Как всё работает простыми словами (бывший аккордеон «Техническая логика работы»): всегда видимый блок
+         с подзаголовком — цепочка Т-Инвест → Python → Google Таблица + Telegram, плашка, абзац про Python и сноска.
+         Идёт сразу после аккордеона 4.1 «Что в инструкции?» -->
     <section class="section section--dark" id="how">
       <div class="container">
         <div class="section__head reveal">
@@ -515,7 +516,7 @@
         </div>
         <!-- Кнопка покупки после безопасности и гарантии -->
         <div class="buy-strip">
-          <a class="btn btn--primary btn--lg" href="#cta" data-pay>Получить решение</a>
+          <a class="btn btn--primary btn--lg" href="#cta" data-pay="guarantee">Получить решение</a>
         </div>
       </div>
     </section>
@@ -525,7 +526,7 @@
       <div class="container narrow">
         <div class="section__head reveal">
           <span class="bar" aria-hidden="true"></span>
-          <h2 class="section__title">Частые вопросы</h2> <!-- TODO: текст (заголовок в ТЗ не задан) -->
+          <h2 class="section__title">Частые вопросы</h2>
         </div>
         <div class="faq" data-faq>
           <div class="faq__item reveal">
@@ -568,11 +569,11 @@
     <section class="section section--dark cta" id="cta">
       <div class="container cta__inner reveal">
         <img class="cta__logo" src="images/logo.webp" alt="" width="96" height="96" loading="lazy">
-        <h2 class="cta__title">Автоматизация сбора данных из&nbsp;Т&#8209;Инвест: все&nbsp;портфели в&nbsp;Google&nbsp;Таблице и&nbsp;Telegram&#8209;боте</h2> <!-- TODO: текст (заголовок блока в ТЗ не задан) -->
+        <h2 class="cta__title">Автоматизация сбора данных из&nbsp;Т&#8209;Инвест: все&nbsp;портфели в&nbsp;Google&nbsp;Таблице и&nbsp;Telegram&#8209;боте</h2>
         <!-- Ссылка на оплату задаётся в script.js (PAYMENT_URL) -->
         <div class="buy buy--center">
           <p class="price"><span class="price__value">1&nbsp;200&nbsp;₽</span><span class="price__note">разовая оплата, без абонентской платы</span></p>
-          <a class="btn btn--primary btn--xl" href="#cta" data-pay>Купить это решение сейчас</a>
+          <a class="btn btn--primary btn--xl" href="#cta" data-pay="final">Купить это решение сейчас</a>
         </div>
         <p class="cta-note cta-note--light cta-note--strong">Через 2&nbsp;минуты инструкция и&nbsp;файлы у&nbsp;тебя. Через час таблица готова. Завтра утром&nbsp;— первый утренний отчёт в&nbsp;Telegram.</p>
         <ul class="pay-methods" aria-label="Способы оплаты">

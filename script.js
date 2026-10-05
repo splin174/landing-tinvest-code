@@ -1,4 +1,5 @@
-// Ссылка на оплату. Пока пустая — кнопка в финальном блоке ведёт к #cta.
+// Ссылка на оплату. Подставляется во все кнопки покупки с атрибутом data-pay (после hero, «Что получаю?»,
+// гарантии и в финальном блоке) и открывается в новой вкладке. Пока пустая — кнопки ведут к финальному блоку #cta.
 const PAYMENT_URL = ''; // TODO: вставить ссылку на оплату
 
 // Номер счётчика Яндекс Метрики. Если сделать пустым — счётчик не загружается даже после «Принять».
@@ -185,7 +186,7 @@ const METRIKA_ID = '113395885';
     highlight(0);
   });
 
-  /* ---------- Лайтбокс: клик по скриншоту (блок 1, карусели 4.1 и 4.2; 4.2 сейчас скрыта) ---------- */
+  /* ---------- Лайтбокс: клик по скриншоту (блок 1, карусели 4.1 и 4.3; 4.3 сейчас скрыта) ---------- */
   const zoomImgs = document.querySelectorAll('[data-zoom]');
   if (zoomImgs.length) {
     const box = document.createElement('div');
@@ -412,13 +413,15 @@ const METRIKA_ID = '113395885';
   }
 
   // Цели отправляются, только если Метрика загружена после согласия
-  function reachGoal(name) {
-    if (metrikaLoaded && window.ym) window.ym(Number(METRIKA_ID), 'reachGoal', name);
+  function reachGoal(name, params) {
+    if (metrikaLoaded && window.ym) window.ym(Number(METRIKA_ID), 'reachGoal', name, params);
   }
 
-  // buy_click — клик по кнопке покупки
+  // buy_click — клик по кнопке покупки; параметр button — какая кнопка нажата (значение data-pay):
+  // hero, what_you_get, guarantee или final
   document.addEventListener('click', function (e) {
-    if (e.target.closest('[data-pay]')) reachGoal('buy_click');
+    const btn = e.target.closest('[data-pay]');
+    if (btn) reachGoal('buy_click', { button: btn.getAttribute('data-pay') || 'unknown' });
   });
 
   // cta_view — финальный CTA показался на экране, один раз за визит
