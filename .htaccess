@@ -22,3 +22,13 @@
   RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
   RewriteRule ^(.*)$ https://t-invest.boxguide.ru/$1 [R=301,L]
 </IfModule>
+
+# Страницы (.html) браузер каждый раз сверяет с сервером: если файл не менялся,
+# приходит короткий ответ 304 (по ETag/Last-Modified), если менялся — новая версия.
+# Стили и скрипт отдельно не настраиваются: deploy.sh дописывает к ссылкам на них
+# метку коммита (styles.css?v=…), и после выкладки браузер загружает новые файлы.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

@@ -5,6 +5,10 @@
 # Что делает:
 # 1. Берёт текущий локальный коммит (HEAD). К GitHub не обращается: ни pull, ни fetch, ни push.
 #    Если в проекте есть незакоммиченные изменения, останавливается — сначала сделайте коммит.
+#    В выкладываемых страницах (index.html, oferta.html, privacy.html) к ссылкам на styles.css
+#    и script.js дописывается метка коммита: styles.css?v=<короткий хэш>. Так браузеры после
+#    выкладки загружают новые стили и скрипт, а не берут старые из кэша. В репозитории ссылки
+#    остаются без метки, поэтому выложенные .html отличаются от репозитория только этой меткой.
 # 2. Делает на сервере бэкап текущего корня сайта в ~/backup_<дата-время>/t-invest.
 # 3. Выкладывает файлы сайта (страницы, стили, скрипты, картинки, .htaccess) в корень сайта.
 #    Файлы перезаписываются, но ничего не удаляется: если файл убрали из репозитория,
@@ -18,7 +22,7 @@
 # public_html, распаковка архива поверх всего корня и т. п. сотрут этот лендинг.
 # Выкладку boxguide.ru делайте с исключением t-invest/ (например, rsync --exclude 't-invest/').
 #
-# Нужно: Git Bash (git, ssh, tar) и алиас «sprint» в ~/.ssh/config (вход по ключу).
+# Нужно: Git Bash (git, ssh, tar, sed) и алиас «sprint» в ~/.ssh/config (вход по ключу).
 set -euo pipefail
 
 SSH_HOST="sprint"
@@ -28,13 +32,15 @@ SITE_URL="https://t-invest.boxguide.ru"
 DEPLOYED_FILE="t-invest-deployed.txt"                  # от домашней папки на сервере
 # Что выкладывать. README, docs-src/ и tools/ на хостинг не нужны.
 FILES=(index.html oferta.html privacy.html styles.css script.js images)
+# Страницы, в которых к ссылкам на стили и скрипт дописывается метка коммита
+PAGES=(index.html oferta.html privacy.html)
 # BatchMode — без запроса пароля; LogLevel=ERROR — без информационных предупреждений ssh
 SSH_OPTS=(-o BatchMode=yes -o LogLevel=ERROR)
 
 # Корень проекта — на уровень выше папки tools, откуда бы ни запускали скрипт
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-echo "1/4 Проверяю локальный коммит…"
+echo "1/4 Проверяю локальный коммит и готовлю файлы…"
 # Выкладывается только закоммиченное: правки, не попавшие в коммит, на сайт бы не ушли
 if [ -n "$(git -C "$SRC" status --porcelain)" ]; then
   echo "    Есть незакоммиченные изменения — сначала сделайте коммит:" >&2
@@ -43,11 +49,30 @@ if [ -n "$(git -C "$SRC" status --porcelain)" ]; then
 fi
 COMMIT="$(git -C "$SRC" log -1 --format='%h %s')"
 COMMIT_FULL="$(git -C "$SRC" rev-parse HEAD)"
+SHORT="$(git -C "$SRC" rev-parse --short HEAD)"
 BRANCH="$(git -C "$SRC" rev-parse --abbrev-ref HEAD)"
 echo "    версия: $COMMIT ($BRANCH)"
 
-# Файл .htaccess (например, с редиректом) выкладывается, только если он есть в коммите
+# Файл .htaccess (редиректы, заголовки кэширования) выкладывается, только если он есть в коммите
 if git -C "$SRC" cat-file -e HEAD:.htaccess 2>/dev/null; then FILES+=(.htaccess); fi
+
+# Файлы готовятся во временной папке: коммит распаковывается, в страницы ставится метка версии.
+# core.autocrlf=false: файлы берутся байт в байт как в репозитории (LF).
+# Иначе при autocrlf=true из настроек Git для Windows архив получил бы CRLF.
+TMP="$(mktemp -d)"
+trap 'rm -rf "$TMP"' EXIT
+git -C "$SRC" -c core.autocrlf=false archive --format=tar HEAD "${FILES[@]}" | tar -x -C "$TMP"
+for page in "${PAGES[@]}"; do
+  sed -i -e "s#href=\"styles\.css\"#href=\"styles.css?v=$SHORT\"#" \
+         -e "s#src=\"script\.js\"#src=\"script.js?v=$SHORT\"#" "$TMP/$page"
+  # В каждой странице ровно одна ссылка на стили и одна на скрипт — иначе разметка изменилась
+  if [ "$(grep -c "styles\.css?v=$SHORT\"" "$TMP/$page")" != 1 ] ||
+     [ "$(grep -c "script\.js?v=$SHORT\"" "$TMP/$page")" != 1 ]; then
+    echo "    В $page не нашлась ссылка на styles.css или script.js — выкладка остановлена" >&2
+    exit 1
+  fi
+done
+echo "    метка версии в страницах: ?v=$SHORT"
 
 echo "2/4 Бэкап текущего сайта на сервере…"
 BACKUP="${BACKUP_PREFIX}$(date +%Y%m%d-%H%M%S)/t-invest"
@@ -55,9 +80,8 @@ ssh "${SSH_OPTS[@]}" "$SSH_HOST" \
   "mkdir -p ~/$BACKUP && cp -a ~/$SITE_ROOT/. ~/$BACKUP/ && echo '    бэкап: ~/$BACKUP'"
 
 echo "3/4 Выкладываю файлы…"
-# core.autocrlf=false: файлы уходят на сервер байт в байт как в репозитории (LF).
-# Иначе при autocrlf=true из настроек Git для Windows архив получил бы CRLF.
-git -C "$SRC" -c core.autocrlf=false archive --format=tar HEAD "${FILES[@]}" \
+# Права как у git archive: файлы 644, папки 755; владелец в архиве не важен
+tar -c -C "$TMP" --owner=0 --group=0 --mode='u=rwX,go=rX' "${FILES[@]}" \
   | ssh "${SSH_OPTS[@]}" "$SSH_HOST" "umask 022 && tar -x -C ~/$SITE_ROOT && echo '    готово'"
 ssh "${SSH_OPTS[@]}" "$SSH_HOST" \
   "printf '%s\n%s\n%s\n' '$COMMIT_FULL' \"\$(date '+%Y-%m-%d %H:%M:%S %z')\" '$BRANCH' > ~/$DEPLOYED_FILE \
